@@ -1,0 +1,224 @@
+from __future__ import division
+from torch.autograd import variable
+from torch import device
+from utils import *
+import torch
+import torch.nn as nn
+import torch.nn.functional as f
+import numpy as np
+import string
+
+# Custom-Defined nn.Module Classes
+
+
+class EmptyLayer(nn.Module):
+    def __init__(self):
+        super(EmptyLayer, self).__init__()
+
+
+class DetectionLayer(nn.Module):
+    def __init__(self, anchors):
+        super(DetectionLayer, self).__init__()
+        self.anchors = anchors
+
+# Functions
+
+
+def get_test_input():
+    img = cv2.imread("dog-cycle-car.png")
+    img = cv2.resize(img, (608, 608))
+    img_ = img[:, :, ::-1].transpose((2, 0, 1))
+    img_ = img_[np.newaxis, :, :, :]/255.0
+    img_ = torch.FloatTensor(img_)
+    img_ = img_.cuda()
+    return img_
+
+
+def read_cfg(cfg_file):
+    cfg = open(cfg_file, 'r')
+    lines = cfg.readlines()
+    lines = [line for line in lines if line != "\n"]
+    lines = [line for line in lines if line[0] != "#"]
+    lines = [line.translate({ord(unwanted_char): None for unwanted_char in string.whitespace}) for line in lines]
+
+    modules = []
+    module = {}
+
+    for line in lines:
+        if line[0] == "[":
+            if len(module) != 0:
+                modules.append(module)
+            module = {}
+            module["type"] = line[1:len(line) - 1]
+            continue
+        else:
+            module[line.split("=")[0]] = line.split("=")[1]
+    modules.append(module)
+    return modules
+
+
+def create_nn_modules(modules):
+    net_data = modules[0]
+    net_modules = nn.ModuleList()
+    input_filters = 3  # initially 3 representing RGB channels of the image
+    output_filters = []
+
+    for index, module in enumerate(modules[1:]):
+        sub_module = nn.Sequential()
+
+        if module["type"] == "convolutional":
+            # Check for the presence of a batch normalization layer
+            try:
+                batch_norm = int(module["batch_normalize"])
+                bias = False
+            except:
+                batch_norm = 0
+                bias = True
+
+            filters = int(module["filters"])
+            kernel = int(module["size"])
+            stride = int(module["stride"])
+            pad = int(module["pad"])
+
+            if pad:
+                padding = (kernel - 1) // 2
+            else:
+                padding = 0
+
+            activation = module["activation"]
+
+            conv = nn.Conv2d(input_filters, filters, kernel, stride, padding, bias=bias)
+            sub_module.add_module("Convolutional{}".format(index), conv)
+
+            if batch_norm:
+                batch = nn.BatchNorm2d(filters)
+                sub_module.add_module("Batch_Normalization{}".format(index), batch)
+
+            if activation == "leaky":
+                leaky = nn.LeakyReLU(0.1, inplace=True)
+                sub_module.add_module("Leaky_Activation{}".format(index), leaky)
+
+            if activation == "linear":
+                linear = nn.Linear(input_filters, filters, bias=bias)
+                sub_module.add_module("Linear_Activation{}".format(index), linear)
+
+        elif module["type"] == "shortcut":  # Refers to a skip connection
+            shortcut = EmptyLayer()
+            sub_module.add_module("Skip_Connection{}", shortcut)
+
+        elif module["type"] == "upsample":
+            stride = int(module["stride"])
+            upsample = nn.UpsamplingBilinear2d(scale_factor=2)  # Bilinear Upsampling
+            # upsample = nn.ConvTranspose2d()
+            sub_module.add_module("Upsampling{}".format(index), upsample)
+
+        elif module["type"] == "route":
+            start_layer = int(module["layers"].split(",")[0])
+
+            # If end layer exits
+            try:
+                end_layer = int(module["layers"].split(",")[1])
+            except:
+                end_layer = 0
+
+            if start_layer > 0:
+                start_layer = start_layer - index
+
+            if end_layer > 0:
+                end_layer = end_layer - index
+
+            if end_layer < 0:
+                filters = output_filters[index + start_layer] + output_filters[index + end_layer]
+            else:
+                filters = output_filters[index + start_layer]
+
+            route = EmptyLayer()
+            sub_module.add_module("Routing{}".format(index), route)
+
+        elif module["type"] == "yolo":  # Detection module
+            masks = module["mask"].split(",")
+            masks = [int(mask) for mask in masks]
+            anchors = module["anchors"].split(",")
+            anchors = [int(anchor) for anchor in anchors]
+            anchors = [(anchors[anchor], anchors[anchor + 1]) for anchor in range(0, len(anchors), 2)]
+            anchors = [anchors[mask] for mask in masks]
+
+            yolo = DetectionLayer(anchors)
+            sub_module.add_module("YOLO{}".format(index), yolo)
+
+        output_filters.append(filters)
+        input_filters = filters
+        net_modules.append(sub_module)
+
+    return net_data, net_modules
+
+
+class DarkNet(nn.Module):
+    def __init__(self, cfg_file):
+        super(DarkNet, self).__init__()
+        self.modules = read_cfg(cfg_file)
+        self.net_data, self.net_modules = create_nn_modules(self.modules)
+
+    def forward(self, input_, CUDA):
+        modules = self.modules[1:]
+        layer_feature_maps = {}
+
+        collector = 0
+        for index, module in enumerate(modules):
+            type = module["type"]
+
+            if type == "convolutional" or type == "upsample":
+                input_ = self.net_modules[index][0](input_)
+
+            elif type == "shortcut":
+                from_ = int(module["from"])
+                # activation = module["activation"]
+                input_ = layer_feature_maps[index-1] + layer_feature_maps[index + from_]
+                # if activation == "linear":
+                #     input_ = f.linear(input_)
+
+            elif type == "route":
+                start_layer = int(module["layers"].split(",")[0])
+
+                # If end layer exits
+                try:
+                    end_layer = int(module["layers"].split(",")[1])
+                except:
+                    end_layer = 0
+
+                if start_layer > 0:
+                    start_layer = start_layer - index
+
+                if end_layer == 0:
+                    input_ = layer_feature_maps[index + start_layer]
+                else:
+                    if end_layer > 0:
+                        end_layer = end_layer - index
+
+                    feature_map1 = layer_feature_maps[index + start_layer]
+                    feature_map2 = layer_feature_maps[index + end_layer]
+
+                    input_ = torch.cat((feature_map1, feature_map2), 1)
+
+            elif type == "yolo":
+                input_ = input_.data
+                input_dimensions = int(self.net_data["width"])
+                anchors = self.net_modules[index][0].anchors
+                classes = int(module["classes"])
+
+                input_ = predict_transform(input_, input_dimensions, anchors, classes)
+                if not collector:
+                    detections = input_
+                    collector = 1
+                else:
+                    detections = torch.cat((detections, input_), 1)
+
+            layer_feature_maps[index] = input_
+
+        return detections
+
+
+model = DarkNet("cfg/yolov3.cfg").cuda()
+input_ = get_test_input()
+pred = model(input_, torch.cuda.is_available())
+print(pred.size())
