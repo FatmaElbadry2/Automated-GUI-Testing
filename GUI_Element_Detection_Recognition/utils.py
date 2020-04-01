@@ -57,3 +57,29 @@ def predict_transform(prediction, input_size, anchors, classes, CUDA=True):
     prediction[:, :, : 4] *= stride
 
     return prediction
+
+
+def true_detections(prediction, classes, obj_thresh, nms_thresh):
+    obj_mask = (prediction[:, :, 4] > obj_thresh).float().unsqueeze(2)
+    prediction = prediction * obj_mask
+
+    # Transform bbox attributes to top-left and bottom-right corners to compute IoU more easily
+    box_corners = prediction.new(prediction.shape())
+    box_corners[:, :, 0] = prediction[:, :, 0] - prediction[:, :, 2] / 2
+    box_corners[:, :, 1] = prediction[:, :, 1] - prediction[:, :, 3] / 2
+    box_corners[:, :, 0] = prediction[:, :, 0] + prediction[:, :, 2] / 2
+    box_corners[:, :, 1] = prediction[:, :, 1] + prediction[:, :, 3] / 2
+    prediction[:, :, :4] = box_corners[:, :, :4]
+
+    batch_size = prediction.size(0)
+
+    collector = 0
+    for image in range(batch_size):
+        image_pred = prediction[image]
+
+        max_class_scores, max_class_indices = torch.max(image_pred[:, 5:5 + classes], 1)
+        max_class_scores = max_class_scores.float().unsqueeze(1)
+        max_class_indices = max_class_indices.float().unsqueeze(1)
+        image_pred = torch.cat((image_pred[:, :5], max_class_scores, max_class_indices), 1)
+
+        
