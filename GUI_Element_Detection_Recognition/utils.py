@@ -59,9 +59,38 @@ def predict_transform(prediction, input_size, anchors, classes, CUDA=True):
     return prediction
 
 
+def unique(classes):
+    classes_np = classes.cpu().numpy()
+    unique_classes_np = np.unique(classes_np)
+    unique_classes_tensor = torch.from_numpy(unique_classes_np)
+
+    unique_classes = classes.new(unique_classes_tensor.shape)
+    unique_classes.copy_(unique_classes_tensor)
+    return unique_classes
+
+
+def bbox_iou(bbox1, bbox2):
+    bb1_x1, bb1_y1, bb1_x2, bb1_y2 = bbox1[:, 0], bbox1[:, 1], bbox1[:, 2], bbox1[:, 3]
+    bb2_x1, bb2_y1, bb2_x2, bb2_y2 = bbox2[:, 0], bbox2[:, 1], bbox2[:, 2], bbox2[:, 3]
+
+    bb_inter_x1 = torch.max(bb1_x1, bb2_x1)
+    bb_inter_y1 = torch.max(bb1_y1, bb2_y1)
+    bb_inter_x2 = torch.min(bb1_x2, bb2_x2)
+    bb_inter_y2 = torch.min(bb1_y2, bb2_y2)
+
+    bb_inter_area = torch.clamp(bb_inter_x2 - bb_inter_x1 + 1, min=0) * torch.clamp(bb_inter_y2 - bb_inter_y1 + 1, min=0)
+
+    bb1_area = (bb1_x2 - bb1_x1 + 1) * (bb1_y2 - bb1_y1 + 1)
+    bb2_area = (bb2_x2 - bb2_x1 + 1) * (bb2_y2 - bb2_y1 + 1)
+
+    IoU = bb_inter_area/(bb1_area + bb2_area - bb_inter_area)
+
+    return IoU
+
 def true_detections(prediction, classes, obj_thresh, nms_thresh):
+    # Threshold objectness scores
     obj_mask = (prediction[:, :, 4] > obj_thresh).float().unsqueeze(2)
-    prediction = prediction * obj_mask
+    prediction *= obj_mask
 
     # Transform bbox attributes to top-left and bottom-right corners to compute IoU more easily
     box_corners = prediction.new(prediction.shape())
@@ -77,9 +106,57 @@ def true_detections(prediction, classes, obj_thresh, nms_thresh):
     for image in range(batch_size):
         image_pred = prediction[image]
 
+        # Removing all class scores except max. score
         max_class_scores, max_class_indices = torch.max(image_pred[:, 5:5 + classes], 1)
         max_class_scores = max_class_scores.float().unsqueeze(1)
         max_class_indices = max_class_indices.float().unsqueeze(1)
         image_pred = torch.cat((image_pred[:, :5], max_class_scores, max_class_indices), 1)
 
-        
+        # Removing all bboxes with a zero objectness score
+        non_zero_indices = torch.nonzero(image_pred[:, 4])
+        try:
+            image_predict = image_pred[non_zero_indices.squeeze(), :].view(-1, 7)
+        except:
+            continue
+
+        if image_predict.shape[0] == 0:
+            continue
+
+        image_classes = unique(image_predict[:, -1])
+
+        for cls in image_classes:
+            class_mask = image_predict * (image_predict[:, -1] == cls).float().unsqueeze(1)
+            class_mask_indices = torch.nonzero(class_mask[:, -2]).squeeze()
+            image_pred_class = image_predict[class_mask_indices].view(-1, 7)
+
+            desc_obj_indices = torch.sort(image_pred_class[:, 4], descending=True)[1]
+            image_pred_class = image_pred_class[desc_obj_indices]
+            num_class_detections = image_pred_class.size(0)
+
+            for detection in range(num_class_detections):
+                try:
+                    IoUs = bbox_iou(image_pred_class[detection].unsqueeze(0), image_pred_class[detection + 1:])
+                except ValueError:
+                    break
+                except IndexError:
+                    break
+
+                IoU_mask = (IoUs < nms_thresh).float().usqueeze(1)
+                image_pred_class[detection + 1:] *= IoU_mask
+
+                non_zero_indices = torch.nonzero(image_pred_class[:, 4]).squeeze()
+                image_pred_class = image_pred_class[non_zero_indices].view(-1, 7)
+
+                batch_index = image_pred_class.new(image_pred_class.size(0), 1).fill_(image)
+
+                if not collector:
+                    output = torch.cat((batch_index, image_pred_class), 1)
+                    collector = 1
+                else:
+                    out = torch.cat((batch_index, image_pred_class), 1)
+                    output = torch.cat((output, out))
+
+            try:
+                return output
+            except:
+                return 0

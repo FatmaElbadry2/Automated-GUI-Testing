@@ -28,25 +28,28 @@ import torch
 # print(anchors1)
 # print(anchors2)
 
-# test = torch.tensor([[[1, 2, 3],
-#                     [4, 5, 6]],
-#                     [[7, 8, 9],
-#                      [10, 11, 12]]])
+# test = torch.tensor([[1, 2, 3],
+#                     [4, 5, 6],
+#                     [7, 8, 9]])
 # print(test)
-# thresh = 6
-# mask = (test[:, :, 2] > thresh).float().unsqueeze(2)
+# thresh = 3
+# mask = (test[:, 2] > thresh).float().unsqueeze(1)
+# print(mask)
 # test = test*mask
 # print(test)
 
-test = torch.tensor([[1, 4, 3],
-                    [4, 7, 6],
-                    [7, 10, 9]])
-max_num, max_index = torch.max(test[:, 1:3], 1)
-print(max_num)
-print(max_index)
-max_num = max_num.float().unsqueeze(1)
-max_index = max_index.float().unsqueeze(1)
-max_index = torch.FloatTensor(max_index)
-torch.add(max_index, 1)
-print(max_num)
-print(max_index)
+# test = torch.tensor([[1, 4, 3],
+#                     [4, 7, 6],
+#                     [7, 10, 9]])
+# max_num, max_index = torch.max(test[:, 1:3], 1)
+# print(max_num)
+# print(max_index)
+# max_num = max_num.float().unsqueeze(1)
+# max_index = max_index.float().unsqueeze(1)
+# max_index = torch.FloatTensor(max_index)
+# torch.add(max_index, 1)
+# print(max_num)
+# print(max_index)
+
+test = [1, 2, 3, 4]
+print(test[-2])
