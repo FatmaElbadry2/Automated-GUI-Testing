@@ -1,10 +1,60 @@
 from __future__ import division
-from torch.autograd import variable
+
 import torch
-import torch.nn as nn
-import torch.nn.functional as f
 import numpy as np
 import cv2
+import string
+
+
+def read_cfg(cfg_file):
+    cfg = open(cfg_file, 'r')
+    lines = cfg.readlines()
+    lines = [line for line in lines if line != "\n"]
+    lines = [line for line in lines if line[0] != "#"]
+    lines = [line.translate({ord(unwanted_char): None for unwanted_char in string.whitespace}) for line in lines]
+
+    modules = []
+    module = {}
+
+    for line in lines:
+        if line[0] == "[":
+            if len(module) != 0:
+                modules.append(module)
+            module = {}
+            module["type"] = line[1:len(line) - 1]
+            continue
+        else:
+            module[line.split("=")[0]] = line.split("=")[1]
+    modules.append(module)
+    return modules
+
+
+def load_classes(classes_file):
+    file = open(classes_file, "r")
+    classes = file.read().split("\n")
+
+    return classes
+
+
+def resize_image(image, input_size):
+    orig_h, orig_w = image.shape[0], image.shape[1]
+    h = w = input_size
+    new_h = round(orig_h * min(h / orig_h, w / orig_w))
+    new_w = round(orig_w * min(h / orig_h, w / orig_w))
+    resized_image = cv2.resize(image, (new_w, new_h), interpolation=cv2.INTER_CUBIC)
+    canvas = np.full((h, w, 3), 128)
+    canvas[(h-new_h) // 2:(h-new_h) // 2 + new_h, (w-new_w) // 2:(w-new_w) // 2 + new_w, :] = resized_image
+
+    return canvas
+
+
+def image_preprocessing(image, input_size):
+    image = resize_image(image, input_size)
+    image = image[:, :, ::-1].transpose((2, 0, 1)).copy()
+    image = torch.from_numpy(image).float().div(255.0).unsqueeze(0)
+    image = image.cuda()
+
+    return image
 
 
 def predict_transform(prediction, input_size, anchors, classes, CUDA=True):
@@ -87,13 +137,14 @@ def bbox_iou(bbox1, bbox2):
 
     return IoU
 
+
 def true_detections(prediction, classes, obj_thresh, nms_thresh):
     # Threshold objectness scores
     obj_mask = (prediction[:, :, 4] > obj_thresh).float().unsqueeze(2)
     prediction *= obj_mask
 
     # Transform bbox attributes to top-left and bottom-right corners to compute IoU more easily
-    box_corners = prediction.new(prediction.shape())
+    box_corners = prediction.new(prediction.size())
     box_corners[:, :, 0] = prediction[:, :, 0] - prediction[:, :, 2] / 2
     box_corners[:, :, 1] = prediction[:, :, 1] - prediction[:, :, 3] / 2
     box_corners[:, :, 0] = prediction[:, :, 0] + prediction[:, :, 2] / 2
@@ -141,22 +192,22 @@ def true_detections(prediction, classes, obj_thresh, nms_thresh):
                 except IndexError:
                     break
 
-                IoU_mask = (IoUs < nms_thresh).float().usqueeze(1)
+                IoU_mask = (IoUs < nms_thresh).float().unsqueeze(1)
                 image_pred_class[detection + 1:] *= IoU_mask
 
                 non_zero_indices = torch.nonzero(image_pred_class[:, 4]).squeeze()
                 image_pred_class = image_pred_class[non_zero_indices].view(-1, 7)
 
-                batch_index = image_pred_class.new(image_pred_class.size(0), 1).fill_(image)
+            batch_index = image_pred_class.new(image_pred_class.size(0), 1).fill_(image)
 
-                if not collector:
-                    output = torch.cat((batch_index, image_pred_class), 1)
-                    collector = 1
-                else:
-                    out = torch.cat((batch_index, image_pred_class), 1)
-                    output = torch.cat((output, out))
+            if not collector:
+                output = torch.cat((batch_index, image_pred_class), 1)
+                collector = 1
+            else:
+                out = torch.cat((batch_index, image_pred_class), 1)
+                output = torch.cat((output, out))
 
-            try:
-                return output
-            except:
-                return 0
+    try:
+        return output
+    except:
+        return 0

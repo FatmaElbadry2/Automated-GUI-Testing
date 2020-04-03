@@ -1,12 +1,10 @@
 from __future__ import division
 from torch.autograd import variable
-from torch import device
+import torch.nn.functional as f
 from utils import *
 import torch
 import torch.nn as nn
-import torch.nn.functional as f
 import numpy as np
-import string
 
 # Custom-Defined nn.Module Classes
 
@@ -20,41 +18,6 @@ class DetectionLayer(nn.Module):
     def __init__(self, anchors):
         super(DetectionLayer, self).__init__()
         self.anchors = anchors
-
-# Functions
-
-
-def get_test_input():
-    img = cv2.imread("dog-cycle-car.png")
-    img = cv2.resize(img, (608, 608))
-    img_ = img[:, :, ::-1].transpose((2, 0, 1))
-    img_ = img_[np.newaxis, :, :, :]/255.0
-    img_ = torch.from_numpy(img_).float()
-    img_ = img_.cuda()
-    return img_
-
-
-def read_cfg(cfg_file):
-    cfg = open(cfg_file, 'r')
-    lines = cfg.readlines()
-    lines = [line for line in lines if line != "\n"]
-    lines = [line for line in lines if line[0] != "#"]
-    lines = [line.translate({ord(unwanted_char): None for unwanted_char in string.whitespace}) for line in lines]
-
-    modules = []
-    module = {}
-
-    for line in lines:
-        if line[0] == "[":
-            if len(module) != 0:
-                modules.append(module)
-            module = {}
-            module["type"] = line[1:len(line) - 1]
-            continue
-        else:
-            module[line.split("=")[0]] = line.split("=")[1]
-    modules.append(module)
-    return modules
 
 
 def create_nn_modules(modules):
@@ -169,7 +132,7 @@ class DarkNet(nn.Module):
         for index, module in enumerate(modules):
             module_type = module["type"]
 
-            if module_type == "convolutional" or type == "upsample":
+            if module_type == "convolutional" or module_type == "upsample":
                 input_ = self.net_modules[index][0](input_)
 
             elif module_type == "shortcut":
@@ -285,10 +248,3 @@ class DarkNet(nn.Module):
                 conv_weights = conv_weights.view_as(conv.weight.data)
 
                 conv.weight.data.copy_(conv_weights)
-
-
-model = DarkNet("cfg/yolov3.cfg").cuda()
-model.load_weights("weights/yolov3.weights")
-input_image = get_test_input()
-pred = model(input_image, torch.cuda.is_available())
-print(pred)

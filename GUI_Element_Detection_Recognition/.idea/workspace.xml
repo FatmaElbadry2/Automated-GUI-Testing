@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c9407ba-0359-4252-9d24-59acb48850ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/coco.names" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detections/det_dog-cycle-car.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/detector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pallete" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../README.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/darknet.py" beforeDir="false" afterPath="$PROJECT_DIR$/darknet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New Text Document.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,18 +43,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1YIXNDL6jDT45c51dzUY6l2j799" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/detector.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,7 +71,7 @@
       <recent name="C:\Users\Hagar\Desktop\Automated-GUI-Testing\GUI_Element_Detection_Recognition\weights" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.detector">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="GUI_Element_Detection_Recognition" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,13 +116,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="detector" type="PythonConfigurationType" factoryName="Python">
+      <module name="GUI_Element_Detection_Recognition" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\Hagar\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/detector.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python">
       <module name="GUI_Element_Detection_Recognition" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\Hagar\Anaconda3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -131,6 +157,7 @@
     <list>
       <item itemvalue="Python.darknet" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.detector" />
     </list>
   </component>
   <component name="ServiceViewManager">
@@ -186,21 +213,26 @@
       <workItem from="1585647730951" duration="18443000" />
       <workItem from="1585694911630" duration="18285000" />
       <workItem from="1585767754544" duration="12188000" />
+      <workItem from="1585785715832" duration="317000" />
+      <workItem from="1585822544382" duration="40505000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Inspections" timestamp="1583840582205">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="70" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1583840582205" />
-    <state x="75" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585748060067">
+    <state x="75" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585923874409">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="75" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585748060067" />
+    <state x="75" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585923874409" />
     <state x="898" y="218" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585695983543">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -213,46 +245,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="833" y="151" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1585582305766" />
-    <state width="615" height="466" key="DebuggerActiveHint" timestamp="1584046048934">
+    <state width="1433" height="466" key="DebuggerActiveHint" timestamp="1585948170625">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="615" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1584046048934" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585601719284">
+    <state width="1433" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1585948170625" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585923872134">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585601719284" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1585747050622">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585923872134" />
+    <state width="1493" height="255" key="GridCell.Tab.0.bottom" timestamp="1585949329663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585747050622" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1585747050622">
+    <state width="1493" height="255" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585949329663" />
+    <state width="1493" height="255" key="GridCell.Tab.0.center" timestamp="1585949329663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585747050622" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1585747050622">
+    <state width="1493" height="255" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585949329663" />
+    <state width="1493" height="255" key="GridCell.Tab.0.left" timestamp="1585949329663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585747050622" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1585747050622">
+    <state width="1493" height="255" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585949329663" />
+    <state width="1493" height="255" key="GridCell.Tab.0.right" timestamp="1585949329663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585747050622" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1585747050623">
+    <state width="1493" height="255" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585949329663" />
+    <state width="1493" height="255" key="GridCell.Tab.1.bottom" timestamp="1585949329663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585747050623" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1585747050623">
+    <state width="1493" height="255" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585949329663" />
+    <state width="1493" height="255" key="GridCell.Tab.1.center" timestamp="1585949329663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585747050623" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1585747050622">
+    <state width="1493" height="255" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585949329663" />
+    <state width="1493" height="255" key="GridCell.Tab.1.left" timestamp="1585949329663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585747050622" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1585747050623">
+    <state width="1493" height="255" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585949329663" />
+    <state width="1493" height="255" key="GridCell.Tab.1.right" timestamp="1585949329663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585747050623" />
+    <state width="1493" height="255" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585949329663" />
     <state x="538" y="59" key="SettingsEditor" timestamp="1585583785343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -265,15 +297,27 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1536.824@0.0.1536.824" timestamp="1585583736485" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1584645913735">
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585841984203">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584645913735" />
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585841984203" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils.py</url>
+          <line>209</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$TrainingClassifiers.coverage" NAME="TrainingClassifiers Coverage Results" MODIFIED="1584045903436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$DataSetGen.coverage" NAME="DataSetGen Coverage Results" MODIFIED="1582636505625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$darknet.coverage" NAME="darknet Coverage Results" MODIFIED="1585746588853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
+    <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$detector.coverage" NAME="detector Coverage Results" MODIFIED="1585948416282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$test.coverage" NAME="test Coverage Results" MODIFIED="1585603220781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$PyTorch.coverage" NAME="PyTorch Coverage Results" MODIFIED="1584018948081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>

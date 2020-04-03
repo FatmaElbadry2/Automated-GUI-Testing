@@ -51,5 +51,35 @@ import torch
 # print(max_num)
 # print(max_index)
 
-test = [1, 2, 3, 4]
-print(test[-2])
+# test = [1, 2, 3, 4]
+# print(test[-2])
+
+
+# def load_classes(file_name):
+#     file = open(file_name, "r")
+#     classes = file.read().split("\n")
+#
+#     return classes
+#
+#
+# print(load_classes("data/coco.names"))
+
+# print(30 % 8)
+# rem = 0
+# if 30 % 8:
+#     rem = 1
+# print(30 // 8 + rem)
+
+
+# list_ = torch.randint(100, (1, 100))
+# print(list_)
+# leftover = 0
+# if len(list_) % 6:
+#     leftover = 1
+#
+#
+# num_batches = len(list_) // 6 + leftover
+# seq = [list_[i*6: min((i + 1)*6, len(list_))] for i in range(num_batches)]
+# list_ = torch.cat(seq)
+#
+# print(list_)
