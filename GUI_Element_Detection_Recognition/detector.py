@@ -8,13 +8,13 @@ import pickle as pkl
 import cv2
 import os.path as osp
 import os
-import time
 import random
+import time
 
 
-dataset = "dog-cycle-car.png"
-batch_size = 1
-res = "416"
+dataset = "dataset"
+batch_size = 2
+res = 416
 conf_thresh = 0.5
 nms_thresh = 0.4
 cfg_file = "cfg/yolov3.cfg"
@@ -29,7 +29,7 @@ model = DarkNet(cfg_file)
 model.load_weights(weights_file)
 print("Network successfully loaded")
 
-model.net_data["width"] = res
+model.net_data["width"] = str(res)
 input_size = int(model.net_data["width"])
 assert input_size % 32 == 0
 assert input_size > 32
@@ -41,18 +41,22 @@ model.eval()
 
 try:
     # image_list = [osp.join(osp.realpath("."), dataset, image) for image in os.listdir(dataset)]
-    image_list = [dataset]
+    image_list = [osp.join(dataset, image) for image in os.listdir(dataset)]
+    # image_list = [dataset]
 except NotADirectoryError:
     image_list = [osp.join(osp.realpath("."), dataset)]
 except FileNotFoundError:
     print("No file or directory found with the name {}".format(dataset))
     exit()
 
+if not os.path.exists("detections"):
+    os.makedirs("detections")
+
 loaded_images = [cv2.imread(image) for image in image_list]
 
 dataset_images = list(map(image_preprocessing, loaded_images, [input_size for image in range(len(image_list))]))
 
-dataset_images_dim = [(image.shape[0], image.shape[1]) for image in loaded_images]
+dataset_images_dim = [(image.shape[1], image.shape[0]) for image in loaded_images]
 dataset_images_dim = torch.FloatTensor(dataset_images_dim).repeat(1, 2)
 
 if CUDA:
@@ -68,19 +72,20 @@ if batch_size != 1:
 
 collector = 0
 for i, batch in enumerate(dataset_images):
-    #load the image
+
     if CUDA:
         batch = batch.cuda()
 
-    prediction = model(batch, CUDA)
+    with torch.no_grad():
+        prediction = model(batch, CUDA)
 
     prediction = true_detections(prediction,  classes, conf_thresh, nms_thresh)
 
-    prediction[:, 0] += i*batch_size    #transform the atribute from index in batch to index in imlist
+    prediction[:, 0] += i*batch_size
 
-    if not write:                      #If we have't initialised output
+    if not collector:
         output = prediction
-        write = 1
+        collector = 1
     else:
         output = torch.cat((output, prediction))
 
@@ -107,14 +112,11 @@ for i in range(output.shape[0]):
     output[i, [1, 3]] = torch.clamp(output[i, [1, 3]], 0.0, dataset_images_dim[i, 0])
     output[i, [2, 4]] = torch.clamp(output[i, [2, 4]], 0.0, dataset_images_dim[i, 1])
 
-output_recast = time.time()
-class_load = time.time()
+
 colors = pkl.load(open("pallete", "rb"))
 
-draw = time.time()
 
-
-def write(x, results):
+def draw_bb(x, results):
     c1 = tuple(x[1:3].int())
     c2 = tuple(x[3:5].int())
     img = results[int(x[0])]
@@ -129,13 +131,10 @@ def write(x, results):
     return img
 
 
-list(map(lambda x: write(x, loaded_images), output))
+list(map(lambda x: draw_bb(x, loaded_images), output))
 
-det_names = pd.Series(image_list).apply(lambda x: "{}/det_{}".format("detections", x.split("/")[-1]))
+det_names = pd.Series(image_list).apply(lambda x: "{}/det_{}".format("detections", x.split("\\")[-1]))
 
 list(map(cv2.imwrite, det_names, loaded_images))
-
-end = time.time()
-
 
 torch.cuda.empty_cache()

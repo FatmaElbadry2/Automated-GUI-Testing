@@ -1,6 +1,5 @@
 from __future__ import division
-from torch.autograd import variable
-import torch.nn.functional as f
+
 from utils import *
 import torch
 import torch.nn as nn
@@ -61,9 +60,9 @@ def create_nn_modules(modules):
                 leaky = nn.LeakyReLU(0.1, inplace=True)
                 sub_module.add_module("Leaky_Activation{}".format(index), leaky)
 
-            if activation == "linear":
-                linear = nn.Linear(input_filters, filters, bias=bias)
-                sub_module.add_module("Linear_Activation{}".format(index), linear)
+            # if activation == "linear":
+            #     linear = nn.Linear(input_filters, filters, bias=bias)
+            #     sub_module.add_module("Linear_Activation{}".format(index), linear)
 
         elif module["type"] == "shortcut":  # Refers to a skip connection
             shortcut = EmptyLayer()
@@ -71,8 +70,9 @@ def create_nn_modules(modules):
 
         elif module["type"] == "upsample":
             stride = int(module["stride"])
-            upsample = nn.UpsamplingBilinear2d(scale_factor=2)  # Bilinear Upsampling
+            # upsample = nn.UpsamplingBilinear2d(scale_factor=2)  # Bilinear Upsampling
             # upsample = nn.ConvTranspose2d()
+            upsample = nn.UpsamplingNearest2d(scale_factor=2)
             sub_module.add_module("Upsampling{}".format(index), upsample)
 
         elif module["type"] == "route":
@@ -109,9 +109,9 @@ def create_nn_modules(modules):
             yolo = DetectionLayer(anchors)
             sub_module.add_module("YOLO{}".format(index), yolo)
 
-        output_filters.append(filters)
-        input_filters = filters
         net_modules.append(sub_module)
+        input_filters = filters
+        output_filters.append(filters)
 
     return net_data, net_modules
 
@@ -133,7 +133,7 @@ class DarkNet(nn.Module):
             module_type = module["type"]
 
             if module_type == "convolutional" or module_type == "upsample":
-                input_ = self.net_modules[index][0](input_)
+                input_ = self.net_modules[index](input_)
 
             elif module_type == "shortcut":
                 from_ = int(module["from"])
@@ -171,7 +171,7 @@ class DarkNet(nn.Module):
                 anchors = self.net_modules[index][0].anchors
                 classes = int(module["classes"])
 
-                input_ = predict_transform(input_, input_dimensions, anchors, classes)
+                input_ = predict_transform(input_, input_dimensions, anchors, classes, CUDA)
                 if not collector:
                     detections = input_
                     collector = 1

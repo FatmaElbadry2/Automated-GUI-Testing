@@ -49,7 +49,7 @@ def resize_image(image, input_size):
 
 
 def image_preprocessing(image, input_size):
-    image = resize_image(image, input_size)
+    image = (resize_image(image, input_size))
     image = image[:, :, ::-1].transpose((2, 0, 1)).copy()
     image = torch.from_numpy(image).float().div(255.0).unsqueeze(0)
     image = image.cuda()
@@ -79,7 +79,7 @@ def predict_transform(prediction, input_size, anchors, classes, CUDA=True):
     # prediction[:, :, 1] = torch.sigmoid(prediction[:, :, 1])
 
     grid = np.arange(grid_size)
-    y, x = np.meshgrid(grid, grid)
+    x, y = np.meshgrid(grid, grid)
 
     x_offset = torch.FloatTensor(x).view(-1, 1)
     y_offset = torch.FloatTensor(y).view(-1, 1)
@@ -144,11 +144,11 @@ def true_detections(prediction, classes, obj_thresh, nms_thresh):
     prediction *= obj_mask
 
     # Transform bbox attributes to top-left and bottom-right corners to compute IoU more easily
-    box_corners = prediction.new(prediction.size())
+    box_corners = prediction.new(prediction.shape)
     box_corners[:, :, 0] = prediction[:, :, 0] - prediction[:, :, 2] / 2
     box_corners[:, :, 1] = prediction[:, :, 1] - prediction[:, :, 3] / 2
-    box_corners[:, :, 0] = prediction[:, :, 0] + prediction[:, :, 2] / 2
-    box_corners[:, :, 1] = prediction[:, :, 1] + prediction[:, :, 3] / 2
+    box_corners[:, :, 2] = prediction[:, :, 0] + prediction[:, :, 2] / 2
+    box_corners[:, :, 3] = prediction[:, :, 1] + prediction[:, :, 3] / 2
     prediction[:, :, :4] = box_corners[:, :, :4]
 
     batch_size = prediction.size(0)
