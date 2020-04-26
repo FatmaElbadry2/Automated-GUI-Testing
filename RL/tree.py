@@ -1,7 +1,4 @@
-
-import re
-import numpy as np
-import cv2
+from imports import *
 
 stateAction = {}
 taken = np.zeros(2000)
@@ -11,7 +8,7 @@ tree = []
 # double click : link  801-900
 # slide : scroll bar, slider  : 901-1000
 # type : textbox , alphabetic :1001-1200 , alphanumeric : 1201-1400, numbers:1401-1600, longcom:1601-1800,empty:1801-2000
-
+# add scroll up and down
 
 
 def elementtoAction(element):

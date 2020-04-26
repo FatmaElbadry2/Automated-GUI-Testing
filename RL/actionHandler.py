@@ -1,6 +1,3 @@
-from matplotlib import pyplot as plt
-import argparse
-import os
 
 def ActionEncoder(label, ID):
     actions = []
@@ -50,6 +47,7 @@ def ActionDecoder(action_code):
     elif action_type=="1111":
          action = "empty"
     return
+
 
 def ActionSpace():
     action_space = []
