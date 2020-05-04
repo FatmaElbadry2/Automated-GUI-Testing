@@ -1,4 +1,4 @@
-from imports import *
+from NLP.imports import *
 
 
 nlp = spacy.load('en_core_web_sm', parse=True, tag=True, entity=True)

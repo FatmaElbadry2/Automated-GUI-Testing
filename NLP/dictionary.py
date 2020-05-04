@@ -88,20 +88,6 @@ adjectives =\
     "down"
 ]
 
-colors = {
-    "red": red,
-    "green": [0x001a00,0xccffcc],
-    "blue": [],
-    "yellow": [],
-    "purple": [],
-    "violet": [],
-    "orange": [],
-    "pink": [],
-    "brown": [],
-    "black": [],
-    "white": [],
-    "grey": [],
-}
 
 
 
