@@ -1,9 +1,11 @@
 # progressbar i can't find actions to a progress bar
 from imports import *
-class actions(Enum):
 
-    Rightclick=1
-    LeftClick=2
+
+class actions(enum.Enum):
+
+    Rightclick = 1
+    LeftClick = 2
     DoubleRightClick=3
     DoubleLeftClick=4
     Scroll=5

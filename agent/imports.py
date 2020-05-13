@@ -1,4 +1,4 @@
-from enum import Enum
+import enum
 import time
 import pyautogui
 import pyscreenshot as ImageGrab

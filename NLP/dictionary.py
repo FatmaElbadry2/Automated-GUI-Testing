@@ -1,8 +1,10 @@
+from enum import Enum
+
 verbs =\
 [
-    "click",
+    "click on",
     "push",
-    "press",
+    "press on",
     "hit",
     "add",
     "open",
@@ -54,7 +56,8 @@ verbs =\
     "pin",
     "attach",
     "switch",
-    "browse"
+    "browse",
+    "wait"
 ]
 
 objects =\
@@ -64,7 +67,10 @@ objects =\
         "option",
         "object",
         "target",
+        "item",
+        "one",
         "screen",
+        "page",
         "window",
         "program",
         "application",
@@ -72,24 +78,62 @@ objects =\
         "mouse",
         "keyboard",
         "file",
-        "directory"
+        "directory",
+        "corner"
     ]
 
-adjectives =\
+absPositions =\
 [
-    "light",
-    "dark",
     "top",
     "bottom",
     "middle",
     "left",
     "right",
     "up",
-    "down"
+    "down",
+    "next"
 ]
 
+colorAdj = ["light", "dark"]
 
 
-
+# elementsMatcher = {
+#     "button": 0,
+#     "label": 1,
+#     "radio_button": 2,
+#     "textbox": 3,
+#     "checkbox": 4,
+#     "combobox": 5,
+#     "spinbox": 6,
+#     "menu": 7,
+#     "submenu": 8,
+#     "scrollbar": 9,
+#     "progressbar": 10,
+#     "dial": 11,
+#     "tab": 12,
+#     "tab_bar": 13,
+#     "table": 14,
+#     "slider": 15,
+#     "calendar": 16,
+#     "link": 17,
+#     "switch": 18,
+#     "icon_button": 19,
+#     "dialogbox": 20,
+#     "textarea": 21,
+#     "close": 22,
+#     "save": 23,
+#     "load": 24,
+#     "redo": 25,
+#     "undo": 26,
+#     "export": 27,
+#     "new": 28,
+#     "info": 29,
+#     "search": 30,
+#     "settings": 31,
+#     "max_min": 32,
+#     "dropdown": 33,
+#     "text_combobox": 34,
+#     "button_combobox": 35
+# }
 
 

@@ -44,7 +44,7 @@ def splitConj(text):
 # x = expandContractions()
 
 
-sentence_nlp = nlp("I want to go ho")
+sentence_nlp = nlp("click on a button then on the menu then on an arrow")
 
 
 dependency_pattern = '{left}<---{word}[{w_type}]--->{right}\n--------'
@@ -59,7 +59,7 @@ for token in sentence_nlp:
                                              in token.rights]))
 
 
-spacy_pos_tagged = [(word, word.lemma_, word.tag_, word.pos_, word.dep_) for word in sentence_nlp]
+spacy_pos_tagged = [(word, word.lemma_, word.tag_, word.pos_, word.dep_,word.ent_type_) for word in sentence_nlp]
 print(spacy_pos_tagged)
 
 print(splitConj(sentence_nlp))

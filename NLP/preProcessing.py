@@ -2,7 +2,6 @@ from NLP.imports import *
 
 
 nlp = spacy.load('en_core_web_sm', parse=True, tag=True, entity=True)
-print(spacy.explain("RB"))
 
 
 def expandContractions(text):
@@ -15,17 +14,39 @@ def expandContractions(text):
     return sentence
 
 
-# x = expandContractions("")
-# print(x)
-#sentence_nlp = nlp("he is funny and she is cool")
+def textReplacer(text):
+    screenDict = {}
+    inputDict = {}
+    elementText = r"\{.*?\}"
+    inputText = r"\'.*?\'"
+    i = 0
+    txtSize = len(text)
+    for match in re.finditer(elementText, text):
+        start, end = match.span()
+        start = start - (txtSize - len(text))
+        end = end - (txtSize - len(text))
+        screenDict["text_"+str(i)] = text[start+1:end-1]
+        text = text.replace(text[start:end], "text_"+str(i))
+        i += 1
+    i = 0
+    txtSize = len(text)
+    for match in re.finditer(inputText, text):
+        start, end = match.span()
+        start = start - (txtSize - len(text))
+        end = end - (txtSize - len(text))
+        inputDict["input_" + str(i)] = text[start+1:end-1]
+        text = text.replace(text[start:end], "input_"+str(i))
+        i += 1
+    return text, screenDict, inputDict
 
 
-# print(sentence_nlp[2:8])
-# print([t.orth_ for t in sentence_nlp[5].ancestors][0])
-# print([t.i for t in sentence_nlp[1].rights])
+#x = "click on the {file} menu"
+#print(textReplacer(x))
 
 
 def preProcess(text):
     text = sent_tokenize(text)
     text = expandContractions(text)
     return text
+
+

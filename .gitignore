@@ -2,4 +2,7 @@ venv
 __pycache__
 .idea
 assets
-
+rpa_python.log
+rpa_python.raw.tmp
+rpa_python.raw
+rpa_python.js
