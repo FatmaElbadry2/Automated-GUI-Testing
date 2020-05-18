@@ -1,8 +1,9 @@
 import rpa as r
 from dataclasses import dataclass
 
-#r.init(visual_automation=True, chrome_browser=False)
-elements = [[0, 50, 70, 10, 10, "sive", "red", 0x123456], [3, 120, 70, 20, 20, "submit", "blue", 0x123456],[9, 50, 70, 10, 10, "save", "red", 0x123456]]
+# r.init(visual_automation=True, chrome_browser=False)
+elements = [[0, 50, 70, 10, 10, "save", "red", 0x123456], [3, 120, 100, 20, 20, "submit", "blue", 0x123456],
+            [9, 60, 20, 10, 10, "save", "red", 0x123456]]
 
 
 elementsMatcher = [
@@ -58,10 +59,10 @@ class Element:
 
 
 def getElementText(element):
-    xmin = element[1]-element[3]
-    xmax = element[1]+element[3]
-    ymin = element[2]-element[4]
-    ymax = element[2]+element[4]
+    xmin = element[1]-(element[3]/2)
+    xmax = element[1]+(element[3]/2)
+    ymin = element[2]-(element[4]/2)
+    ymax = element[2]+(element[4]/2)
     text = r.read(xmin, ymin, xmax, ymax)
     element.append(text)
 

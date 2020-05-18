@@ -57,7 +57,9 @@ verbs =\
     "attach",
     "switch",
     "browse",
-    "wait"
+    "wait",
+    "execute",
+    "run"
 ]
 
 objects =\
@@ -67,6 +69,7 @@ objects =\
         "option",
         "object",
         "target",
+        "element",
         "item",
         "one",
         "screen",
@@ -79,7 +82,10 @@ objects =\
         "keyboard",
         "file",
         "directory",
-        "corner"
+        "corner",
+        "empty",
+        "key",
+        "part"
     ]
 
 absPositions =\
@@ -95,6 +101,8 @@ absPositions =\
 ]
 
 colorAdj = ["light", "dark"]
+
+
 
 
 # elementsMatcher = {

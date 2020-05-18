@@ -44,7 +44,7 @@ def splitConj(text):
 # x = expandContractions()
 
 
-sentence_nlp = nlp("click on a button then on the menu then on an arrow")
+sentence_nlp = nlp("click on the red button down the menu")
 
 
 dependency_pattern = '{left}<---{word}[{w_type}]--->{right}\n--------'

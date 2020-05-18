@@ -9,3 +9,5 @@ from spacy import displacy
 # from agent import mouse as m
 # from agent import shortcuts as s
 from fuzzywuzzy import fuzz
+import operator
+from scipy.optimize import curve_fit

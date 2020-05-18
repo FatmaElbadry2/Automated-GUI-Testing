@@ -1,3 +1,5 @@
+
+
 red=[
 
 ]
@@ -79,6 +81,6 @@ cyan =\
      0xccf2ff, 0xb3ecff, 0x99e6ff, 0x80dfff, 0x66d9ff, 0x4dd2ff, 0x33ccff, 0x1ac6ff, 0x00bfff, 0xd6f5f5, 0xc2f0f0,
      0xadebeb, 0x99e6e6, 0x85e0e0, 0x70dbdb, 0x5cd6d6, 0x47d1d1, 0x33cccc,
 
-
-
     ]
+
+colors = ["red", "green", "blue", "purple", "violet", "cyan", "pink", "mint", "orange", "yellow", "black", "white", "grey"]

@@ -40,6 +40,16 @@ def textReplacer(text):
     return text, screenDict, inputDict
 
 
+def resolvePronouns():
+    pass
+
+
+def removeDET():  # which is , that is , etc...,
+    pass
+
+
+def splitConditions():
+    pass
 #x = "click on the {file} menu"
 #print(textReplacer(x))
 
