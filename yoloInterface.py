@@ -2,8 +2,8 @@ import rpa as r
 from dataclasses import dataclass
 
 # r.init(visual_automation=True, chrome_browser=False)
-elements = [[0, 50, 70, 10, 10, "save", "red", 0x123456], [3, 120, 100, 20, 20, "submit", "blue", 0x123456],
-            [9, 60, 20, 10, 10, "save", "red", 0x123456]]
+elements = [[0, 50, 70, 10, 10, "save", "red", 0x123456], [3, 120, 30, 20, 20, "submit", "blue", 0x123456],
+            [9, 60, 30, 10, 10, "save", "red", 0x123456]]
 
 
 elementsMatcher = [

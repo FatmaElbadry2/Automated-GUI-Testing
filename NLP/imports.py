@@ -11,3 +11,6 @@ from spacy import displacy
 from fuzzywuzzy import fuzz
 import operator
 from scipy.optimize import curve_fit
+import inflect
+import math as m
+from win32api import GetSystemMetrics

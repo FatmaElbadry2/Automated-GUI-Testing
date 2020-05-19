@@ -40,6 +40,17 @@ def textReplacer(text):
     return text, screenDict, inputDict
 
 
+def createOrdinalDict():
+    p = inflect.engine()
+    ordinalDict = {}
+    for i in range(1, 100):
+        word_form = p.number_to_words(i)
+        ordinal_word = p.ordinal(word_form)
+        # ordinal_number = p.ordinal(i)
+        ordinalDict[ordinal_word] = i
+    return ordinalDict
+
+
 def resolvePronouns():
     pass
 
