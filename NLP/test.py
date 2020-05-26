@@ -3,8 +3,8 @@ import re
 from spacy.lang.en import English
 from spacy.matcher import Matcher
 from spacy.tokens import Span
-from yoloInterface import *
-from preProcessing import *
+# from yoloInterface import *
+# from preProcessing import *
 import numpy as np
 
 
@@ -49,11 +49,11 @@ import numpy as np
 # print(direction)
 
 
-e1 = elementStruct(elements[1])
-e2 = elementStruct(elements[0])
-e3 = elementStruct(elements[2])
-e4 = [e1, e2, e3]
-
-e4.sort(key=operator.attrgetter('x_center'))
-e4.sort(key=operator.attrgetter('y_center'))
-print(e4)
+# e1 = elementStruct(gui_elements[1])
+# e2 = elementStruct(gui_elements[0])
+# e3 = elementStruct(gui_elements[2])
+# e4 = [e1, e2, e3]
+#
+# e4.sort(key=operator.attrgetter('x_center'))
+# e4.sort(key=operator.attrgetter('y_center'))
+# print(e4)

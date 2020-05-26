@@ -1,0 +1,10 @@
+1. combination of directions need to get the intersection between them
+2. we need to get the nearest object to the prevObject if we have more than one -------> Done
+3. choose nearest or first ???? (add nearest if the sub sentence doesn't have any directions)------> Done
+4. add nearest and farthest
+5. direction of the next sentence ------------> Done
+6. at the end you perform the action on the object if not found on any random position in the x and y range
+7. we get the intersection in 2 cases:
+    a. after the return of the abs_pos_prep if we found another abs_pos_prep
+    b. inside the same loop if the object was abs_pos_prep and we found another direction
+

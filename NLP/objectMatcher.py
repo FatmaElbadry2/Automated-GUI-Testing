@@ -1,17 +1,9 @@
-from imports import *
+# from imports import *
 from dictionary import *
 from preProcessing import *
 from yoloInterface import *
 from colors import *
-
-
-def matchText(eText, uText,thresh):
-    print(eText, uText)
-    levRatio = fuzz.partial_ratio(eText.lower(), uText.lower())
-    print(levRatio)
-    if levRatio >= thresh:
-        return True, levRatio
-    return False, levRatio
+from utils import *
 
 
 def colorMatcher(color, elements):
@@ -37,7 +29,7 @@ def objectSplitter(text):  # the input is nlp text
             [sent.append(text[j]) for j in range(i, index[0]+1) if text[j].pos_ != "DET"]
             i = index[0]
 
-        if i < len(text)-1 and text[i+1].dep_ == "prep" and text[i+1] in ["to", "of"]:
+        if i < len(text)-1 and text[i+1].dep_ == "prep" and str(text[i+1]) in ["to", "of"]:
             prepNext.append(True)
         else:
             prepNext.append(False)
@@ -46,10 +38,6 @@ def objectSplitter(text):  # the input is nlp text
             objects.append(sent)
         i += 1
     return objects, prepNext
-
-
-def retrieveObject():
-    pass
 
 
 class ObjType(Enum):
@@ -62,215 +50,186 @@ class ObjType(Enum):
     color = 6
     color_adj = 7
     ordinal_val = 8
-    unknown = 9
+    single_element = 9
+    range = 10
+    unknown = 11
 
 
-def getObjectRange(x_center, y_center, width, height):
-    x_min = x_center - (width / 2)
-    x_max = x_center + (width / 2)
-    y_min = y_center - (height / 2)
-    y_max = y_center + (height / 2)
-    return x_min, x_max, y_min, y_max
-
-
-def in_range(x_range, y_range, objs):
-    in_x = False
-    in_y = False
-    in_obj = []
-    for obj in objs:
-        x_min, x_max, y_min, y_max = getObjectRange(obj.x_center, obj.y_center, obj.width, obj.height)
-        for x in x_range:
-            if x_min >= x[0] and x_max <= x[1]:
-                in_x = True
-                break
-        for y in y_range:
-            if y_min >= y[0] and y_max <= y[1]:
-                in_y = True
-                break
-        if in_x and in_y:
-            in_obj.append(obj)
-    return in_obj
-
-
-def objectTypeMapper(objects, textDict, inputDict, eAvailable, x_range, y_range):
+def objectTypeMapper(obj, prep_next, textDict, inputDict, eAvailable, x_range, y_range):
     elms = in_range(x_range, y_range, eAvailable)  # gets all objects in a given range
-    for obj, prepNext in objects:
-        if str(obj[0:5]) == "text_":
-            match, score = zip(*[matchText(e.text, textDict[obj], 70) for e in elms])
-            maxRatio = max(score)
-            el = np.array(elms)
-            return el[np.logical_and(np.array(score) == maxRatio, np.array(match))], ObjType.elementArray
+    if str(obj)[0:5] == "text_":
+        match, score = zip(*[matchText(e.text, textDict[str(obj)], 70) for e in elms])
+        maxRatio = max(score)
+        el = np.array(elms)
+        return el[np.logical_and(np.array(score) == maxRatio, np.array(match))], ObjType.elementArray
 
-        elif str(obj[0:6]) == "input_":
-            return inputDict[obj], ObjType.input
+    elif str(obj)[0:6] == "input_":
+        return inputDict[obj], ObjType.input
 
-        elif str(obj) in elementsMatcher:
-            match, score = zip(*[matchText(e.type, textDict[obj], 80) for e in elms])
-            maxRatio = max(score)
-            el = np.array(elms)
-            return el[np.logical_and(np.array(score) == maxRatio, np.array(match))], ObjType.elementArray
+    elif str(obj) in elementsMatcher:
+        match, score = zip(*[matchText(e.type, str(obj), 80) for e in elms])
+        maxRatio = max(score)
+        el = np.array(elms)
+        return el[np.logical_and(np.array(score) == maxRatio, np.array(match))], ObjType.elementArray
 
-        elif str(obj) in objects:
-            return obj, ObjType.built_in
+    elif str(obj) in objects:
+        return obj, ObjType.built_in
 
-        elif str(obj) in absPositions:
-            if obj.dep_ in ["pobj", "dobj"] and prepNext:
-                return obj, ObjType.abs_position_prep
-            else:
-                return obj, ObjType.abs_position
-
-        elif str(obj) in colors:
-            return [c for c in elms if c.color == str(obj)], ObjType.elementArray
-
-        elif str(obj) in colorAdj:
-            return obj, ObjType.color_adj
-
-        elif obj.ent_type == "ORDINAL":
-            return obj, ObjType.ordinal_val
-
+    elif str(obj) in absPositions:
+        if obj.dep_ in ["pobj", "dobj"] and prep_next:
+            return obj, ObjType.abs_position_prep
         else:
-            return None, ObjType.unknown
+            return obj, ObjType.abs_position
 
+    elif str(obj) in colors:
+        return [c for c in elms if c.color == str(obj)], ObjType.elementArray
 
-def colorComparator(shade,elems):
-    colors = np.array([e.hex for e in elems])
-    lightest = max(colors)
-    darkest = min(colors)
-    if shade == "light":
-        return colors[colors == lightest]
+    elif str(obj) in colorAdj:
+        return obj, ObjType.color_adj
+
+    elif obj.ent_type_ == "ORDINAL":
+        return obj, ObjType.ordinal_val
+
     else:
-        return colors[colors == darkest]
+        return None, ObjType.unknown
 
 
-ordinal_dict = {}
-
-
-def sentenceInterpreter(sentence, x_range, y_range, objs, textdict, inputdict, prevobj=None, direction=None):
-    filteredObj = objs
+def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdict, obj_count, return_type,prep_next, prev_obj=None,
+                        direction=None):
+    filteredObj = elements
+    Obj_changed = False
     t_input = None
-    for i in range(len(sentence), -1, -1):
-        obj, objType = objectTypeMapper(sentence[i], textdict, inputdict, filteredObj, x_range, y_range)
+    prep = None
+    abs_pos = False
+    abs_pos_prep = False
+    for i in range(len(sentence)-1, -1, -1):
 
-        if objType == ObjType.abs_position:  # gives the direction to the previous sentence
+        if sentence[i].dep_ == "prep":
+            prep = sentence[i]
+            break
+
+        obj, objType = objectTypeMapper(sentence[i], prep_next,textdict, inputdict, filteredObj, x_range, y_range)
+
+        if objType == ObjType.abs_position:
             if obj.dep_ in ["pobj", "dobj"]:
-                direction = sentence
-                break
-            else:
-                _, filteredObj = ordinalSorter(1, str(obj), filteredObj)
+                direction = [s for s in sentence if s.dep_ != "prep"]
+                return t_input, x_range, y_range, direction, prev_obj, return_type, obj_count
 
-        elif objType == ObjType.abs_position_prep:  # what if mafeesh previous object !!!!!!!
-            x_min, x_max, y_min, y_max = getObjectRange(prevobj.x_center, prevobj.y_center, prevobj.width,
-                                                        prevobj.height)
-            x_range, y_range = prepMatcher(x_min, x_max, y_min, y_max, 0, GetSystemMetrics(0), 0, GetSystemMetrics(1),
-                                           str(obj))
+            elif abs_pos_prep:
+                x_min, x_max, y_min, y_max = getObjectRange(prev_obj.x_center, prev_obj.y_center, prev_obj.width,
+                                                            prev_obj.height)
+                temp_x_range, temp_y_range = prepMatcher(x_min, x_max, y_min, y_max, 0, w_width, 0, w_height, str(obj))
+                temp_x_range, temp_y_range = Intersection(x_range, temp_x_range, y_range, temp_y_range)
+                if temp_x_range is not None:
+                    x_range = temp_x_range
+                    y_range = temp_y_range
+
+            else:
+                _, filteredObj = ordinalSorter(1, filteredObj, str(obj))  # at the end we choose the first object
+                Obj_changed = True
+                abs_pos = True
+
+        elif objType == ObjType.abs_position_prep:
+            if return_type == ObjType.range:
+                x_min, x_max, y_min, y_max = getObjectRange(prev_obj.x_center, prev_obj.y_center, prev_obj.width,
+                                                            prev_obj.height)
+                temp_x_range, temp_y_range = prepMatcher(x_min, x_max, y_min, y_max, 0, w_width, 0, w_height, str(obj))
+                temp_x_range, temp_y_range = Intersection(x_range, temp_x_range, y_range, temp_y_range)
+                if temp_x_range is not None:
+                    x_range = temp_x_range
+                    y_range = temp_y_range
+            else:
+                x_range, y_range = prepMatcher(x_range[0][0], x_range[0][1], y_range[0][0], y_range[0][1], 0, w_width, 0,
+                                               w_height, str(prep))
+            return_type = ObjType.range
+            abs_pos_prep = True
 
         elif objType == ObjType.input:
             t_input = obj
 
         elif objType == ObjType.elementArray:
             filteredObj = obj
+            Obj_changed = True
 
         elif objType == ObjType.color_adj:
             filteredObj = colorComparator(str(obj), filteredObj)
+            Obj_changed = True
 
         elif objType == ObjType.ordinal_val:
             val = ordinal_dict[str(obj)]
-            if len(direction) == 0:
-                prevobj, filteredObj = ordinalSorter(1, None, filteredObj)
+            if direction is None:
+                filteredObj, _ = ordinalSorter(val, filteredObj)
             else:
                 for dirc in direction:
-                    prevobj, filteredObj = ordinalSorter(val, dirc, filteredObj)
-        else:
+                    filteredObj, _ = ordinalSorter(val, filteredObj, str(dirc))
+                direction = None
+            Obj_changed = True
+
+        elif objType == ObjType.built_in:
             pass
-    if len(filteredObj) == 1:
-        prevobj = filteredObj[0]
-    return t_input, x_range, y_range, direction, prevobj
+    if direction is not None:
+        for dirc in direction:
+            _, filteredObj = ordinalSorter(1, filteredObj, str(dirc))  # at the end we choose the first object
+            Obj_changed = True
+        direction = None
 
-
-
-
-
-
-inside = ["in", "on", "inside", "into", "of", "towards", "to", "for", "from", "middle"]
-below = ["below", "under", "beneath", "bottom", "down"]
-above = ["over", "above", "top", "up"]
-beside = ["next", "beside"]
-
-
-def directionOfIncrease(x, y):
-    if all(p == x[0] for p in x):
-        direction = "vertical"
-
-    elif all(p == y[0] for p in y):
-        direction = "horizontal"
-
-    else:
-        def line(x, a, b):
-            return (a * x) + b
-        param, param_cov = curve_fit(line, x, y)
-        angle = m.degrees(param[0])
-        if 40 <= abs(angle) <= 50:
-            if angle < 0:
-                direction = "vertical"
-            else:
-                direction = "horizontal"
-        elif abs(angle) > 50:
-            direction = "vertical"
+    if Obj_changed and len(filteredObj) > 0:
+        obj_count += 1
+        if obj_count > 1 and not abs_pos:  # if this is the second object and no previous directions in the same sent.
+            prev_obj = nearestElement(filteredObj, [prev_obj.x_center, prev_obj.y_center])
         else:
-            direction = "horizontal"
-    return direction
-
-
-def ordinalSorter(value, direction, objs):
-    sorted_obj = objs
-    if direction in below:
-        sorted_obj.sort(key=operator.attrgetter('y_center'), reverse=True)
-    elif direction in above:
-        sorted_obj.sort(key=operator.attrgetter('y_center'))
-    elif direction == "left":
-        sorted_obj.sort(key=operator.attrgetter('x_center'))
-    elif direction == "right":
-        sorted_obj.sort(key=operator.attrgetter('x_center'), reverse=True)
+            prev_obj = filteredObj[0]
+        x_min, x_max, y_min, y_max = getObjectRange(prev_obj.x_center, prev_obj.y_center, prev_obj.width,
+                                                    prev_obj.height)
+        x_range = [[x_min, x_max]]
+        y_range = [[y_min, y_max]]
     else:
-        x_points = [p.x_center for p in objs]
-        y_points = [p.y_center for p in objs]
-        direction = directionOfIncrease(x_points, y_points)
-        if direction == "vertical":
-            sorted_obj.sort(key=operator.attrgetter('y_center'))
-        else:
-            sorted_obj.sort(key=operator.attrgetter('x_center'))
-    return sorted_obj[value - 1], sorted_obj
+        print("no objects found")
+
+    if prep is not None:
+        x_range, y_range = prepMatcher(x_range[0][0], x_range[0][1], y_range[0][0], y_range[0][1], 0, w_width, 0,
+                                       w_height, str(prep))
+
+    return t_input, x_range, y_range, direction, prev_obj, return_type, obj_count
 
 
-def prepMatcher(x_min, x_max, y_min, y_max, wx_min, wx_max, wy_min, wy_max, prep):
-    if prep in inside:
-        return [[x_min, x_max]], [[y_min, y_max]]
-    elif prep in below:
-        return [[wx_min, wx_max]], [[y_max, wy_max]]
-    elif prep in above:
-        return [[wx_min, wx_max]], [[wy_min, y_min]]
-    elif prep in beside:
-        return [[wx_min, x_min], [x_max, wx_max]], [wy_min, wy_max]
-    elif prep == "out":
-        return [[wx_min, x_min], [x_max, wx_max]], [[wy_min, y_min], [y_max, wy_max]]
-    elif prep == "left":
-        return [[wx_min, x_min]],  [wy_min, wy_max]
-    elif prep == "right":
-        return [[x_max, wx_max]], [wy_min, wy_max]
-    return [[wx_min, wx_max]], [[wy_min, wy_max]]
+def objectFinder(sentence, elements, textdict, inputdict):
+    mini_sent, prep_next = objectSplitter(sentence)
+    print(mini_sent)
+    direction = None
+    prev_obj = None
+    t_input = None
+    obj_count = 0
+    return_type = ObjType.single_element
+    x_range = [[0, w_width]]
+    y_range = [[0, w_height]]
+    i = len(prep_next)-1
+    for sent in reversed(mini_sent):
+        t_input, x_range, y_range, direction, prev_obj, return_type, obj_count = sentenceInterpreter(sent, x_range,
+                                                                                                     y_range, elements,
+                                                                                                     textdict, inputdict
+                                                                                                     , obj_count,
+                                                                                                     return_type,
+                                                                                                     prep_next[i],
+                                                                                                     prev_obj,
+                                                                                                     direction)
+        i -= 1
+    return prev_obj, x_range, y_range, t_input
 
 
-# e1 = elementStruct(elements[1])
-# e2 = elementStruct(elements[0])
-# e3 = elementStruct(elements[2])
-# e4 = [e1, e2, e3]
+e1 = elementStruct(gui_elements[1])
+e2 = elementStruct(gui_elements[0])
+e3 = elementStruct(gui_elements[2])
+# e4 = elementStruct(gui_elements[3])
+e5 = [e1, e2, e3]
 
 # nlp = spacy.load('en_core_web_sm', parse=True, tag=True, entity=True)
-text = "click on the button on the left"
+text = "click on the second button"
+ordinal_dict = createOrdinalDict()
 text, dict1, dict2 = textReplacer(text)
 sentence_nlp = nlp(text)
-objects, _ = objectSplitter(sentence_nlp)
-print(objects)
+prev_object, x_range, y_range, t_input = objectFinder(sentence_nlp, e5, dict1, dict2)
+print(prev_object)
 
 
 

@@ -14,3 +14,6 @@ from scipy.optimize import curve_fit
 import inflect
 import math as m
 from win32api import GetSystemMetrics
+w_width = GetSystemMetrics(0)
+w_height = GetSystemMetrics(1)
+print("starting...")
