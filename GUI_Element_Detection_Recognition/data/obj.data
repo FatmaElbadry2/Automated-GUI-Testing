@@ -1,0 +1,4 @@
+classes = 36
+train = data/custom/train.txt
+valid = data/custom/test.txt
+names = data/custom/obj.names

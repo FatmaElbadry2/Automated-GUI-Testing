@@ -4,7 +4,7 @@ from utils import *
 import torch
 import torch.nn as nn
 import numpy as np
-
+from .yolo_layer import YOLOLayer
 # Custom-Defined nn.Module Classes
 
 
@@ -124,11 +124,12 @@ class DarkNet(nn.Module):
         self.wf_header = None
         self.wf_images_seen = None
 
-    def forward(self, input_, CUDA):
+    def forward(self, input_, CUDA=True):
         modules = self.modules[1:]
         layer_feature_maps = {}
 
         collector = 0
+        detections = []
         for index, module in enumerate(modules):
             module_type = module["type"]
 
@@ -171,12 +172,13 @@ class DarkNet(nn.Module):
                 anchors = self.net_modules[index][0].anchors
                 classes = int(module["classes"])
 
-                input_ = predict_transform(input_, input_dimensions, anchors, classes, CUDA)
-                if not collector:
-                    detections = input_
-                    collector = 1
-                else:
-                    detections = torch.cat((detections, input_), 1)
+                # input_ = predict_transform(input_, input_dimensions, anchors, classes, CUDA)
+                # if not collector:
+                #     detections = input_
+                #     collector = 1
+                # else:
+                #     detections = torch.cat((detections, input_), 1)
+                detections.append(input_)
 
             layer_feature_maps[index] = input_
 

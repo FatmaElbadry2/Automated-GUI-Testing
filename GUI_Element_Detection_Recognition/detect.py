@@ -1,6 +1,6 @@
 from __future__ import division
 
-from darknet import DarkNet
+from nets.darknet import DarkNet
 from utils import *
 import torch
 import pandas as pd
@@ -9,7 +9,6 @@ import cv2
 import os.path as osp
 import os
 import random
-import time
 
 
 dataset = "dataset"
@@ -18,11 +17,11 @@ res = 416
 conf_thresh = 0.5
 nms_thresh = 0.4
 cfg_file = "cfg/yolov3.cfg"
-weights_file = "weights/yolov3.weights"
+weights_file = "weights/model.pth"
 CUDA = torch.cuda.is_available()
 
-classes = 80
-class_names = load_classes("data/coco.names")
+classes = 36
+class_names = load_classes("data/obj.names")
 
 print("Loading the network.......")
 model = DarkNet(cfg_file)

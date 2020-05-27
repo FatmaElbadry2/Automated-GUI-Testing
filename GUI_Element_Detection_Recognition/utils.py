@@ -39,6 +39,7 @@ def load_classes(classes_file):
 def resize_image(image, input_size):
     orig_h, orig_w = image.shape[0], image.shape[1]
     h = w = input_size
+    # print(orig_h, orig_w, h, w)
     new_h = round(orig_h * min(h / orig_h, w / orig_w))
     new_w = round(orig_w * min(h / orig_h, w / orig_w))
     resized_image = cv2.resize(image, (new_w, new_h), interpolation=cv2.INTER_CUBIC)
@@ -51,8 +52,8 @@ def resize_image(image, input_size):
 def image_preprocessing(image, input_size):
     image = (resize_image(image, input_size))
     image = image[:, :, ::-1].transpose((2, 0, 1)).copy()
-    image = torch.from_numpy(image).float().div(255.0).unsqueeze(0)
-    image = image.cuda()
+    image = torch.from_numpy(image).float().div(255.0)
+    # image = image.cuda()
 
     return image
 
@@ -119,9 +120,16 @@ def unique(classes):
     return unique_classes
 
 
-def bbox_iou(bbox1, bbox2):
-    bb1_x1, bb1_y1, bb1_x2, bb1_y2 = bbox1[:, 0], bbox1[:, 1], bbox1[:, 2], bbox1[:, 3]
-    bb2_x1, bb2_y1, bb2_x2, bb2_y2 = bbox2[:, 0], bbox2[:, 1], bbox2[:, 2], bbox2[:, 3]
+def bbox_iou(bbox1, bbox2, corners):
+
+    if not corners:
+        bb1_x1, bb1_x2 = bbox1[:, 0] - bbox1[:, 2] / 2, bbox1[:, 0] + bbox1[:, 2] / 2
+        bb1_y1, bb1_y2 = bbox1[:, 1] - bbox1[:, 3] / 2, bbox1[:, 1] + bbox1[:, 3] / 2
+        bb2_x1, bb2_x2 = bbox2[:, 0] - bbox2[:, 2] / 2, bbox2[:, 0] + bbox2[:, 2] / 2
+        bb2_y1, bb2_y2 = bbox2[:, 1] - bbox2[:, 3] / 2, bbox2[:, 1] + bbox2[:, 3] / 2
+    else:
+        bb1_x1, bb1_y1, bb1_x2, bb1_y2 = bbox1[:, 0], bbox1[:, 1], bbox1[:, 2], bbox1[:, 3]
+        bb2_x1, bb2_y1, bb2_x2, bb2_y2 = bbox2[:, 0], bbox2[:, 1], bbox2[:, 2], bbox2[:, 3]
 
     bb_inter_x1 = torch.max(bb1_x1, bb2_x1)
     bb_inter_y1 = torch.max(bb1_y1, bb2_y1)
@@ -211,3 +219,4 @@ def true_detections(prediction, classes, obj_thresh, nms_thresh):
         return output
     except:
         return 0
+
