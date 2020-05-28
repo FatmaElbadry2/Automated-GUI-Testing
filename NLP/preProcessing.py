@@ -51,6 +51,10 @@ def createOrdinalDict():
     return ordinalDict
 
 
+def replaceLeft():
+    pass
+
+
 def resolvePronouns():
     pass
 
@@ -61,6 +65,8 @@ def removeDET():  # which is , that is , etc...,
 
 def splitConditions():
     pass
+
+
 #x = "click on the {file} menu"
 #print(textReplacer(x))
 

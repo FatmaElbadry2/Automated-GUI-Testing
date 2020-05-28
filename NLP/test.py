@@ -6,54 +6,30 @@ from spacy.tokens import Span
 # from yoloInterface import *
 # from preProcessing import *
 import numpy as np
+import math as m
+from objectMatcher import *
 
 
-# import math as m
-# # curve-fit() function imported from scipy
-# from matplotlib import pyplot as plt
-#
-#
-# from scipy.optimize import curve_fit
-# x = np.array([1, 1, 1, 1])
-# y = np.array([3, 5, 10, 13])
-#
-#
-# if all(p == x[0] for p in x):
-#     direction = "vertical"
-#
-# elif all(p == y[0] for p in y):
-#     direction = "horizontal"
-#
-# else:
-#     def line(x, a, b):
-#         return (a * x) + b
-#     param, param_cov = curve_fit(line, x, y)
-#     angle = m.degrees(param[0])
-#     if 40 <= abs(angle) <= 50:
-#         if angle < 0:
-#             direction = "vertical"
-#         else:
-#             direction = "horizontal"
-#     elif abs(angle) > 50:
-#         direction = "vertical"
-#     else:
-#         direction = "horizontal"
-#
-#     print(param)
-#     ans = (param[0] * x) + param[1]
-#     plt.plot(x, y, 'o', color ='red', label ="data")
-#     plt.plot(x, ans, '--', color ='blue', label ="optimized data")
-#     plt.legend()
-#     plt.show()
-#
-# print(direction)
 
-
-# e1 = elementStruct(gui_elements[1])
-# e2 = elementStruct(gui_elements[0])
-# e3 = elementStruct(gui_elements[2])
-# e4 = [e1, e2, e3]
+# text_dict = {
+#     "text_0": "help",
+#     "text_1": "germany",
+#     "text_2": "Navigate"
+# }
 #
-# e4.sort(key=operator.attrgetter('x_center'))
-# e4.sort(key=operator.attrgetter('y_center'))
-# print(e4)
+# input_dict = {
+#     "input_0": "Fatma Elbadry",
+#     "input_1": "password",
+#     "input_2": "egypt"
+# }
+# text = "write 'fatooma' in the {file} menu"
+# # ordinal_dict = createOrdinalDict()
+# text, text_dict, input_dict = textReplacer(text)
+# sentence_nlp = nlp(text)
+# print(sentence_nlp)
+# print(objectSplitter(sentence_nlp))
+# obj, Type, error = objectTypeMapper(sentence_nlp[0], False, text_dict, input_dict, e5, [[0, w_width]], [[90, w_height]])
+# print(obj)
+# print(Type)
+# print(error)
+

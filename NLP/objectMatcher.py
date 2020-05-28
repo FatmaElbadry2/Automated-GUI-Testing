@@ -10,37 +10,37 @@ def colorMatcher(color, elements):
     pass
 
 
-# first look for the dobj and the pobj in the sentence
-
-def objectSplitter(text):  # the input is nlp text
+def objectSplitter(text):  # it takes one sentence and split it into mini sentences according to the objects
     i = 0
-    objects = []
-    prepNext = []
+    sub_sentences = []
+    prep_next = []
     while i < len(text):
+        new_sent = False
         sent = []
         if text[i].dep_ == "dobj":
             [sent.append(l) for l in text[i].lefts if l.pos_ != "DET"]
             sent.append(text[i])
-
+            new_sent = True
         elif text[i].dep_ == "prep":
-            index = [obj.i for obj in text[i].rights if obj.dep_ == "pobj"]
+            index = [obj.i for obj in text[i].rights]
             if len(index) == 0:
                 index = [i]
             [sent.append(text[j]) for j in range(i, index[0]+1) if text[j].pos_ != "DET"]
             i = index[0]
-
-        if i < len(text)-1 and text[i+1].dep_ == "prep" and str(text[i+1]) in ["to", "of"]:
-            prepNext.append(True)
-        else:
-            prepNext.append(False)
+            new_sent = True
+        if new_sent:
+            if i < len(text)-1 and text[i+1].dep_ == "prep" and str(text[i+1]) in ["to", "of"]:
+                prep_next.append(True)
+            else:
+                prep_next.append(False)
             # sent.append(text[i:index[0]+1])
         if len(sent) > 0:
-            objects.append(sent)
+            sub_sentences.append(sent)
         i += 1
-    return objects, prepNext
+    return sub_sentences, prep_next
 
 
-class ObjType(Enum):
+class ObjType(Enum):  # it represents all type of possible objects
     elementArray = 0
     input = 1
     screenText = 2
@@ -55,47 +55,80 @@ class ObjType(Enum):
     unknown = 11
 
 
-def objectTypeMapper(obj, prep_next, textDict, inputDict, eAvailable, x_range, y_range):
-    elms = in_range(x_range, y_range, eAvailable)  # gets all objects in a given range
+class ReturnTypes(Enum):  # return type of the sentence
+    single_element = 0
+    range = 1
+
+
+def objectTypeMapper(obj, prep_next, text_dict, input_dict, elements, x_range, y_range):
+    in_range_elements = in_range(x_range, y_range, elements)  # gets all objects in a given range
     if str(obj)[0:5] == "text_":
-        match, score = zip(*[matchText(e.text, textDict[str(obj)], 70) for e in elms])
-        maxRatio = max(score)
-        el = np.array(elms)
-        return el[np.logical_and(np.array(score) == maxRatio, np.array(match))], ObjType.elementArray
+        try:
+            match, score = zip(*[matchText(e.text, text_dict[str(obj)], 70) for e in in_range_elements])
+            maxRatio = max(score)
+            el = np.array(in_range_elements)
+            el = el[np.logical_and(np.array(score) == maxRatio, np.array(match))]
+            if len(el) > 0:
+                error = Errors.no_error
+            else:
+                error = Errors.object_not_found
+            return el, ObjType.elementArray, error
+
+        except ValueError:
+            return None, ObjType.elementArray, Errors.empty_range
 
     elif str(obj)[0:6] == "input_":
-        return inputDict[obj], ObjType.input
+        try:
+            return input_dict[str(obj)], ObjType.input, Errors.no_error
+        except KeyError:
+            return None, ObjType.input, Errors.invalid_key
 
     elif str(obj) in elementsMatcher:
-        match, score = zip(*[matchText(e.type, str(obj), 80) for e in elms])
-        maxRatio = max(score)
-        el = np.array(elms)
-        return el[np.logical_and(np.array(score) == maxRatio, np.array(match))], ObjType.elementArray
+        try:
+            match, score = zip(*[matchText(e.type, str(obj), 80) for e in in_range_elements])
+            maxRatio = max(score)
+            el = np.array(in_range_elements)
+            el = el[np.logical_and(np.array(score) == maxRatio, np.array(match))]
+            if len(el) > 0:
+                error = Errors.no_error
+            else:
+                error = Errors.object_not_found
+            return el, ObjType.elementArray, error
+        except ValueError:
+            return None, ObjType.elementArray, Errors.empty_range
 
     elif str(obj) in objects:
-        return obj, ObjType.built_in
+        return obj, ObjType.built_in, Errors.no_error
 
     elif str(obj) in absPositions:
         if obj.dep_ in ["pobj", "dobj"] and prep_next:
-            return obj, ObjType.abs_position_prep
+            return obj, ObjType.abs_position_prep, Errors.no_error
         else:
-            return obj, ObjType.abs_position
+            return obj, ObjType.abs_position, Errors.no_error
 
     elif str(obj) in colors:
-        return [c for c in elms if c.color == str(obj)], ObjType.elementArray
+        try:
+            el = [c for c in in_range_elements if c.color == str(obj)]
+            if len(el) > 0:
+                error = Errors.no_error
+            else:
+                error = Errors.object_not_found
+            return el, ObjType.elementArray, error
+        except ValueError:
+            return None, ObjType.elementArray, Errors.object_not_found
 
     elif str(obj) in colorAdj:
-        return obj, ObjType.color_adj
+        return obj, ObjType.color_adj, Errors.no_error
 
     elif obj.ent_type_ == "ORDINAL":
-        return obj, ObjType.ordinal_val
+        return obj, ObjType.ordinal_val, Errors.no_error
 
     else:
-        return None, ObjType.unknown
+        return None, ObjType.unknown, Errors.no_error
 
 
-def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdict, obj_count, return_type,prep_next, prev_obj=None,
-                        direction=None):
+def sentenceInterpreter(sentence, x_range, y_range, elements, text_dict, input_dict, obj_count, return_type, prep_next,
+                        prev_obj=None, direction=None):
     filteredObj = elements
     Obj_changed = False
     t_input = None
@@ -104,11 +137,14 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdic
     abs_pos_prep = False
     for i in range(len(sentence)-1, -1, -1):
 
-        if sentence[i].dep_ == "prep":
+        if i == 0 and sentence[i].dep_ == "prep":
             prep = sentence[i]
             break
 
-        obj, objType = objectTypeMapper(sentence[i], prep_next,textdict, inputdict, filteredObj, x_range, y_range)
+        obj, objType, error = objectTypeMapper(sentence[i], prep_next, text_dict, input_dict, filteredObj, x_range, y_range)
+
+        if error != Errors.no_error:
+            raise ValueError(error)
 
         if objType == ObjType.abs_position:
             if obj.dep_ in ["pobj", "dobj"]:
@@ -116,6 +152,8 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdic
                 return t_input, x_range, y_range, direction, prev_obj, return_type, obj_count
 
             elif abs_pos_prep:
+                if prev_obj is None:
+                    raise ValueError(Errors.object_not_found)
                 x_min, x_max, y_min, y_max = getObjectRange(prev_obj.x_center, prev_obj.y_center, prev_obj.width,
                                                             prev_obj.height)
                 temp_x_range, temp_y_range = prepMatcher(x_min, x_max, y_min, y_max, 0, w_width, 0, w_height, str(obj))
@@ -123,6 +161,8 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdic
                 if temp_x_range is not None:
                     x_range = temp_x_range
                     y_range = temp_y_range
+                else:
+                    raise ValueError(Errors.empty_range)
 
             else:
                 _, filteredObj = ordinalSorter(1, filteredObj, str(obj))  # at the end we choose the first object
@@ -130,6 +170,8 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdic
                 abs_pos = True
 
         elif objType == ObjType.abs_position_prep:
+            if prev_obj is None:
+                raise ValueError(Errors.object_not_found)
             if return_type == ObjType.range:
                 x_min, x_max, y_min, y_max = getObjectRange(prev_obj.x_center, prev_obj.y_center, prev_obj.width,
                                                             prev_obj.height)
@@ -138,14 +180,15 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdic
                 if temp_x_range is not None:
                     x_range = temp_x_range
                     y_range = temp_y_range
+
             else:
                 x_range, y_range = prepMatcher(x_range[0][0], x_range[0][1], y_range[0][0], y_range[0][1], 0, w_width, 0,
-                                               w_height, str(prep))
+                                               w_height, str(obj))
             return_type = ObjType.range
             abs_pos_prep = True
 
         elif objType == ObjType.input:
-            t_input = obj
+            t_input = str(obj)
 
         elif objType == ObjType.elementArray:
             filteredObj = obj
@@ -156,7 +199,7 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdic
             Obj_changed = True
 
         elif objType == ObjType.ordinal_val:
-            val = ordinal_dict[str(obj)]
+            val = min(ordinal_dict[str(obj)], len(filteredObj))
             if direction is None:
                 filteredObj, _ = ordinalSorter(val, filteredObj)
             else:
@@ -168,7 +211,7 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, textdict, inputdic
         elif objType == ObjType.built_in:
             pass
     if direction is not None:
-        for dirc in direction:
+        for dirc in reversed(direction):
             _, filteredObj = ordinalSorter(1, filteredObj, str(dirc))  # at the end we choose the first object
             Obj_changed = True
         direction = None
@@ -213,23 +256,35 @@ def objectFinder(sentence, elements, textdict, inputdict):
                                                                                                      prep_next[i],
                                                                                                      prev_obj,
                                                                                                      direction)
+
         i -= 1
+
     return prev_obj, x_range, y_range, t_input
 
 
-e1 = elementStruct(gui_elements[1])
-e2 = elementStruct(gui_elements[0])
+e1 = elementStruct(gui_elements[0])
+e2 = elementStruct(gui_elements[1])
 e3 = elementStruct(gui_elements[2])
-# e4 = elementStruct(gui_elements[3])
-e5 = [e1, e2, e3]
+e4 = elementStruct(gui_elements[3])
+e5 = elementStruct(gui_elements[4])
+e6 = elementStruct(gui_elements[5])
+e7 = elementStruct(gui_elements[6])
+e8 = elementStruct(gui_elements[7])
+e9 = [e1, e2, e3, e4, e5, e6, e7, e8]
 
 # nlp = spacy.load('en_core_web_sm', parse=True, tag=True, entity=True)
-text = "click on the second button"
+# text = "click on the button on the left of the {cancel} button"
+text = "click on the button on the top right of the {ok} button inside the dialogbox"
 ordinal_dict = createOrdinalDict()
 text, dict1, dict2 = textReplacer(text)
 sentence_nlp = nlp(text)
-prev_object, x_range, y_range, t_input = objectFinder(sentence_nlp, e5, dict1, dict2)
-print(prev_object)
+try:
+    prev_object, x_range, y_range, t_input = objectFinder(sentence_nlp, e9, dict1, dict2)
+    print(prev_object)
+except ValueError as e:
+    print(str(e))
+
+
 
 
 

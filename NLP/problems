@@ -8,3 +8,11 @@
     a. after the return of the abs_pos_prep if we found another abs_pos_prep
     b. inside the same loop if the object was abs_pos_prep and we found another direction
 
+
+
+unit testing:
+1. objectTypeMapper:
+# a word that has no meaning or not in my dict ---> pass
+# object that exist ---> pass
+# object that doesn't exist ---> pass it returns an empty array
+# object that exists out of range ----> pass

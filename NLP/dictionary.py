@@ -85,7 +85,8 @@ objects =\
         "corner",
         "empty",
         "key",
-        "part"
+        "part",
+        "field"
     ]
 
 absPositions =\
@@ -97,7 +98,10 @@ absPositions =\
     "right",
     "up",
     "down",
-    "next"
+    "next",
+    "east",
+    "west"
+
 ]
 
 colorAdj = ["light", "dark"]
