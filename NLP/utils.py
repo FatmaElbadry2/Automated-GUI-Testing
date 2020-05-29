@@ -163,7 +163,7 @@ def prepMatcher(x_min, x_max, y_min, y_max, wx_min, wx_max, wy_min, wy_max, prep
     elif prep in above:
         return [[wx_min, wx_max]], [[wy_min, y_min]]
     elif prep in beside:
-        return [[wx_min, x_min], [x_max, wx_max]], [wy_min, wy_max]
+        return [[wx_min, x_min], [x_max, wx_max]], [[wy_min, wy_max]]
     elif prep == "out":
         return [[wx_min, x_min], [x_max, wx_max]], [[wy_min, y_min], [y_max, wy_max]]
     elif prep in ["left", "east"]:
