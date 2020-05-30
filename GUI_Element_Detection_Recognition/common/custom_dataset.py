@@ -1,5 +1,5 @@
 from torch.utils.data import Dataset
-from utils import image_preprocessing
+from common.utils import image_preprocessing
 import numpy as np
 import os
 import cv2
@@ -30,10 +30,9 @@ class CustomDataset(Dataset):
         img = image_preprocessing(img, self.img_size)
         if img is None:
             raise Exception("Read image error: {}".format(img_path))
-
         label_path = self.label_files[index % len(self.img_files)].rstrip()
         if os.path.exists(label_path):
-            labels = np.loadtxt(label_path).reshape(-1, 5)
+            labels = np.loadtxt(label_path, dtype=np.float32).reshape(-1, 5)
         else:
             logging.info("label does not exist: {}".format(label_path))
             labels = np.zeros((1, 5), np.float32)

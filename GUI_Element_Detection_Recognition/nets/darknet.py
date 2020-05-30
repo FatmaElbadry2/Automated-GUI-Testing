@@ -1,10 +1,12 @@
 from __future__ import division
 
-from utils import *
+from common.utils import *
 import torch
 import torch.nn as nn
+import torch.nn.functional as f
 import numpy as np
-from .yolo_layer import YOLOLayer
+
+
 # Custom-Defined nn.Module Classes
 
 
@@ -72,7 +74,7 @@ def create_nn_modules(modules):
             stride = int(module["stride"])
             # upsample = nn.UpsamplingBilinear2d(scale_factor=2)  # Bilinear Upsampling
             # upsample = nn.ConvTranspose2d()
-            upsample = nn.UpsamplingNearest2d(scale_factor=2)
+            upsample = nn.UpsamplingNearest2d(scale_factor=stride)
             sub_module.add_module("Upsampling{}".format(index), upsample)
 
         elif module["type"] == "route":
@@ -117,10 +119,11 @@ def create_nn_modules(modules):
 
 
 class DarkNet(nn.Module):
-    def __init__(self, cfg_file):
+    def __init__(self, cfg_file,  is_training=False):
         super(DarkNet, self).__init__()
         self.modules = read_cfg(cfg_file)
         self.net_data, self.net_modules = create_nn_modules(self.modules)
+        self.is_training = is_training
         self.wf_header = None
         self.wf_images_seen = None
 
@@ -139,9 +142,12 @@ class DarkNet(nn.Module):
             elif module_type == "shortcut":
                 from_ = int(module["from"])
                 # activation = module["activation"]
-                input_ = layer_feature_maps[index-1] + layer_feature_maps[index + from_]
+                #
+                # x = layer_feature_maps[index + from_]
                 # if activation == "linear":
-                #     input_ = f.linear(input_)
+                #     x = f.linear(x)
+
+                input_ = layer_feature_maps[index-1] + layer_feature_maps[index + from_]
 
             elif module_type == "route":
                 start_layer = int(module["layers"].split(",")[0])
@@ -172,13 +178,16 @@ class DarkNet(nn.Module):
                 anchors = self.net_modules[index][0].anchors
                 classes = int(module["classes"])
 
-                # input_ = predict_transform(input_, input_dimensions, anchors, classes, CUDA)
-                # if not collector:
-                #     detections = input_
-                #     collector = 1
-                # else:
-                #     detections = torch.cat((detections, input_), 1)
-                detections.append(input_)
+                if self.is_training:
+                    # input_.requires_grad = True
+                    detections.append(input_)
+                else:
+                    input_ = predict_transform(input_, input_dimensions, anchors, classes, CUDA)
+                    if not collector:
+                        detections = input_
+                        collector = 1
+                    else:
+                        detections = torch.cat((detections, input_), 1)
 
             layer_feature_maps[index] = input_
 

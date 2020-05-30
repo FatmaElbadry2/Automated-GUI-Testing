@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from utils import bbox_iou
-import numpy as np
+from common.utils import bbox_iou
+
 
 class YOLOLayer(nn.Module):
 
@@ -72,44 +72,45 @@ class YOLOLayer(nn.Module):
                 anchors=self.scaled_anchors,
                 ignore_thresh=self.ignore_thresh
             )
-
-            x_loss = self.mse_loss(x[obj_mask], tx[obj_mask])
-            y_loss = self.mse_loss(y[obj_mask], ty[obj_mask])
-            w_loss = self.mse_loss(w[obj_mask], tw[obj_mask])
-            h_loss = self.mse_loss(h[obj_mask], th[obj_mask])
-            obj_score_loss = self.bce_loss(obj_score[obj_mask], tobj[obj_mask])
-            noobj_score_loss = self.bce_loss(obj_score[noobj_mask], tobj[noobj_mask])
+            x_mask = x * obj_mask
+            x_loss = self.mse_loss(x_mask, tx * obj_mask)
+            y_loss = self.mse_loss(y * obj_mask, ty * obj_mask)
+            w_loss = self.mse_loss(w * obj_mask, tw * obj_mask)
+            h_loss = self.mse_loss(h * obj_mask, th * obj_mask)
+            obj_score_loss = self.bce_loss(obj_score * obj_mask, tobj * obj_mask)
+            noobj_score_loss = self.bce_loss(obj_score * noobj_mask, tobj * noobj_mask)
             conf_loss = self.obj_scale * obj_score_loss + self.no_obj_scale * noobj_score_loss
-            cls_loss = self.bce_loss(cls_scores[obj_mask], tcls[obj_mask])
+            cls_loss = self.bce_loss(cls_scores * obj_mask.unsqueeze(4), tcls * obj_mask.unsqueeze(4))
             total_loss = x_loss + y_loss + w_loss + h_loss + conf_loss + cls_loss
+            total_loss.requires_grad = True
 
-            cls_acc = 100 * class_mask[obj_mask].mean()
-            obj_acc = obj_score[obj_mask].mean()
-            noobj_acc = obj_score[noobj_mask].mean()
-            conf50 = (obj_score > 0.5).float()
-            iou50 = (iou_scores > 0.5).float()
-            iou75 = (iou_scores > 0.75).float()
-            detected_mask = conf50 * class_mask * tobj
-            precision = torch.sum(iou50 * detected_mask) / (conf50.sum() + 1e-16)
-            recall50 = torch.sum(iou50 * detected_mask) / (obj_mask.sum() + 1e-16)
-            recall75 = torch.sum(iou75 * detected_mask) / (obj_mask.sum() + 1e-16)
-
-            self.metrics = {
-                "loss": total_loss.to_cpu().item(),
-                "x": x.to_cpu().item(),
-                "y": y.to_cpu().item(),
-                "w": w.to_cpu().item(),
-                "h": h.to_cpu().item(),
-                "conf": conf_loss.to_cpu().item(),
-                "cls": cls_loss.to_cpu().item(),
-                "cls_acc": cls_acc.to_cpu().item(),
-                "obj_acc": obj_acc.to_cpu().item(),
-                "noobj_acc": noobj_acc.to_cpu().item(),
-                "precision": precision.to_cpu().item(),
-                "recall50": recall50.to_cpu().item(),
-                "recall75": recall75.to_cpu().item(),
-                "grid_size": grid_size.to_cpu().item()
-            }
+            # cls_acc = 100 * class_mask[obj_mask].mean()
+            # obj_acc = obj_score[obj_mask].mean()
+            # noobj_acc = obj_score[noobj_mask].mean()
+            # conf50 = (obj_score > 0.5).float()
+            # iou50 = (iou_scores > 0.5).float()
+            # iou75 = (iou_scores > 0.75).float()
+            # detected_mask = conf50 * class_mask * tobj
+            # precision = torch.sum(iou50 * detected_mask) / (conf50.sum() + 1e-16)
+            # recall50 = torch.sum(iou50 * detected_mask) / (obj_mask.sum() + 1e-16)
+            # recall75 = torch.sum(iou75 * detected_mask) / (obj_mask.sum() + 1e-16)
+            #
+            # self.metrics = {
+            #     "loss": total_loss.to_cpu().item(),
+            #     "x": x.to_cpu().item(),
+            #     "y": y.to_cpu().item(),
+            #     "w": w.to_cpu().item(),
+            #     "h": h.to_cpu().item(),
+            #     "conf": conf_loss.to_cpu().item(),
+            #     "cls": cls_loss.to_cpu().item(),
+            #     "cls_acc": cls_acc.to_cpu().item(),
+            #     "obj_acc": obj_acc.to_cpu().item(),
+            #     "noobj_acc": noobj_acc.to_cpu().item(),
+            #     "precision": precision.to_cpu().item(),
+            #     "recall50": recall50.to_cpu().item(),
+            #     "recall75": recall75.to_cpu().item(),
+            #     "grid_size": grid_size.to_cpu().item()
+            # }
 
             return output, total_loss
 
@@ -133,25 +134,25 @@ def build_targets(prediction_boxes, cls_scores, targets, anchors, ignore_thresh)
     th = FloatTensor(batch_size, num_anchors, grid_size, grid_size).fill_(0)
     tcls = FloatTensor(batch_size, num_anchors, grid_size, grid_size, classes).fill_(0)
 
-    target_boxes = targets[:, :, 1:] * grid_size
-    txy = target_boxes[:, :, 0:2]
-    twh = target_boxes[:, :, 2:]
+    target_boxes = targets[:, 2:] * grid_size
+    txy = target_boxes[:, 0:2]
+    twh = target_boxes[:, 2:]
 
-    twh_ = FloatTensor(twh.float().cuda()).squeeze(0)
-    zeros = FloatTensor(twh.size(1), twh.size(2)).fill_(0)
+    twh_ = FloatTensor(twh)
+    zeros = FloatTensor(twh.size(0), twh.size(1)).fill_(0)
     tbox_wh = torch.cat((zeros, twh_), 1)
     zeros = FloatTensor(3, 2).fill_(0)
     anchs = torch.cat((zeros, anchors), 1)
 
-    ious = torch.stack([bbox_iou(tbox_wh, anchor.repeat(twh.size(1), 1), False) for anchor in anchs])
+    ious = torch.stack([bbox_iou(tbox_wh, anchor.repeat(twh.size(0), 1), False) for anchor in anchs])
     max_ious, max_n = ious.max(0)
 
-    batch_num, target_labels = targets[:, :, :2].long().squeeze(0).t()
+    batch_num, target_labels = targets[:, :2].long().squeeze(0).t()
     x, y = txy.t()
     w, h = twh.t()
     ti, tj = txy.long().t()
 
-    iou_scores[batch_num, max_n, tj, ti] = bbox_iou(prediction_boxes[batch_num, max_n, tj, ti], target_boxes)
+    iou_scores[batch_num, max_n, tj, ti] = bbox_iou(prediction_boxes[batch_num, max_n, tj, ti], target_boxes, True)
     class_mask[batch_num, max_n, tj, ti] = (cls_scores[batch_num, max_n, tj, ti].argmax(-1) == target_labels).float()
 
     obj_mask[batch_num, max_n, tj, ti] = 1

@@ -5,7 +5,7 @@ import os
 import pathlib
 import logging
 import time
-from utils import *
+from common.utils import *
 from nets.darknet import DarkNet
 from nets.yolo_layer import YOLOLayer
 from common.custom_dataset import CustomDataset
@@ -19,7 +19,7 @@ parameters = {
     "epochs": 160,
     "train_path": "data/train.txt",
     "batch": int(config[0]["batch"]),
-    "subdivisions": int(config[0]["subdivisions"]),
+    "subdivisions": 4,     # int(config[0]["subdivisions"]),
     "dim": int(config[0]["width"]),
     "momentum": float(config[0]["momentum"]),
     "decay": float(config[0]["decay"]),
@@ -27,17 +27,26 @@ parameters = {
     "burn_in": int(config[0]["burn_in"]),
     "steps": [int(step) for step in config[0]["steps"].split(',')],
     "scales": [float(scale) for scale in config[0]["scales"].split(',')],
-    "anchors": [[[116, 90], [156, 198], [373, 326]],
-                    [[30, 61], [62, 45], [59, 119]],
-                    [[10, 13], [16, 30], [33, 23]]],
+    "anchors": [[[6.61,9.17], [4.56,0.50], [2.91,3.42]],
+                    [[2.71,0.47], [1.62,0.53], [0.85,0.45]],
+                    [[0.40,0.52], [0.27,5.54], [0.22,0.36]]],
     "classes": int(config[-1]["classes"]),
     "global_step": 0
 }
 
+summary_dir = '{}/size{}x{}_try{}/{}'.format(
+        "summary", 416, 416, parameters["global_step"],
+        time.strftime("%Y%m%d%H%M%S", time.localtime()))
+Summary = SummaryWriter(summary_dir)
+
 
 def train():
-    net = DarkNet(cfg_file)
-    net.train(True)
+    is_training = True
+    net = DarkNet(cfg_file, is_training)
+    net.train(is_training)
+
+    for p in net.parameters():
+        p.requires_grad = True
 
     optimizer = optim.SGD(net.parameters(), lr=parameters["learning_rate"],
                           momentum=parameters["momentum"],
@@ -56,54 +65,49 @@ def train():
         yolo_losses.append(YOLOLayer(parameters["anchors"][layer_loss], parameters["classes"], parameters["dim"]))
 
     dataset = DataLoader(CustomDataset(parameters["train_path"], parameters["dim"]),
-                         batch_size=2, shuffle=True, num_workers=0, pin_memory=True)
+                         batch_size=4, shuffle=True, num_workers=0, pin_memory=True, collate_fn=collate)
 
     logging.info("Training is starting...")
     for epoch in range(parameters["epochs"]):
         for step, samples in enumerate(dataset):
             images, labels = samples["image"], samples["label"]
-
+            labels = labels.cuda()
             start_time = time.time()
             parameters["global_step"] += 1
 
             optimizer.zero_grad()
             output = net(images, CUDA=True)
-            # output = true_detections(output, parameters["classes"], 0.5, 0.4)
             logging.info(output)
 
-            losses_name = ["total_loss", "x", "y", "w", "h", "conf", "cls"]
-            losses = []
-            for _ in range(len(losses_name)):
-                losses.append([])
+            loss = 0
             for i in range(3):
-                _loss_item = yolo_losses[i](output[i], labels)
-                for j, l in enumerate(_loss_item):
-                    losses[j].append(l)
-            losses = [sum(l) for l in losses]
-            loss = losses[0]
+                layer_loss = yolo_losses[i](output[i], labels)
+                loss += layer_loss[1]
+
             loss.backward()
             optimizer.step()
 
             if step > 0 and step % 10 == 0:
                 _loss = loss.item()
+                accuracy = 1 - _loss
                 duration = float(time.time() - start_time)
-                example_per_second = config["batch_size"] / duration
+                example_per_second = parameters["subdivisions"] / duration
                 lr = optimizer.param_groups[0]['lr']
                 logging.info(
-                    "epoch [%.3d] iter = %d loss = %.2f example/sec = %.3f lr = %.5f " %
-                    (epoch, step, _loss, example_per_second, lr)
+                    "epoch [%.3d] iter = %d loss = %.2f example/sec = %.3f lr = %.5f acc = %.2f" %
+                    (epoch, step, _loss, example_per_second, lr, accuracy)
                 )
-                SummaryWriter.add_scalar("lr", lr, parameters["global_step"])
-                SummaryWriter.add_scalar("example/sec", example_per_second, parameters["global_step"])
-                for i, name in enumerate(losses_name):
-                    value = _loss if i == 0 else losses[i]
-                    SummaryWriter.add_scalar(name, value, parameters["global_step"])
+                Summary.add_scalar("lr", lr, parameters["global_step"])
+                Summary.add_scalar("example/sec", example_per_second, parameters["global_step"])
+                Summary.add_scalar("loss", _loss, parameters["global_step"])
 
             if step > 0 and step % 1000 == 0:
-                save_checkpoint(net.state_dict(), config)
+                save_checkpoint(net.state_dict())
 
+            # if parameters["steps"][0] <= parameters["global_step"] \
+            #         or parameters["steps"][1] <= parameters["global_step"]:
+            #     learning_rate_scheduler.step()
         learning_rate_scheduler.step()
-
     save_checkpoint(net.state_dict(), config)
     logging.info("Training ended")
 
@@ -113,4 +117,13 @@ def save_checkpoint(state_dict):
     torch.save(state_dict, checkpoint_path)
     logging.info("Model checkpoint saved to %s" % checkpoint_path)
 
-train()
+
+def main():
+    # torch.multiprocessing.freeze_support()
+    logging.basicConfig(level=logging.DEBUG,
+                        format="[%(asctime)s %(filename)s] %(message)s")
+    train()
+
+
+if __name__ == "__main__":
+    main()

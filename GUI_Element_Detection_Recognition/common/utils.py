@@ -4,6 +4,7 @@ import torch
 import numpy as np
 import cv2
 import string
+from collections import abc
 
 
 def read_cfg(cfg_file):
@@ -220,3 +221,38 @@ def true_detections(prediction, classes, obj_thresh, nms_thresh):
     except:
         return 0
 
+
+def stack():
+    a = torch.randn([3, 416, 416])
+    b = torch.randn([3, 416, 416])
+    c = torch.stack([a, b], 0)
+    c = torch.cat((a, b), 0)
+    return c.size()
+
+
+def collate(batch):
+    elem = batch[0]
+    elem_type = type(elem)
+    if isinstance(elem, torch.Tensor):
+        out = None
+        if torch.utils.data.get_worker_info() is not None:
+            # If we're in a background process, concatenate directly into a
+            # shared memory tensor to avoid an extra copy
+            numel = sum([x.numel() for x in batch])
+            storage = elem.storage()._new_shared(numel)
+            out = elem.new(storage)
+        if elem.size(1) == 6:
+            return torch.cat(batch, 0, out=out)
+        else:
+            return torch.stack(batch, 0, out=out)
+    elif elem_type.__module__ == 'numpy' and elem_type.__name__ != 'str_' \
+            and elem_type.__name__ != 'string_':
+        elem = batch[0]
+        batch = [np.insert(b, 0, values=index, axis=1) for index, b in enumerate(batch)]
+        if elem_type.__name__ == 'ndarray':
+            # array of string classes and object
+            return collate([torch.as_tensor(b) for b in batch])
+        elif elem.shape == ():  # scalars
+            return torch.as_tensor(batch)
+    elif isinstance(elem, abc.Mapping):
+        return {key: collate([d[key] for d in batch]) for key in elem}

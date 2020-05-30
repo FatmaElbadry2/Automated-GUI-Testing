@@ -1,7 +1,7 @@
 from __future__ import division
 
 from nets.darknet import DarkNet
-from utils import *
+from common.utils import *
 import torch
 import pandas as pd
 import pickle as pkl
@@ -11,7 +11,7 @@ import os
 import random
 
 
-dataset = "dataset"
+dataset = "test"
 batch_size = 2
 res = 416
 conf_thresh = 0.5
@@ -112,7 +112,7 @@ for i in range(output.shape[0]):
     output[i, [2, 4]] = torch.clamp(output[i, [2, 4]], 0.0, dataset_images_dim[i, 1])
 
 
-colors = pkl.load(open("pallete", "rb"))
+colors = pkl.load(open("common/pallete", "rb"))
 
 
 def draw_bb(x, results):
