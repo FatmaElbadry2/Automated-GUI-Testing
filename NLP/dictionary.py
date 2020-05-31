@@ -1,66 +1,58 @@
 from enum import Enum
 
-verbs =\
-[
-    "click on",
-    "push",
-    "press on",
-    "hit",
-    "add",
-    "open",
-    "close",
-    "go to",
-    "tap",
-    "tick",
-    "save",
-    "submit",
-    "load",
-    "cut",
-    "copy",
-    "paste",
-    "load",
-    "undo",
-    "redo",
-    "export",
-    "new",
-    "search",
-    "scroll up",
-    "scroll down",
-    "return",
-    "back",
-    "switch on",
-    "switch off",
-    "refresh",
-    "write",
-    "highlight",
-    "type",
-    "enter",
-    "compose",
-    "run",
-    "stop",
-    "drag",
-    "hold",
-    "drop",
-    "move",
-    "check",
-    "select",
-    "choose",
-    "pick",
-    "assign",
-    "point",
-    "fix",
-    "reset",
-    "set",
-    "delete",
-    "remove",
-    "pin",
-    "attach",
-    "switch",
-    "browse",
-    "wait",
-    "execute",
-    "run"
-]
+
+class Actions(Enum):  # return type of the sentence
+    click = 0
+    scroll = 1
+    drag = 2
+    write = 3
+    screenshot = 4
+    hover = 5
+    delete = 6
+    wait = 7
+    key = 8
+    other = 9
+    undefined = 10
+
+
+verbs = {
+    "click": Actions.click,
+    "push": Actions.click,
+    "press": [Actions.click, Actions.key],
+    "hit": Actions.click,
+    "open": Actions.click,
+    "close": Actions.click,
+    "tap": Actions.click,
+    "tick": Actions.click,
+    "switch": Actions.click,
+    "refresh": Actions.click,
+    "check": Actions.click,
+    "select": Actions.click,
+    "choose": Actions.click,
+    "pick": Actions.click,
+    "add": Actions.write,
+    "write": Actions.write,
+    "type": Actions.write,
+    "enter": Actions.write,
+    "compose": Actions.write,
+    "go to": Actions.hover,
+    "point": Actions.hover,
+    "fix": Actions.hover,
+    "pin": Actions.hover,
+    "save": Actions.other,
+    "cut": Actions.other,
+    "copy": Actions.other,
+    "paste": Actions.other,
+    "undo": Actions.other,
+    "redo": Actions.other,
+    "scroll": [Actions.click, Actions.scroll, Actions.drag],
+    "drag": Actions.drag,
+    "drop": Actions.drag,
+    "move": Actions.drag,
+    "delete": Actions.delete,
+    "remove": Actions.delete,
+    "wait": Actions.wait
+}
 
 objects =\
     [
@@ -100,12 +92,14 @@ absPositions =\
     "down",
     "next",
     "east",
-    "west"
+    "west",
+    "upper",
+    "lower",
+    "swipe"
 
 ]
 
 colorAdj = ["light", "dark"]
-
 
 
 

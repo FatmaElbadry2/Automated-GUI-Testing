@@ -1,4 +1,6 @@
-from imports import *
+
+from agent.imports import *
+
 
 def Write(Word):
     pyautogui.write(Word, interval=0.25)
@@ -28,7 +30,7 @@ def ThreeKeys(FirstKey,SecondKey,ThirdKey):
     pyautogui.hotkey(FirstKey,SecondKey,ThirdKey)
 
 
-def pressArrow(Arrow,numberofpresses):
+def pressArrow(Arrow,numberofpresses): # arrow can be left , right, up ,down
     pyautogui.press(Arrow, presses=numberofpresses)
 
 

@@ -51,8 +51,22 @@ def createOrdinalDict():
     return ordinalDict
 
 
-def replaceLeft():
-    pass
+def replaceWord(text, original, replacement):  # replace every left by east
+    txtSize = len(text)
+    for match in re.finditer(original, text):
+        start, end = match.span()
+        start = start - (txtSize - len(text))
+        end = end - (txtSize - len(text))
+        text = text.replace(text[start:end], replacement)
+    return text
+
+
+def replaceDirections(text):
+    next_to = r"next[\s|_|-]*?to"
+    left = r"left"
+    text = replaceWord(text, next_to, "beside")
+    text = replaceWord(text, left, "east")
+    return text
 
 
 def resolvePronouns():
@@ -72,8 +86,11 @@ def splitConditions():
 
 
 def preProcess(text):
-    text = sent_tokenize(text)
+    text = replaceDirections(text)
+    text, text_dict, input_dict = textReplacer(text)
+
     text = expandContractions(text)
     return text
+
 
 

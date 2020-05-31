@@ -1,4 +1,4 @@
-from imports import *
+from NLP.imports import *
 from enum import Enum
 
 
@@ -102,8 +102,8 @@ def nearestElement(elements, center):
 
 
 inside = ["in", "on", "inside", "into", "of", "towards", "to", "for", "from", "middle"]
-below = ["below", "under", "beneath", "bottom", "down"]
-above = ["over", "above", "top", "up"]
+below = ["below", "under", "beneath", "bottom", "down","lower"]
+above = ["over", "above", "top", "up","upper"]
 beside = ["next", "beside"]
 
 

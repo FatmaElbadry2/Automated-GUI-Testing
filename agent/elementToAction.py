@@ -1,5 +1,5 @@
 # progressbar i can't find actions to a progress bar
-from imports import *
+from agent.imports import *
 
 
 class actions(enum.Enum):
@@ -30,7 +30,7 @@ elif value=='textbox':
 elif value=='radio-button':
     ListOfActions={1,2,3,4}
 elif value=='label':
-    ListOfActions={1,2,3,4}
+    ListOfActions = {1, 2, 3, 4}
 elif value == 'checkbox':
     ListOfActions = {2,4}
 elif value == 'combobox':

@@ -1,4 +1,4 @@
-from imports import *
+from agent.imports import *
 
 
 def LeftClick(x,y):
@@ -25,16 +25,14 @@ def scroll(clicks): #positive-> scroll up
     pyautogui.scroll(clicks)
 
 
-def RelativeDrag(x,y,Button): # (x,y,button)  x+ ->right y+->down
-    pyautogui.drag(x, y, button=Button)
+def RelativeDrag(x,y): # (x,y,button)  x+ ->right y+->down
+    pyautogui.drag(x, y, button='left')
 
 
-def Drag(x,y,button):
-    pyautogui.dragTo(x,y, button=button)
+def Drag(x,y):
+    pyautogui.dragTo(x,y, button='left')
 
 
 def clicks(x,y,numbersofclicks,button):
     pyautogui.click(x, y, clicks=numbersofclicks, button=button)
 
-
-LeftClick(200,300)

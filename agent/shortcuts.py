@@ -1,28 +1,35 @@
-import pyautogui
-import pyscreenshot as ImageGrab
-import pyperclip  # handy cross-platform clipboard text handler
-import time
-import subprocess
-import win32gui
+from agent.imports import *
+
 
 def OpenApp(PATH,APPNAME): #APPName with extention
     x = (PATH + "\\" + APPNAME)
     raw_string = r"{}".format(x)
     subprocess.Popen(raw_string)
 
-def IsRunning(ProgramName): #program name without extention
-   if win32gui.FindWindow(None, ProgramName):
-      return True
-   else:
-      return False
 
-def IsOpen(PATH, APPNAME,APPWINDOW): #APPNAME=APPNAME.exe   APPWINDOW=APPNAME without ext.
+def IsRunning(ProgramName): #program name without extention
+    if win32gui.FindWindow(None, ProgramName):
+        return True
+    else:
+       return False
+
+
+def IsOpen(PATH, APPNAME,APPWINDOW): # APPNAME=APPNAME.exe   APPWINDOW=APPNAME without ext.
     OpenApp(PATH,APPNAME)
-    x=IsRunning(APPWINDOW)
-    while(x!=True):
+    x = IsRunning(APPWINDOW)
+    while x != True:
         print("waiting")
         time.sleep(1)
         x = IsRunning(APPWINDOW)
+    print("your app is ready")
+
+
+def Undo():
+    pyautogui.hotkey('ctrl', 'z')
+
+
+def Redo():
+    pyautogui.hotkey('ctrl', 'y')
 
 
 def Cut():
@@ -31,6 +38,10 @@ def Cut():
 
 def Copy():
     pyautogui.hotkey('ctrl', 'c')
+
+
+def MarkAll():
+    pyautogui.hotkey('ctrl', 'a')
 
 
 def Paste():
@@ -56,6 +67,8 @@ def Close():
 def ScreenShot():
     im = ImageGrab.grab()
 
+    return im
+
 
 def Highlight(x1,y1,x,y):
     pyautogui.click(x1,y1)
@@ -65,7 +78,9 @@ def Highlight(x1,y1,x,y):
     print(pyperclip.paste())
 
 
-OpenApp("C:\Program Files (x86)\TeamViewer","TeamViewer")
+MarkAll()
+ScreenShot()
+# IsOpen("C:\Program Files (x86)\TeamViewer", "TeamViewer.exe", "TeamViewer")
 
 
 

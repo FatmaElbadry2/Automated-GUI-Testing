@@ -16,3 +16,59 @@ unit testing:
 # object that exist ---> pass
 # object that doesn't exist ---> pass it returns an empty array
 # object that exists out of range ----> pass
+
+
+actions:
+mouse movements: click,drag,scroll, highlight
+keyboard:write, keypress , shortcut
+
+
+click on the file menu. choose the second option.
+carry my range to the next sentence if:
+1- a menu is opened.
+2- combobox is opened.
+3- submenu is opened.
+4- go to a tab-bar.
+5- calender.
+6- drop-down.
+7- text area.
+8- textbox.
+9- go to the dialog-box
+10- go to the scroll-bar
+
+function which seeks the root verb. depending on that verb we will split our sentence.
+1- click --> no splitting just normal object finder.
+2- drag --> split on "to" and look for a quantity. call object finder before and after "to"
+3- scroll --> scroll up or down
+3- write --> normal object finding.
+4- key press --> just the input of the press word , normal object finder
+5- save,cut,copy...., first look for a button with these text on it, if not found search for icons, else seek their shortcuts.
+
+to be fixed:
+1- the outside range.
+
+
+drag:
+    drag it up by 5 cm
+    drag it up 5 cm
+    drag it to the left of bla bla
+    drag it to the left
+    drag it to the left by 5cm
+    drag it to the left 5 cm
+
+scroll:
+    scroll up the bar
+    scroll the bar up
+    scroll up by 5 cm
+    scroll 5 cm down
+    scroll to the left by 5cm
+
+
+order of preprocessing:
+1- replace text, left and next to.
+2- split conjunctions.
+3- return it to string text.
+4- split conditions (if , then , until, (before, after)---> followed by a verb).
+5- resolve pronouns.
+6- resolve det (that, which).
+7- crop useless parts of the sentence and make the target verb in the root position.
