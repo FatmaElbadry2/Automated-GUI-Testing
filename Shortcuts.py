@@ -4,6 +4,11 @@ import pyperclip  # handy cross-platform clipboard text handler
 import time
 import subprocess
 import win32gui
+import webbrowser
+
+def OpenDir(PATH):
+    webbrowser.open(PATH)
+    #webbrowser.open("C:/Users/ranai/Desktop/Uni/fall 2020/image processing/lectures")
 
 def OpenApp(PATH,APPNAME): #APPName with extention
     x = (PATH + "\\" + APPNAME)
