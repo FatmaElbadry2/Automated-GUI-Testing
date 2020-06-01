@@ -4,11 +4,11 @@ from spacy.lang.en import English
 from spacy.matcher import Matcher
 from spacy.tokens import Span
 # from yoloInterface import *
-# from preProcessing import *
+from preProcessing import *
 import numpy as np
 import math as m
-from objectMatcher import *
-
+# from objectMatcher import *
+from dataclasses import dataclass
 
 
 # text_dict = {
@@ -32,4 +32,15 @@ from objectMatcher import *
 # print(obj)
 # print(Type)
 # print(error)
+
+text = nlp("i am hungry")
+
+print(text)
+y = np.array(text)
+x = list(text)
+
+print(x)
+print(y)
+print(y[2])
+
 

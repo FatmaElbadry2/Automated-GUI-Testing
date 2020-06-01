@@ -1,5 +1,6 @@
 # import nltk
 import re
+from spacy.tokens import Span
 # from pysbd.util import PySBDFactory
 from contractions import CONTRACTION_MAP
 from nltk.tokenize import sent_tokenize

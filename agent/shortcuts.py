@@ -11,7 +11,7 @@ def IsRunning(ProgramName): #program name without extention
     if win32gui.FindWindow(None, ProgramName):
         return True
     else:
-       return False
+        return False
 
 
 def IsOpen(PATH, APPNAME,APPWINDOW): # APPNAME=APPNAME.exe   APPWINDOW=APPNAME without ext.
@@ -78,9 +78,7 @@ def Highlight(x1,y1,x,y):
     print(pyperclip.paste())
 
 
-MarkAll()
-ScreenShot()
-# IsOpen("C:\Program Files (x86)\TeamViewer", "TeamViewer.exe", "TeamViewer")
+# IsOpen("C:\Program Files (x86)\Google\Chrome\Application", "chrome.exe", "Google Chrome (2)")
 
 
 

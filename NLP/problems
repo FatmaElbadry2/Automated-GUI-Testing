@@ -63,6 +63,18 @@ scroll:
     scroll 5 cm down
     scroll to the left by 5cm
 
+drag or scroll:
+search in their rights for : direction, quantity and to
+remove the quantity with its parent.
+if a direction is found in the right yeb2a 5alas
+if not we perform an object finder
+if an object is found yeb2a drag to the position of this object
+if the direction is not None probably there's no object and take that as our direction
+to know which scroll bar it is you have to check first for the direction of scrolling
+if no direction is found then it's a vertical bar by default
+
+
+
 
 order of preprocessing:
 1- replace text, left and next to.

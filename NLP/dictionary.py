@@ -18,7 +18,7 @@ class Actions(Enum):  # return type of the sentence
 verbs = {
     "click": Actions.click,
     "push": Actions.click,
-    "press": [Actions.click, Actions.key],
+    "press": Actions.click,  # Actions.key],
     "hit": Actions.click,
     "open": Actions.click,
     "close": Actions.click,
@@ -45,7 +45,7 @@ verbs = {
     "paste": Actions.other,
     "undo": Actions.other,
     "redo": Actions.other,
-    "scroll": [Actions.click, Actions.scroll, Actions.drag],
+    "scroll": [Actions.drag],
     "drag": Actions.drag,
     "drop": Actions.drag,
     "move": Actions.drag,
