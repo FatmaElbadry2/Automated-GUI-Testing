@@ -12,7 +12,7 @@ class CustomDataset(Dataset):
         self.label_files = []
         for path in open(data_path, 'r'):
             label_path = path.replace('images', 'labels').replace('.png', '.txt').replace(
-                '.jpg', '.txt').strip()
+                '.jpg', '.txt').replace('.JPG', '.txt').strip()
             if os.path.isfile(label_path):
                 self.img_files.append(path.replace('\n', ''))
                 self.label_files.append(label_path)

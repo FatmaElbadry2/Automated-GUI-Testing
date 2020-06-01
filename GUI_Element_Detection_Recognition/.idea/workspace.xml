@@ -2,23 +2,1303 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c9407ba-0359-4252-9d24-59acb48850ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/anchors/anchors9.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Altium (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Altium (2).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Altium (3).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Altium (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (60).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (61).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (62).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (63).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (64).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (65).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (66).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (67).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (68).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (69).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (70).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (71).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (72).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (73).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (74).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (75).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (76).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (77).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (78).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (79).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (80).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (81).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (82).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (83).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (84).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (85).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (86).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (87).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (88).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (89).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (90).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (91).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (92).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (93).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (94).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (95).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (96).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (97).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (98).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Elmer (99).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Esperanto (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (26).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (27).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (28).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (33).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (34).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (35).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Fantasia (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (100).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (101).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (102).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (103).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (104).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (105).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (106).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (107).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (108).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (109).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (110).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (111).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (112).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (113).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (114).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (115).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (116).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (117).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (118).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (119).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (120).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (121).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (122).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (123).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (124).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (125).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (126).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (127).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (128).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (129).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (130).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (131).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (132).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (133).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (134).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (135).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (136).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (137).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (138).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (139).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (140).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (141).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (142).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (143).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (144).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (145).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (146).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (147).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (26).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (27).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (28).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (33).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (34).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (35).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (36).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (37).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (38).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (39).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (40).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (41).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (43).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (44).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (45).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (46).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (47).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (48).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (49).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (50).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (51).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (53).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (54).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (55).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (56).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (57).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (58).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (59).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (60).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (61).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (62).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (63).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (64).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (65).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (66).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (67).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (68).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (69).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (70).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (71).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (72).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (73).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (74).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (75).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (76).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (77).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (78).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (79).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (80).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (81).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (82).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (83).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (84).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (85).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (86).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (87).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (88).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (89).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (90).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (91).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (92).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (93).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (94).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (95).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (96).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (97).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (98).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/FreeCAD (99).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (26).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (27).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (28).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (33).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (34).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (35).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (36).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (37).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (38).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (39).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (40).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (41).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (43).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (44).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (45).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (46).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (47).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (48).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (49).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (50).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (51).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (53).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Frescobaldi (54).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (1).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (10).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (11).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (12).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (13).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (14).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (2).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (3).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (4).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (5).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (6).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (7).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (8).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/LSG (9).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (10).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (11).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (12).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (13).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (14).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (15).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (16).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (17).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (18).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (19).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (2).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (22).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (23).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (27).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (3).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (5).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (6).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (7).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (8).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/Pattern Matching (9).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (26).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (27).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (28).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (33).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (34).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (35).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (36).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (37).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (38).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (39).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (40).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (41).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (43).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (44).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (45).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (46).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (47).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (48).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (49).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (50).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (51).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (53).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (54).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (55).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (56).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (57).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (59).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (62).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (66).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (67).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (68).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (69).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (70).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (71).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (73).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (74).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (75).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (76).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (78).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (80).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (81).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (82).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/TeXmaker (83).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/desktop.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/freemat (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (100).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (101).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (102).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (103).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (104).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (105).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (106).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (107).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (108).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (109).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (110).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (111).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (112).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (113).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (114).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (115).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (116).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (117).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (118).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (119).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (120).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (121).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (122).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (123).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (124).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (125).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (126).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (127).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (128).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (129).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (130).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (132).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (133).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (134).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (135).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (136).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (137).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (138).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (139).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (140).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (141).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (142).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (143).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (144).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (145).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (148).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (149).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (26).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (27).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (33).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (34).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (35).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (36).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (37).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (43).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (44).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (45).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (48).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (49).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (50).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (53).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (56).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (57).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (58).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (60).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (61).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (69).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (74).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (76).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (77).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (78).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (79).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (80).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (81).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (82).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (93).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (94).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (95).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (96).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (97).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (98).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/orange (99).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (27).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (33).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (34).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (35).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (36).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (38).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (40).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (41).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (43).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (45).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (48).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (49).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (50).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (52).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (53).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (55).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (56).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (60).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (61).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (62).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (64).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (65).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (66).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (67).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (68).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (69).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (70).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (71).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (72).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (73).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/ovogadro (74).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (26).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (28).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (33).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (34).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (35).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (36).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (37).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (38).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (39).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (40).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (41).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (43).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (44).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (45).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (48).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (49).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (51).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (54).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (56).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (57).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (58).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (59).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (60).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (61).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (62).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (63).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (64).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (65).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (66).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (67).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/slicer (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (61).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (62).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (63).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (64).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (65).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (66).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (67).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (68).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (69).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (70).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (71).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (72).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (73).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (74).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (75).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (76).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (77).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (78).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (79).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (80).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (81).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (82).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (83).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (84).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (85).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (86).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (87).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (88).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (89).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (9).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (90).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (91).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (92).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (93).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (94).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (95).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (96).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (97).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (98).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Elmer (99).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (16).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (20).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (21).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Esperanto (9).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (16).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (20).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (21).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (24).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (25).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (26).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (27).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (28).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (29).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (30).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (31).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (32).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (34).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (35).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Fantasia (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (100).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (101).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (102).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (103).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (104).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (105).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (107).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (108).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (109).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (110).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (111).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (112).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (113).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (114).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (115).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (116).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (117).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (118).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (119).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (120).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (121).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (122).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (123).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (124).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (125).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (126).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (127).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (128).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (129).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (130).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (131).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (132).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (133).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (134).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (135).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (136).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (137).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (138).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (139).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (140).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (141).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (142).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (143).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (144).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (145).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (146).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (147).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (16).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (20).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (21).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (24).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (25).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (26).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (27).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (28).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (29).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (30).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (31).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (32).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (33).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (34).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (35).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (36).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (37).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (38).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (39).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (40).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (41).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (42).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (43).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (44).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (45).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (46).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (47).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (48).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (49).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (50).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (51).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (52).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (53).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (54).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (55).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (56).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (57).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (58).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (59).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (60).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (61).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (62).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (63).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (64).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (65).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (66).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (67).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (68).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (69).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (70).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (71).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (72).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (73).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (74).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (75).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (76).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (77).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (78).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (79).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (80).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (81).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (82).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (83).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (84).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (85).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (86).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (87).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (88).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (89).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (9).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (90).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (91).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (92).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (94).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (95).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (96).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (97).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (98).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/FreeCAD (99).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (16).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (20).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (21).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (24).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (25).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (26).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (27).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (28).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (29).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (30).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (31).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (32).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (33).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (34).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (35).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (36).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (37).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (38).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (39).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (40).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (41).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (42).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (43).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (44).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (45).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (46).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (47).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (49).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (50).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (51).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (52).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (53).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Frescobaldi (54).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/LSG (9).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (16).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (27).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/Pattern Matching (9).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (20).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (21).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (24).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (25).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (26).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (27).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (28).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (29).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (30).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (31).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (32).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (33).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (34).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (35).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (36).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (37).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (38).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (39).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (40).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (41).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (42).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (43).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (44).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (45).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (46).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (47).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (48).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (49).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (50).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (51).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (52).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (53).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (54).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (55).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (56).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (57).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (59).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (62).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (66).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (67).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (68).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (69).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (70).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (71).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (73).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (74).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (75).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (76).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (78).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (80).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (81).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (82).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/TeXmaker (83).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/desktop.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (20).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (21).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/freemat (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (100).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (101).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (102).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (103).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (104).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (105).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (106).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (107).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (108).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (109).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (110).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (111).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (112).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (113).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (114).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (115).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (116).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (117).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (118).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (119).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (120).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (121).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (122).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (123).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (124).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (125).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (126).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (127).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (128).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (129).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (130).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (132).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (133).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (134).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (135).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (136).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (137).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (138).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (139).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (140).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (141).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (142).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (143).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (144).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (145).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (146).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (148).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (149).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (20).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (24).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (25).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (26).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (27).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (29).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (30).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (31).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (32).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (33).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (34).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (35).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (36).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (37).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (42).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (43).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (44).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (45).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (48).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (49).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (50).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (53).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (56).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (57).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (58).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (60).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (61).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (69).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (74).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (76).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (77).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (78).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (79).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (80).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (81).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (82).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (9).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (93).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (94).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (95).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (96).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (97).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (98).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/orange (99).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (16).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (21).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (24).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (25).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (27).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (29).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (30).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (31).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (32).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (33).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (34).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (35).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (36).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (38).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (40).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (41).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (43).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (45).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (48).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (49).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (50).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (52).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (53).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (55).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (56).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (60).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (61).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (62).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (64).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (65).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (66).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (67).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (68).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (69).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (70).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (71).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (72).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (73).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/ovogadro (74).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (10).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (11).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (12).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (13).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (14).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (15).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (16).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (17).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (18).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (19).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (20).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (21).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (22).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (23).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (25).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (26).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (28).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (29).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (30).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (31).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (32).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (33).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (34).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (35).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (36).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (37).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (38).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (39).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (40).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (41).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (43).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (44).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (45).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (48).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (49).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (51).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (54).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (56).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (57).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (58).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (59).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (60).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (61).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (62).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (63).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (64).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (65).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (66).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (67).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (7).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (8).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/labels/slicer (9).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601190000/events.out.tfevents.1591030800.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601190058/events.out.tfevents.1591030858.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601191355/events.out.tfevents.1591031635.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601191644/events.out.tfevents.1591031804.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601192654/events.out.tfevents.1591032414.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601193658/events.out.tfevents.1591033018.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601193747/events.out.tfevents.1591033067.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601193847/events.out.tfevents.1591033127.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601194521/events.out.tfevents.1591033521.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601194641/events.out.tfevents.1591033601.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601195033/events.out.tfevents.1591033833.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601195110/events.out.tfevents.1591033870.Loki" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/summary/size416x416_try0/20200601195837/events.out.tfevents.1591034317.Loki" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anchors/anchors9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/anchors/anchors9.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/anchor_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/anchor_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/custom_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/custom_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/temp.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/temp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/train.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/train.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/darknet.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/darknet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/yolo_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/yolo_layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pallete" beforeDir="false" afterPath="$PROJECT_DIR$/common/pallete" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +1331,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../YOLOv3_PyTorch-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -74,7 +1354,7 @@
       <recent name="C:\Users\Hagar\Desktop\GP\Automated-GUI-Testing\GUI_Element_Detection_Recognition\nets" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train">
+  <component name="RunManager" selected="Python.anchor_generator">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="GUI_Element_Detection_Recognition" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -101,9 +1381,6 @@
       <module name="GUI_Element_Detection_Recognition" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\Hagar\Anaconda3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/common" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -145,9 +1422,6 @@
       <module name="GUI_Element_Detection_Recognition" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\Hagar\Anaconda3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -167,9 +1441,6 @@
       <module name="GUI_Element_Detection_Recognition" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\Hagar\Anaconda3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -277,6 +1548,9 @@
       <workItem from="1590802941964" duration="314000" />
       <workItem from="1590804598122" duration="4544000" />
       <workItem from="1590810075601" duration="109000" />
+      <workItem from="1591028391366" duration="1286000" />
+      <workItem from="1591029784821" duration="470000" />
+      <workItem from="1591030261606" duration="6149000" />
     </task>
     <servers />
   </component>
@@ -295,10 +1569,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="654" y="275" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1588945073482" />
-    <state x="299" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590785089302">
+    <state x="299" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591033821613">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="299" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1590785089302" />
+    <state x="299" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1591033821613" />
     <state x="898" y="218" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589571799409">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -319,42 +1593,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1433" height="247" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1590808776260" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1590808925417">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1591032299505">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590808925417" />
-    <state width="1493" height="257" key="GridCell.Tab.0.bottom" timestamp="1590808821446">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591032299505" />
+    <state width="1493" height="257" key="GridCell.Tab.0.bottom" timestamp="1591036855971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590808821446" />
-    <state width="1493" height="257" key="GridCell.Tab.0.center" timestamp="1590808821446">
+    <state width="1493" height="257" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591036855971" />
+    <state width="1493" height="257" key="GridCell.Tab.0.center" timestamp="1591036855971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590808821446" />
-    <state width="1493" height="257" key="GridCell.Tab.0.left" timestamp="1590808821446">
+    <state width="1493" height="257" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591036855971" />
+    <state width="1493" height="257" key="GridCell.Tab.0.left" timestamp="1591036855971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590808821446" />
-    <state width="1493" height="257" key="GridCell.Tab.0.right" timestamp="1590808821446">
+    <state width="1493" height="257" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591036855971" />
+    <state width="1493" height="257" key="GridCell.Tab.0.right" timestamp="1591036855971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590808821446" />
-    <state width="1493" height="257" key="GridCell.Tab.1.bottom" timestamp="1590808821446">
+    <state width="1493" height="257" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591036855971" />
+    <state width="1493" height="257" key="GridCell.Tab.1.bottom" timestamp="1591036855971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590808821446" />
-    <state width="1493" height="257" key="GridCell.Tab.1.center" timestamp="1590808821446">
+    <state width="1493" height="257" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591036855971" />
+    <state width="1493" height="257" key="GridCell.Tab.1.center" timestamp="1591036855971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1590808821446" />
-    <state width="1493" height="257" key="GridCell.Tab.1.left" timestamp="1590808821446">
+    <state width="1493" height="257" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591036855971" />
+    <state width="1493" height="257" key="GridCell.Tab.1.left" timestamp="1591036855971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1590808821446" />
-    <state width="1493" height="257" key="GridCell.Tab.1.right" timestamp="1590808821446">
+    <state width="1493" height="257" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591036855971" />
+    <state width="1493" height="257" key="GridCell.Tab.1.right" timestamp="1591036855971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="257" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1590808821446" />
+    <state width="1493" height="257" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591036855971" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1590031138519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -389,8 +1663,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/nets/yolo_layer.py</url>
-          <line>75</line>
-          <option name="timeStamp" value="2" />
+          <line>79</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -407,10 +1681,11 @@
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$detector.coverage" NAME="detector Coverage Results" MODIFIED="1589573692842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$utils.coverage" NAME="utils Coverage Results" MODIFIED="1590753529599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$DataSetGen.coverage" NAME="DataSetGen Coverage Results" MODIFIED="1582636505625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$train.coverage" NAME="train Coverage Results" MODIFIED="1590808733263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$train.coverage" NAME="train Coverage Results" MODIFIED="1591031800907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$PyTorch.coverage" NAME="PyTorch Coverage Results" MODIFIED="1584018948081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$test.coverage" NAME="test Coverage Results" MODIFIED="1587055172824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$temp.coverage" NAME="temp Coverage Results" MODIFIED="1589222522930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$test.coverage" NAME="test Coverage Results" MODIFIED="1591032762611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$anchor_generator.coverage" NAME="anchor_generator Coverage Results" MODIFIED="1591030626294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/GUI_Element_Detection_Recognition$darknet.coverage" NAME="darknet Coverage Results" MODIFIED="1587055185616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
   </component>
 </project>

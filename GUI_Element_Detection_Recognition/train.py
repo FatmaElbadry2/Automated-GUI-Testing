@@ -27,9 +27,9 @@ parameters = {
     "burn_in": int(config[0]["burn_in"]),
     "steps": [int(step) for step in config[0]["steps"].split(',')],
     "scales": [float(scale) for scale in config[0]["scales"].split(',')],
-    "anchors": [[[6.61,9.17], [4.56,0.50], [2.91,3.42]],
-                    [[2.71,0.47], [1.62,0.53], [0.85,0.45]],
-                    [[0.40,0.52], [0.27,5.54], [0.22,0.36]]],
+    "anchors": [[[8.97,10.19], [4.25,0.53], [3.78,5.77]],
+                    [[2.18,0.45], [1.26,1.35], [0.87,0.50]],
+                    [[0.39,0.52], [0.26,6.07], [0.22, 0.35]]],
     "classes": int(config[-1]["classes"]),
     "global_step": 0
 }
@@ -77,7 +77,7 @@ def train():
 
             optimizer.zero_grad()
             output = net(images, CUDA=True)
-            logging.info(output)
+            # logging.info(output)
 
             loss = 0
             for i in range(3):
@@ -89,13 +89,12 @@ def train():
 
             if step > 0 and step % 10 == 0:
                 _loss = loss.item()
-                accuracy = 1 - _loss
                 duration = float(time.time() - start_time)
                 example_per_second = parameters["subdivisions"] / duration
                 lr = optimizer.param_groups[0]['lr']
                 logging.info(
-                    "epoch [%.3d] iter = %d loss = %.2f example/sec = %.3f lr = %.5f acc = %.2f" %
-                    (epoch, step, _loss, example_per_second, lr, accuracy)
+                    "epoch [%.3d] iter = %d loss = %.2f example/sec = %.3f lr = %.5f" %
+                    (epoch, step, _loss, example_per_second, lr)
                 )
                 Summary.add_scalar("lr", lr, parameters["global_step"])
                 Summary.add_scalar("example/sec", example_per_second, parameters["global_step"])
@@ -108,7 +107,7 @@ def train():
             #         or parameters["steps"][1] <= parameters["global_step"]:
             #     learning_rate_scheduler.step()
         learning_rate_scheduler.step()
-    save_checkpoint(net.state_dict(), config)
+    save_checkpoint(net.state_dict())
     logging.info("Training ended")
 
 

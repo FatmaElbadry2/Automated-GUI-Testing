@@ -128,6 +128,7 @@ def main():
         line = line.replace('images', 'labels')
         line = line.replace('.png', '.txt')
         line = line.replace('.jpg', '.txt')
+        line = line.replace('.JPG', '.txt')
 
         f2 = open(line)
         for line in f2.readlines():
