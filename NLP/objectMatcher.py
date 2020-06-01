@@ -259,7 +259,7 @@ def objectFinder(sentence, elements, textdict, inputdict):
 
         i -= 1
 
-    return prev_obj, x_range, y_range, t_input
+    return prev_obj, x_range, y_range, t_input, direction
 
 
 e1 = elementStruct(gui_elements[0])
@@ -282,7 +282,7 @@ text, dict1, dict2 = textReplacer(text)
 sentence_nlp = nlp(text)
 print(objectSplitter(sentence_nlp))
 try:
-    prev_object, x_range, y_range, t_input = objectFinder(sentence_nlp, e9, dict1, dict2)
+    prev_object, x_range, y_range, t_input, direction = objectFinder(sentence_nlp, e9, dict1, dict2)
     print(prev_object)
 except ValueError as e:
     print(str(e))

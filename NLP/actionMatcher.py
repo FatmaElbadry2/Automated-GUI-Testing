@@ -103,8 +103,8 @@ def actionMapper(action, action_type, center_1, center_2=None, t_input=None, qua
         k.Write(t_input)
 
     elif action_type == Actions.drag:
-        r.hover(center_1[0], center_1[1])
-        mouse.Drag(center_2[0], center_2[1])
+        r.hover(center_2[0], center_2[1])
+        mouse.Drag(center_1[0], center_1[1])
 
     elif action_type == Actions.delete:
         mouse.LeftClick(center_1[0], center_1[1])
