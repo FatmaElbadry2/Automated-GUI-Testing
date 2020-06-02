@@ -5,6 +5,7 @@ import time
 import subprocess
 import win32gui
 import webbrowser
+import wmi
 
 def OpenDir(PATH):
     webbrowser.open(PATH)
@@ -24,10 +25,32 @@ def IsRunning(ProgramName): #program name without extention
 def IsOpen(PATH, APPNAME,APPWINDOW): #APPNAME=APPNAME.exe   APPWINDOW=APPNAME without ext.
     OpenApp(PATH,APPNAME)
     x=IsRunning(APPWINDOW)
+    print(x)
     while(x!=True):
         print("waiting")
         time.sleep(1)
         x = IsRunning(APPWINDOW)
+
+
+def IsRunning2(ProgramName): #program name with extention
+    c = wmi.WMI()
+    for process in c.Win32_Process():
+        if(ProgramName==process.Name):
+            return True
+    return False
+
+
+def IsOpen2(PATH, APPNAME): #APPNAME=APPNAME.exe   
+    OpenApp(PATH,APPNAME)
+    x=IsRunning2(APPNAME)
+    print(x)
+    while(x!=True):
+        print("waiting")
+        time.sleep(1)
+        x = IsRunning2(APPNAME)
+
+
+
 
 def Cut():
     pyautogui.hotkey('ctrl','x')
