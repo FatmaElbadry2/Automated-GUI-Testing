@@ -24,6 +24,11 @@ def execute(sentence, elements):
             x_center1 = target_obj.x_center
             y_center1 = target_obj.y_center
     if pos.source_element is not None:
+        if pos.direction is not None and str(pos.action[-1]) == "scroll" and action_type == Actions.drag:
+            if pos.direction in ["up", "down", "top", "bottom"]:
+                elements = [e for e in elements if e.text == "vertical" and e.type == "scrollbar"]
+            elif pos.direction in ["left", "right", "east", "west"]:
+                elements = [e for e in elements if e.text == "horizontal" and e.type == "scrollbar"]
         source_obj, sx_range, sy_range, t_input, direction, return_type = objectFinder(pos.source_element, elements,
                                                                                        text_dict, input_dict)
         if return_type == ReturnTypes.range:
