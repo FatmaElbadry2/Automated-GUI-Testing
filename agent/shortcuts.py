@@ -78,6 +78,9 @@ def Highlight(x1,y1,x,y):
     print(pyperclip.paste())
 
 
+def OpenDir(PATH):
+    webbrowser.open(PATH)
+    #webbrowser.open("C:/Users/ranai/Desktop/Uni/fall 2020/image processing/lectures")
 # IsOpen("C:\Program Files (x86)\Google\Chrome\Application", "chrome.exe", "Google Chrome (2)")
 
 

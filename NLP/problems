@@ -22,7 +22,6 @@ actions:
 mouse movements: click,drag,scroll, highlight
 keyboard:write, keypress , shortcut
 
-
 click on the file menu. choose the second option.
 carry my range to the next sentence if:
 1- a menu is opened.
@@ -46,6 +45,8 @@ function which seeks the root verb. depending on that verb we will split our sen
 
 to be fixed:
 1- the outside range.
+
+
 
 
 drag:
@@ -79,8 +80,40 @@ if no direction is found then it's a vertical bar by default
 order of preprocessing:
 1- replace text, left and next to.
 2- split conjunctions.
+replace ordinal number by ordinal word
+inject by before any quantity
+one sentence can't have more than 2 quantities
 3- return it to string text.
 4- split conditions (if , then , until, (before, after)---> followed by a verb).
 5- resolve pronouns.
 6- resolve det (that, which).
 7- crop useless parts of the sentence and make the target verb in the root position.
+
+
+to do:
+1- give flexibility in elements and their spelling.
+2- add the colors with their hex values.
+3- a function to process the built in objects.
+4- some pre_processing
+
+
+
+type = drag & action = drag
+if no target object look for direction
+look for quantity
+if found then drag it with this quantity in that direction
+if not found then drag it 10 pixels in that direction
+if no direction is found then return that the destination is undefined
+
+
+type = drag & action = scroll call relative drag
+kda kda fih source object lazem
+look for direction
+filter the bars according to the direction
+if no direction found then scroll down by default or right by default(depending on the direction of the found bar)
+if no quantity is found then scroll by 10 pixels default
+
+type = scroll
+look for direction if not found --> down by default
+look for quantity if not 10 by default
+

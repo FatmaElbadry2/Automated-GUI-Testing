@@ -170,7 +170,7 @@ def prepMatcher(x_min, x_max, y_min, y_max, wx_min, wx_max, wy_min, wy_max, prep
         return [[wx_min, x_min]],  [[wy_min, wy_max]]
     elif prep in ["right", "west"]:
         return [[x_max, wx_max]], [[wy_min, wy_max]]
-    return [[wx_min, wx_max]], [[wy_min, wy_max]]
+    return [[x_min, x_max]], [[y_min, y_max]]
 
 
 class Errors(Enum):  # type of errors

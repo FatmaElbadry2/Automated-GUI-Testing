@@ -33,14 +33,7 @@ from dataclasses import dataclass
 # print(Type)
 # print(error)
 
-text = nlp("i am hungry")
 
-print(text)
-y = np.array(text)
-x = list(text)
-
+x,y=1,2
 print(x)
 print(y)
-print(y[2])
-
-

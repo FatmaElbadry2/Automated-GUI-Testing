@@ -259,7 +259,7 @@ def objectFinder(sentence, elements, textdict, inputdict):
 
         i -= 1
 
-    return prev_obj, x_range, y_range, t_input, direction
+    return prev_obj, x_range, y_range, t_input, direction, return_type
 
 
 e1 = elementStruct(gui_elements[0])
@@ -275,17 +275,17 @@ e9 = [e1, e2, e3, e4, e5, e6, e7, e8]
 # nlp = spacy.load('en_core_web_sm', parse=True, tag=True, entity=True)
 # text = "click on the button on the left of the {cancel} button"
 # text = "click on the button on the top right of the {ok} button inside the dialogbox"
-text = "scroll the bar up 5cm"
+text = "click on the third button from the right"
 
 ordinal_dict = createOrdinalDict()
-text, dict1, dict2 = textReplacer(text)
-sentence_nlp = nlp(text)
-print(objectSplitter(sentence_nlp))
-try:
-    prev_object, x_range, y_range, t_input, direction = objectFinder(sentence_nlp, e9, dict1, dict2)
-    print(prev_object)
-except ValueError as e:
-    print(str(e))
+# text, dict1, dict2 = textReplacer(text)
+# sentence_nlp = nlp(text)
+# print(objectSplitter(sentence_nlp))
+# try:
+#     prev_object, x_range, y_range, t_input, direction, return_type = objectFinder(sentence_nlp, e9, dict1, dict2)
+#     print(prev_object)
+# except ValueError as e:
+#     print(str(e))
 
 
 

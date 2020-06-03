@@ -44,8 +44,8 @@ def splitConj(text):
 # x = expandContractions()i
 
 
-sentence_nlp = nlp("scroll the upper bar down by 5 pixels")
-
+# sentence_nlp = nlp("drag the button to the right by 5 cm")
+sentence_nlp = nlp("scroll the upper bar by 5 cm")
 
 dependency_pattern = '{left}<---{word}[{w_type}]--->{right}\n--------'
 for token in sentence_nlp:

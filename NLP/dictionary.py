@@ -35,7 +35,7 @@ verbs = {
     "type": Actions.write,
     "enter": Actions.write,
     "compose": Actions.write,
-    "go to": Actions.hover,
+    "go": Actions.hover,
     "point": Actions.hover,
     "fix": Actions.hover,
     "pin": Actions.hover,
@@ -45,7 +45,7 @@ verbs = {
     "paste": Actions.other,
     "undo": Actions.other,
     "redo": Actions.other,
-    "scroll": [Actions.drag],
+    "scroll": Actions.drag,
     "drag": Actions.drag,
     "drop": Actions.drag,
     "move": Actions.drag,
@@ -53,6 +53,7 @@ verbs = {
     "remove": Actions.delete,
     "wait": Actions.wait
 }
+
 
 objects =\
     [
