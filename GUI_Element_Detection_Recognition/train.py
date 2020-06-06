@@ -19,7 +19,7 @@ parameters = {
     "epochs": 160,
     "train_path": "data/train.txt",
     "batch": int(config[0]["batch"]),
-    "subdivisions": 4,     # int(config[0]["subdivisions"]),
+    "subdivisions": 1,     # int(config[0]["subdivisions"]),
     "dim": int(config[0]["width"]),
     "momentum": float(config[0]["momentum"]),
     "decay": float(config[0]["decay"]),
@@ -50,7 +50,7 @@ def train():
 
     optimizer = optim.SGD(net.parameters(), lr=parameters["learning_rate"],
                           momentum=parameters["momentum"],
-                          weight_decay=parameters["decay"])
+                          weight_decay=parameters["decay"], nesterov=True)
     learning_rate_scheduler = optim.lr_scheduler.StepLR(optimizer, gamma=0.1, step_size=20)
 
     net = nn.DataParallel(net)
@@ -65,7 +65,7 @@ def train():
         yolo_losses.append(YOLOLayer(parameters["anchors"][layer_loss], parameters["classes"], parameters["dim"]))
 
     dataset = DataLoader(CustomDataset(parameters["train_path"], parameters["dim"]),
-                         batch_size=4, shuffle=True, num_workers=0, pin_memory=True, collate_fn=collate)
+                         batch_size=parameters["subdivisions"], shuffle=True, num_workers=0, pin_memory=True, collate_fn=collate)
 
     logging.info("Training is starting...")
     for epoch in range(parameters["epochs"]):
@@ -79,10 +79,21 @@ def train():
             output = net(images, CUDA=True)
             # logging.info(output)
 
-            loss = 0
+            # loss = 0
+            # for i in range(3):
+            #     layer_loss = yolo_losses[i](output[i], labels)
+            #     loss += layer_loss[1]
+
+            losses_name = ["total_loss", "x", "y", "w", "h", "conf", "cls"]
+            losses = []
+            for _ in range(len(losses_name)):
+                losses.append([])
             for i in range(3):
-                layer_loss = yolo_losses[i](output[i], labels)
-                loss += layer_loss[1]
+                _loss_item = yolo_losses[i](output[i], labels)
+                for j, l in enumerate(_loss_item):
+                    losses[j].append(l)
+            losses = [sum(l) for l in losses]
+            loss = losses[0]
 
             loss.backward()
             optimizer.step()
@@ -98,7 +109,11 @@ def train():
                 )
                 Summary.add_scalar("lr", lr, parameters["global_step"])
                 Summary.add_scalar("example/sec", example_per_second, parameters["global_step"])
-                Summary.add_scalar("loss", _loss, parameters["global_step"])
+                # Summary.add_scalar("loss", _loss, parameters["global_step"])
+
+                for i, name in enumerate(losses_name):
+                    value = _loss if i == 0 else losses[i]
+                    Summary.add_scalar(name, value, parameters["global_step"])
 
             if step > 0 and step % 1000 == 0:
                 save_checkpoint(net.state_dict())

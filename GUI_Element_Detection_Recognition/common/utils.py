@@ -54,6 +54,7 @@ def image_preprocessing(image, input_size):
     image = (resize_image(image, input_size))
     image = image[:, :, ::-1].transpose((2, 0, 1)).copy()
     image = torch.from_numpy(image).float().div(255.0)
+    # image = image.unsqueeze(0)
     # image = image.cuda()
 
     return image
@@ -121,7 +122,7 @@ def unique(classes):
     return unique_classes
 
 
-def bbox_iou(bbox1, bbox2, corners):
+def bbox_iou(bbox1, bbox2, corners=True):
 
     if not corners:
         bb1_x1, bb1_x2 = bbox1[:, 0] - bbox1[:, 2] / 2, bbox1[:, 0] + bbox1[:, 2] / 2
@@ -186,7 +187,7 @@ def true_detections(prediction, classes, obj_thresh, nms_thresh):
 
         for cls in image_classes:
             class_mask = image_predict * (image_predict[:, -1] == cls).float().unsqueeze(1)
-            class_mask_indices = torch.nonzero(class_mask[:, -2]).squeeze()
+            class_mask_indices = torch.nonzero(class_mask[:, -2], as_tuple=False).squeeze()
             image_pred_class = image_predict[class_mask_indices].view(-1, 7)
 
             desc_obj_indices = torch.sort(image_pred_class[:, 4], descending=True)[1]
@@ -195,7 +196,7 @@ def true_detections(prediction, classes, obj_thresh, nms_thresh):
 
             for detection in range(num_class_detections):
                 try:
-                    IoUs = bbox_iou(image_pred_class[detection].unsqueeze(0), image_pred_class[detection + 1:])
+                    IoUs = bbox_iou(image_pred_class[detection].unsqueeze(0), image_pred_class[detection + 1:], True)
                 except ValueError:
                     break
                 except IndexError:
@@ -222,14 +223,6 @@ def true_detections(prediction, classes, obj_thresh, nms_thresh):
         return 0
 
 
-def stack():
-    a = torch.randn([3, 416, 416])
-    b = torch.randn([3, 416, 416])
-    c = torch.stack([a, b], 0)
-    c = torch.cat((a, b), 0)
-    return c.size()
-
-
 def collate(batch):
     elem = batch[0]
     elem_type = type(elem)
@@ -248,7 +241,7 @@ def collate(batch):
     elif elem_type.__module__ == 'numpy' and elem_type.__name__ != 'str_' \
             and elem_type.__name__ != 'string_':
         elem = batch[0]
-        batch = [np.insert(b, 0, values=index, axis=1) for index, b in enumerate(batch)]
+        # batch = [np.insert(b, 0, values=index, axis=1) for index, b in enumerate(batch)]
         if elem_type.__name__ == 'ndarray':
             # array of string classes and object
             return collate([torch.as_tensor(b) for b in batch])
