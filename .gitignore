@@ -4,3 +4,12 @@ assets
 __pycache__
 
 
+*.swp
+*.pyc
+
+coco
+*.pth
+output
+rpa_python.js
+rpa_python.log
+rpa_python.raw
