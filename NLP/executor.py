@@ -42,4 +42,8 @@ def execute(sentence, elements):
                  quantity=pos.quantity, direction=pos.direction)
 
 
-
+text = nlp("click on {cancel}")
+try:
+    execute(text, e9)
+except ValueError as e:
+    print(str(e))
