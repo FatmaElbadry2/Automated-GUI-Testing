@@ -104,7 +104,7 @@ def create_nn_modules(modules):
             masks = module["mask"].split(",")
             masks = [int(mask) for mask in masks]
             anchors = module["anchors"].split(",")
-            anchors = [int(anchor) for anchor in anchors]
+            anchors = [float(anchor) for anchor in anchors]
             anchors = [(anchors[anchor], anchors[anchor + 1]) for anchor in range(0, len(anchors), 2)]
             anchors = [anchors[mask] for mask in masks]
 
@@ -132,7 +132,7 @@ class DarkNet(nn.Module):
         layer_feature_maps = {}
 
         collector = 0
-        detections = []
+        detections = ()
         for index, module in enumerate(modules):
             module_type = module["type"]
 
@@ -179,7 +179,7 @@ class DarkNet(nn.Module):
                 classes = int(module["classes"])
 
                 if self.is_training:
-                    # input_.requires_grad = True
+                    input_.requires_grad = True
                     detections.append(input_)
                 else:
                     input_ = predict_transform(input_, input_dimensions, anchors, classes, CUDA)

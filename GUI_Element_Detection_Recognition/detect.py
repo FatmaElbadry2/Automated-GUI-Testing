@@ -12,11 +12,11 @@ import random
 
 
 dataset = "test"
-batch_size = 2
+batch_size = 1
 res = 416
 conf_thresh = 0.5
 nms_thresh = 0.4
-cfg_file = "cfg/yolov3.cfg"
+cfg_file = "cfg/yolov3-custom.cfg"
 weights_file = "weights/model.pth"
 CUDA = torch.cuda.is_available()
 
