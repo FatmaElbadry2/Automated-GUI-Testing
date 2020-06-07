@@ -11,7 +11,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.ticker import NullLocator
-
+from collections import OrderedDict
 import torch
 import torch.nn as nn
 
@@ -43,13 +43,18 @@ def detect(image_path):
     net.train(is_training)
 
     # Set data parallel
-    net = nn.DataParallel(net)
-    net = net.cuda()
+    # net = nn.DataParallel(net)
+    # net = net.cuda()
 
     # Restore pretrain model
     if model:
         state_dict = torch.load(model)
-        net.load_state_dict(state_dict)
+
+        new_state_dict = OrderedDict()
+        for k, v in state_dict.items():
+            name = k[7:]
+            new_state_dict[name] = v
+        net.load_state_dict(new_state_dict)
     else:
         raise Exception("missing pretrain_snapshot!!!")
 
@@ -72,7 +77,7 @@ def detect(image_path):
     image = image.astype(np.float32)
     original_image.append(image)
     images = np.asarray(original_image)
-    images = torch.from_numpy(images).cuda()
+    images = torch.from_numpy(images)
     # inference
     with torch.no_grad():
         outputs = net(images)
@@ -122,14 +127,14 @@ def detect(image_path):
         plt.axis('off')
         plt.gca().xaxis.set_major_locator(NullLocator())
         plt.gca().yaxis.set_major_locator(NullLocator())
-        plt.savefig('output/{}.jpg'.format(image_path[7:-5]), bbox_inches='tight', pad_inches=0.0)
+        plt.savefig('output/{}.jpg'.format(image_path[7:-4]), bbox_inches='tight', pad_inches=0.0)
         plt.close()
 
         return actual_detections
 
 
 def main():
-    detections = detect("images\Apprentice_Video(1).jpg")
+    detections = detect("images\Apprentice_Video(10).jpg")
     print(detections)
 
 
