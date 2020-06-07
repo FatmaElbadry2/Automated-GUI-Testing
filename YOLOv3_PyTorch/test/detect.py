@@ -48,7 +48,11 @@ def detect(image_path):
 
     # Restore pretrain model
     if model:
-        state_dict = torch.load(model)
+        if torch.cuda.is_available():
+            map_location = lambda storage, loc: storage.cuda()
+        else:
+            map_location = 'cpu'
+        state_dict = torch.load(model,map_location=map_location)
 
         new_state_dict = OrderedDict()
         for k, v in state_dict.items():
