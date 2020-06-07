@@ -89,7 +89,7 @@ def darknet21(pretrained, **kwargs):
     model = DarkNet([1, 1, 2, 2, 1])
     if pretrained:
         if isinstance(pretrained, str):
-            model.load_state_dict(torch.load(pretrained))
+            model.load_state_dict(torch.load(pretrained, map_location=torch.device('cpu')))
         else:
             raise Exception("darknet request a pretrained path. got [{}]".format(pretrained))
     return model
