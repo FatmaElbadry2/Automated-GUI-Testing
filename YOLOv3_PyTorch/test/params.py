@@ -1,3 +1,4 @@
+from imports import MY_DIRNAME
 TRAINING_PARAMS = \
 {
     "model_params": {
@@ -13,9 +14,9 @@ TRAINING_PARAMS = \
     "batch_size": 1,
     "confidence_threshold": 0.5,
     "images_path": "./images/",
-    "classes_names_path": "../data/custom.names",
+    "classes_names_path": str(MY_DIRNAME) + "\\YOLOv3_PyTorch\\data\\custom.names",
     "img_h": 416,
     "img_w": 416,
     "parallels": [0],
-    "pretrain_snapshot": "../weights/model.pth",
+    "pretrain_snapshot":  str(MY_DIRNAME) + "\\YOLOv3_PyTorch\\weights\\model.pth",
 }

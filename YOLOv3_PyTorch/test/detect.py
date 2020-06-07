@@ -5,7 +5,7 @@ import numpy as np
 import importlib
 import cv2
 import random
-
+from imports import MY_DIRNAME
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -16,8 +16,9 @@ import torch
 import torch.nn as nn
 
 
-MY_DIRNAME = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(MY_DIRNAME, '..'))
+DIRNAME = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(DIRNAME, '..'))
+
 from nets.model_main import ModelMain
 from nets.yolo_loss import YOLOLoss
 from common.utils import non_max_suppression
@@ -36,7 +37,7 @@ class_names = config["classes_names_path"]
 conf_thres = config["confidence_threshold"]
 
 
-def detect(image_path):
+def detect(image_path,image_name):
     is_training = False
     # Load and initialize network
     net = ModelMain(config, is_training=is_training)
@@ -131,16 +132,16 @@ def detect(image_path):
         plt.axis('off')
         plt.gca().xaxis.set_major_locator(NullLocator())
         plt.gca().yaxis.set_major_locator(NullLocator())
-        plt.savefig('output/{}.jpg'.format(image_path[7:-4]), bbox_inches='tight', pad_inches=0.0)
+        plt.savefig('output/'+image_name.format(image_path[7:-4]), bbox_inches='tight', pad_inches=0.0)
         plt.close()
 
         return actual_detections
 
 
-def main():
-    detections = detect("images\Apprentice_Video(10).jpg")
-    print(detections)
+print("starting...")
+detections = detect(str(MY_DIRNAME) + "\\YOLOv3_PyTorch\\test\\images\\Apprentice_Video(11).jpg",'Apprentice_Video(11).jpg')
+print(detections)
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

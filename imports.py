@@ -9,8 +9,7 @@ import tensorflow as tf
 from tensorflow import keras
 from enum import Enum
 import time
-import pyautogui
-import pyscreenshot as ImageGrab
+
 import numpy as np
 import random
 from collections import namedtuple, deque
@@ -19,3 +18,6 @@ import torch
 import torch.nn.functional as F
 import torch.optim as optim
 import torch.nn as nn
+import os
+MY_DIRNAME = os.path.dirname(os.path.abspath(__file__))
+
