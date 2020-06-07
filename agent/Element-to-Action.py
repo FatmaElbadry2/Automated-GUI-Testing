@@ -1,5 +1,5 @@
 # progressbar i can't find actions to a progress bar
-from enum import Enum
+from agent.imports import *
 class actions(Enum):
 
     Rightclick=1

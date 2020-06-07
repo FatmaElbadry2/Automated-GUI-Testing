@@ -1,5 +1,4 @@
-import time
-import pyautogui
+from agent.imports import *
 
 def Write(Word):
     pyautogui.write(Word, interval=0.25)
