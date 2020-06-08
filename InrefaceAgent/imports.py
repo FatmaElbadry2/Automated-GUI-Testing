@@ -7,3 +7,5 @@ import subprocess
 import win32gui
 import webbrowser
 import wmi
+import ctypes
+from ctypes import wintypes

@@ -24,22 +24,6 @@ def actionSpaceMapper(actionType):  # it should return the ranges of Ids for eac
         return[1402, 1602]
 
 
-def readState(image, file):
-    elements = []
-    image = cv2.imread(image)
-    f = open(file, "r")
-    if f.mode == 'r':
-        lines = f.readlines()
-        for line in lines:
-            element = re.split(" |\n",line)
-            elements.append(element[0:len(element)-1])
-    else:
-        print("this file is not open for reading")
-    return [image, elements]
-
-
-#print(readState(image,"assets\AutoQ3D_1.txt"))
-
 
 # def checkState(picture):
 #     beg = False

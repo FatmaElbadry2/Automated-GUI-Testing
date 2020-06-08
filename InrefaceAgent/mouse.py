@@ -1,4 +1,4 @@
-from agent.imports import *
+from InrefaceAgent.imports import *
 
 
 def LeftClick(x,y):

@@ -138,9 +138,9 @@ def detect(image_path,image_name):
         return actual_detections
 
 
-print("starting...")
-detections = detect(str(MY_DIRNAME) + "\\YOLOv3_PyTorch\\test\\images\\Apprentice_Video(11).jpg",'Apprentice_Video(11).jpg')
-print(detections)
+# print("starting...")
+# detections = detect(str(MY_DIRNAME) + "\\YOLOv3_PyTorch\\test\\images\\Apprentice_Video(11).jpg",'Apprentice_Video(11).jpg')
+# print(detections)
 
 
 # if __name__ == "__main__":

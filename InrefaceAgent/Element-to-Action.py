@@ -1,5 +1,5 @@
 # progressbar i can't find actions to a progress bar
-from agent.imports import *
+from InrefaceAgent.imports import *
 class actions(Enum):
 
     Rightclick=1
