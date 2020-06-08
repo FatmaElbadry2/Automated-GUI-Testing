@@ -6,7 +6,7 @@ __pycache__
 
 *.swp
 *.pyc
-
+RL/images
 coco
 *.pth
 output
