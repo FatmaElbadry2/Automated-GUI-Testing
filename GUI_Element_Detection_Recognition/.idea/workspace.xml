@@ -2,42 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c9407ba-0359-4252-9d24-59acb48850ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/detections/det_Audacious (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_Audacious (2).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_Audacious (3).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_Audacious (4).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_Elmer (94).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_Elmer (95).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_Elmer (96).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_Elmer (97).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_FreeCAD (20).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_FreeCAD (21).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_FreeCAD (22).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detections/det_FreeCAD (23).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Audacious (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Audacious (2).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Audacious (3).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Audacious (4).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Elmer (94).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Elmer (95).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Elmer (96).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Elmer (97).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FreeCAD (20).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FreeCAD (21).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FreeCAD (22).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FreeCAD (23).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weights/model.pth" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cfg/yolov3-custom.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/cfg/yolov3-custom.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/darknet.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/darknet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/yolo_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/yolo_layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Altium (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Altium (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Altium (3).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Altium (4).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +35,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../YOLOv3_PyTorch-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -307,6 +272,8 @@
       <workItem from="1591120275600" duration="8613000" />
       <workItem from="1591174837536" duration="3506000" />
       <workItem from="1591203214330" duration="12000" />
+      <workItem from="1591626910712" duration="637000" />
+      <workItem from="1591627698186" duration="2398000" />
     </task>
     <servers />
   </component>
