@@ -71,8 +71,8 @@ def detect(image_path,image_name):
     original_image = []
     images_origin = []
 
-    image = cv2.imread(image_path, cv2.IMREAD_COLOR)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    # image = cv2.imread(image_path, cv2.IMREAD_COLOR)
+    image = cv2.cvtColor(image_path, cv2.COLOR_BGR2RGB)
     images_origin.append(image)  # keep for save result
     image = cv2.resize(image, (yolo_w, yolo_h),
                        interpolation=cv2.INTER_LINEAR)

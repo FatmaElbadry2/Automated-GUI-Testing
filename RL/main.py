@@ -1,10 +1,8 @@
 #from imports import MY_DIRNAME
 import time
+from yoloInterface import *
 from YOLOv3_PyTorch.test import *
 from detect import *
-import wmi
-import ctypes
-from ctypes import wintypes
 
 from InrefaceAgent import keyboard as k, mouse, shortcuts as sh
 print("starting")
@@ -33,26 +31,14 @@ print("starting")
 #     print(pid.value)
 # print("window is now in the foreground")
 
-
-def save_detect():
-    image = sh.ScreenShot()
-    print("screenshot taken")
-    image.save(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png")
-    elements = detect(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png", "image_" + str(i) + ".png")
-    print(elements)
-    return elements
-
 sh.open_app_foreground("C:\\Program Files\\Apprentice Video", "apprenticevideo.exe")
 time.sleep(2)
 sh.max()
-time.sleep(2)
-elements = save_detect()
-for i in range(10):
-    # do some action
-    elements = save_detect()
+time.sleep(1)
 
+elements, image = save_detect()
+print(image.shape)
 
+time.sleep(1)
 # for i in range(len(elements)):
-#     mouse.LeftClick(round(elements[i][1]), round(elements[i][2]))
-#     time.sleep(1)
 
