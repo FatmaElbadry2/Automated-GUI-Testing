@@ -1,10 +1,11 @@
 from imports import *
-
+from InrefaceAgent import Element_to_Action as eta
 stateAction = {}
 taken = np.zeros(2000)
 tree = []
 
-#click: button , icon button, check box,radio button,combobox,menu, 1-800
+
+# click: button , icon button, check box,radio button,combobox,menu, 1-800
 # double click : link  801-900
 # slide : scroll bar, slider  : 901-1000
 # type : textbox , alphabetic :1001-1200 , alphanumeric : 1201-1400, numbers:1401-1600, longcom:1601-1800,empty:1801-2000
@@ -15,10 +16,11 @@ def elementtoAction(element):
     pass
 
 
-def actionSpaceMapper(actionType):  # it should return the ranges of Ids for each element in the action space
-    if actionType == "0000":
-        return [1, 200]
-    elif actionType == 2:
+def actionSpaceMapper(action):  # it should return the ranges of Ids for each element in the action space
+    action_type = eta.actions
+    if action == action_type.LeftClick:
+        return [1, 800]
+    elif action == action_type:
         return [201, 1401]
     else:
         return[1402, 1602]
@@ -58,19 +60,23 @@ def addElement(element):  # element is a vector contains element information
     return Id
 
 
-def buildTree(image, tree, file):
-    picture, elements = readState(image, file)
-    if stateAction.get(picture,-1) == -1:
-        stateAction[picture] = []
-        for element in elements:
-            index = np.where(tree[:, 0:-1] == element)[0]
-            if len(index) == 0:  # assuming that the last place contains the element's ID
-                ID = addElement(element)
-                element.append(ID)
-                tree.append(element)
-                stateAction[picture].append(element[-1])  # it appends the element ID
-            else:
-                stateAction[picture].append(tree[index[0]])
+def state_exist(image):
+    if stateAction.get(image, -1) == -1:
+        stateAction[image] = []
+        return False
+    return True
+
+
+def buildTree(elements):
+    for element in elements:
+        index = np.where(tree[:, 0:-1] == element)[0]
+        if len(index) == 0:  # assuming that the last place contains the element's ID
+            ID = addElement(element)
+            element.append(ID)
+            tree.append(element)
+            stateAction[picture].append(element[-1])  # it appends the element ID
+        else:
+            stateAction[picture].append(tree[index[0]])
 
     return tree, stateAction[picture]
 

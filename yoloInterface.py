@@ -57,6 +57,7 @@ elementsMatcher = [
 
 @dataclass
 class Element:
+    ID: int = None
     type: str = ""
     x_center: int = -1
     y_center: int = -1
@@ -87,29 +88,29 @@ def elementStruct(element):
     e.y_center = element[2]
     e.width = element[3]
     e.height = element[4]
-    e.text = element[5]
-    e.color = element[6]
-    e.hex = element[7]
+    #e.text = element[5]
+    #e.color = element[6]
+    #e.hex = element[7]
     return e
 
 
-def buildElements(elements):
-    # get elements from YOLO
+def buildElements(image):
+    i = 0
+    elements = d.detect(image, "image_" + str(i) + ".png")
     all_elements = []
     for element in elements:
         getElementText(element)
         getElementColor(element)
         eStruct = elementStruct(element)
         all_elements.append(eStruct)
+        print(all_elements)
     return all_elements
 
 
-def save_detect():
+def save_image():
     i = 0
     image = sh.ScreenShot()
     print("screen-shot taken")
     image.save(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png")
     image = cv2.imread(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png", cv2.IMREAD_COLOR)
-    elements = d.detect(image, "image_" + str(i) + ".png")
-    print(elements)
-    return elements, image
+    return image

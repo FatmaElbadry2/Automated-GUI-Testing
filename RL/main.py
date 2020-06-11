@@ -36,7 +36,9 @@ time.sleep(2)
 sh.max()
 time.sleep(1)
 
-elements, image = save_detect()
+image = save_image()
+
+
 print(image.shape)
 
 time.sleep(1)
