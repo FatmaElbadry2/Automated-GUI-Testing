@@ -1,4 +1,4 @@
-# progressbar i can't find actions to a progress bar
+
 from InrefaceAgent.imports import *
 
 
@@ -19,29 +19,23 @@ class Actions(Enum):
 
 
 click = ["button", "radio_button", "textbox", "checkbox", "combobox", "spinbox", "menu", "submenu", "tab", "link",
-             "switch", "icon_button",  "close", "save", "load", "redo", "undo", "export", "new", "info", "settings",
-             "max_min", "dropdown", "button_combobox"]
+         "switch", "icon_button",  "close", "save", "load", "redo", "undo", "export", "new", "info", "settings",
+         "max_min", "dropdown", "button_combobox"]
 
 write = ["textbox", "textarea", "search", "text_combobox"]
 drag_horizontal = ["horizontal_scrollbar"]
 drag_vertical = ["vertical_scrollbar"]
-drag = ["dialogbox"]
 
 
 def element_action_mapper(type):
     if type in click:
-        return Actions.double_left_click, Actions.left_click, Actions.right_click
+        return Actions.double_left_click, Actions.left_click,
     elif type in write:
         return Actions.write_letters, Actions.write_numbers, Actions.write_alphanumeric, Actions.write_short,\
-               Actions.write_short, Actions.delete
+               Actions.write_long, Actions.delete
     elif type in drag_horizontal:
         return Actions.drag_left, Actions.drag_right
     elif type in drag_vertical:
         return Actions.drag_up, Actions.drag_down
-    elif type in drag:
-        return Actions.drag_left, Actions.drag_right, Actions.drag_up, Actions.drag_down
+
     return None
-
-
-
-
