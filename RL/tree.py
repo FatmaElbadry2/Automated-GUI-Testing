@@ -1,105 +1,71 @@
 from imports import *
+from InrefaceAgent import Element_to_Action as eta
 
-stateAction = {}
-taken = np.zeros(2000)
+
+taken = np.zeros(2901)
 tree = []
-
-#click: button , icon button, check box,radio button,combobox,menu, 1-800
-# double click : link  801-900
-# slide : scroll bar, slider  : 901-1000
-# type : textbox , alphabetic :1001-1200 , alphanumeric : 1201-1400, numbers:1401-1600, longcom:1601-1800,empty:1801-2000
-# add scroll up and down
+states = {}
 
 
-def elementtoAction(element):
-    pass
+def state_exists(elements, image):
+    for state in states:
+        if elements == states[state]:
+            stored_image = cv2.imread(state)
+            if image.tolist() == stored_image.tolist():
+                return True
+    return False
 
 
-def actionSpaceMapper(actionType):  # it should return the ranges of Ids for each element in the action space
-    if actionType == "0000":
-        return [1, 200]
-    elif actionType == 2:
-        return [201, 1401]
+def actionSpaceMapper(action):  # it should return the ranges of Ids for each element in the action space
+    action_type = eta.Actions
+    if action == action_type.left_click:
+        return [1, 800]
+    elif action == action_type.double_left_click:
+        return [801, 1600]
+    elif action == action_type.write_letters:
+        return [1601, 1800]
+    elif action == action_type.write_numbers:
+        return [1801, 2000]
+    elif action == action_type.write_short:
+        return [2001, 2200]
+    elif action == action_type.write_long:
+        return [2201, 2400]
+    elif action == action_type.write_alphanumeric:
+        return [2401, 2600]
+    elif action == action_type.delete:
+        return [2601, 2800]
+    elif action == action_type.drag_up:
+        return [2801, 2825]
+    elif action == action_type.drag_down:
+        return [2826, 2850]
+    elif action == action_type.drag_right:
+        return [2851, 2875]
+    elif action == action_type.drag_left:
+        return [2876, 2900]
     else:
-        return[1402, 1602]
+        return [0, 0]
 
 
-
-# def checkState(picture):
-#     beg = False
-#     if len(states) > 0 and picture in states:  # the state already exists
-#         return True, beg
-#     if len(states) == 0:
-#         beg = True
-#     states.append(picture)
-#     return False, beg
-
-# the state is stored in the sheet as pixels, all elements, text on element, position parent.
-# the parent is the action that lead to the appearance of a certain element.
-# an action is composed of an action ID, element type, type of action
-# first state has a parent of ID = 0
-# givens : action space, picture with all element information
+def addElement(element, Id):  # element is a vector contains element information
+    e_type = eta.element_action_mapper(element.type)
+    if e_type is not None:
+        for i in range(len(e_type)):
+            start, end = actionSpaceMapper(e_type)
+            while start <= end and taken[start] == 1:
+                start += 1
+            taken[start] = Id  # the number of slots an single element can occupy should be added
+        return True
+    else:
+        return False
 
 
-actionSpace = []
-
-
-def numActionsMapper(element):  # it should return the number of action each element can take
-    return 0
-
-
-def addElement(element):  # element is a vector contains element information
-    start, end = actionSpaceMapper(element[0])
-    numactions = numActionsMapper(element[0])
-    while start <= end and taken[start] == 1:
-        start += 1
-    Id = actionSpace[start][0]
-    taken[start:start+numactions] = 1  # the number of slots an single element can occupy should be added
-    return Id
-
-
-def buildTree(image, tree, file):
-    picture, elements = readState(image, file)
-    if stateAction.get(picture,-1) == -1:
-        stateAction[picture] = []
-        for element in elements:
-            index = np.where(tree[:, 0:-1] == element)[0]
-            if len(index) == 0:  # assuming that the last place contains the element's ID
-                ID = addElement(element)
-                element.append(ID)
+def buildTree(elements):
+    for element in elements:
+        index = np.where(np.array(tree) == element)[0]
+        if len(index) == 0:
+            if addElement(element, len(tree)):
                 tree.append(element)
-                stateAction[picture].append(element[-1])  # it appends the element ID
-            else:
-                stateAction[picture].append(tree[index[0]])
-
-    return tree, stateAction[picture]
-
-
-
-# def buildTree(picture,tree,elements,parentId):
-#     if tree.get(parentId,-1) == -1:
-#         tree[parentId] = []
-#     exist, beg = checkState(picture)
-#     availableElements = []
-#     if exist:
-#         return
-#     if beg:  # this is the first state
-#         for element in elements:
-#             Id = addElement(element)
-#             element.append(0)
-#             element.append(Id)
-#             availableElements.append(Id)
-#             tree.append(element)
-#
-#     else:  # compare available elements
-#         for element in elements:
-#             element.append(parentId)
-#             if element not in tree[:, 0:-1]:
-#                 Id = addElement(element)
-#                 element[-1] = Id
-#                 tree.append(element)
-#             availableElements.append(element[-1])
-#     return availableElements, tree
-
-
-
+                print(element)
+        else:
+            print("element already exists")
+    return tree

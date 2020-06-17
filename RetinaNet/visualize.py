@@ -37,16 +37,15 @@ def main(args=None):
 
 	'''if parser.dataset == 'coco':
 		dataset_val = CocoDataset(parser.coco_path, set_name='train2017', transform=transforms.Compose([Normalizer(), Resizer()]))'''
-	if parser.dataset == 'csv':
-		dataset_val = CSVDataset(train_file='val_annots_1.csv', class_list=parser.csv_classes, transform=transforms.Compose([Normalizer(), Resizer()]))
-	else:
-		raise ValueError('Dataset type not understood (must be csv or coco), exiting.')
+	# if parser.dataset == 'csv':
+	dataset_val = CSVDataset(train_file='val_annots_1.csv', class_list=parser.csv_classes, transform=transforms.Compose([Normalizer(), Resizer()]))
+	# else:
+	# raise ValueError('Dataset type not understood (must be csv or coco), exiting.')
 
 	sampler_val = AspectRatioBasedSampler(dataset_val, batch_size=1, drop_last=False)
 	dataloader_val = DataLoader(dataset_val, num_workers=1, collate_fn=collater, batch_sampler=sampler_val)
 
 	retinanet = torch.load(parser.model)
-
 	use_gpu = True
 
 	if use_gpu:
@@ -101,6 +100,7 @@ def main(args=None):
 
 			cv2.imshow('img', img)
 			cv2.waitKey(0)
+			return x1, y1, x2, y2
 
 
 
