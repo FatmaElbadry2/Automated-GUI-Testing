@@ -12,8 +12,8 @@ class Agent:
         self.epsilon = 1
         self.epsilon_decay = 0.995
         self.epsilon_min = 0.01
-        self.q_network = self._build_network()
-        self.target_network = self._build_network()
+        self.q_network = self._build_network(state_size)
+        self.target_network = self._build_network(state_size)
         self.align_target_model()
 
     def store(self, state, action, reward, next_state, terminated):

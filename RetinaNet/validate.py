@@ -14,7 +14,9 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 from torchvision import datasets, models, transforms
 
-from retinanet.dataloader import CSVDataset, collater, Resizer, AspectRatioBasedSampler, Augmenter, \
+from imports import MY_DIRNAME
+
+from retinanet.dataloader import ImageLoader, CSVDataset, collater, Resizer, AspectRatioBasedSampler, Augmenter, \
 	UnNormalizer, Normalizer
 
 
@@ -22,30 +24,18 @@ assert torch.__version__.split('.')[0] == '1'
 
 print('CUDA available: {}'.format(torch.cuda.is_available()))
 
+def detect(img_path, i):
 
-def main(args=None):
-	parser = argparse.ArgumentParser(description='Simple training script for training a RetinaNet network.')
+	elements=[]
 
-	parser.add_argument('--dataset', help='Dataset type, must be one of csv or coco.')
-	parser.add_argument('--coco_path', help='Path to COCO directory')
-	parser.add_argument('--csv_classes', help='Path to file containing class list (see readme)')
-	parser.add_argument('--csv_val', help='Path to file containing validation annotations (optional, see readme)')
-
-	parser.add_argument('--model', help='Path to model (.pt) file.')
-
-	parser = parser.parse_args(args)
-
-	'''if parser.dataset == 'coco':
-		dataset_val = CocoDataset(parser.coco_path, set_name='train2017', transform=transforms.Compose([Normalizer(), Resizer()]))'''
-	# if parser.dataset == 'csv':
-	dataset_val = CSVDataset(train_file='val_annots_1.csv', class_list=parser.csv_classes, transform=transforms.Compose([Normalizer(), Resizer()]))
-	# else:
-	# raise ValueError('Dataset type not understood (must be csv or coco), exiting.')
+	dataset_val = ImageLoader(img_path, transform=transforms.Compose([Normalizer(), Resizer()]))
 
 	sampler_val = AspectRatioBasedSampler(dataset_val, batch_size=1, drop_last=False)
 	dataloader_val = DataLoader(dataset_val, num_workers=1, collate_fn=collater, batch_sampler=sampler_val)
 
-	retinanet = torch.load(parser.model)
+	model_path = MY_DIRNAME + "\\RetinaNet\\model_final.pt"
+
+	retinanet = torch.load(model_path)
 	use_gpu = True
 
 	if use_gpu:
@@ -77,6 +67,7 @@ def main(args=None):
 				scores, classification, transformed_anchors = retinanet(data['img'].float())
 			print('Elapsed time: {}'.format(time.time()-st))
 			idxs = np.where(scores.cpu()>0.5)
+
 			img = np.array(255 * unnormalize(data['img'][0, :, :, :])).copy()
 
 			img[img<0] = 0
@@ -85,6 +76,8 @@ def main(args=None):
 			img = np.transpose(img, (1, 2, 0))
 
 			img = cv2.cvtColor(img.astype(np.uint8), cv2.COLOR_BGR2RGB)
+
+			print("Image size after training: ", img.shape)
 
 			for j in range(idxs[0].shape[0]):
 				bbox = transformed_anchors[idxs[0][j], :]
@@ -95,16 +88,21 @@ def main(args=None):
 				label_name = dataset_val.labels[int(classification[idxs[0][j]])]
 				draw_caption(img, (x1, y1, x2, y2), label_name)
 
-				element = [label_name, x1, x2, y1, y2]
+				elements.append([label_name, x1, x2, y1, y2])
+				if label_name=='button':
+					cv2.rectangle(img, (x1, y1), (x2, y2), color=(0, 0, 255), thickness=2)
+				else:
+					cv2.rectangle(img, (x1, y1), (x2, y2), color=(0, 255, 0), thickness=2)
+				cv2.imwrite(MY_DIRNAME + "\\RL\\output\\image_" + str(i) + ".png", img)
+				#print(label_name)
 
-				cv2.rectangle(img, (x1, y1), (x2, y2), color=(0, 0, 255), thickness=2)
-				print(label_name)
+			#cv2.imshow('img', img)
+			#cv2.waitKey(0)
+			#return x1, y1, x2, y2
 
-			cv2.imshow('img', img)
-			cv2.waitKey(0)
-			return x1, y1, x2, y2
+	return elements, img.shape
 
-
-
+'''
 if __name__ == '__main__':
- main()
+	elements = detect("Elmer6.jpg",1)
+	print(elements)'''

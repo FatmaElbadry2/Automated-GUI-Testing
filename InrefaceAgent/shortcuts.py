@@ -7,7 +7,7 @@ def OpenDir(PATH):
 
 def open_app_foreground(path, name):
     c = wmi.WMI()
-    process_watcher = c.Win32_Process.watch_for("operation")
+    process_watcher = c.Win32_Process.watch_for()
     OpenApp(path, name)
     caption = ""
     executable = ""

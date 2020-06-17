@@ -469,3 +469,168 @@ class AspectRatioBasedSampler(Sampler):
 
         # divide into groups, one group = one batch
         return [[order[x % len(order)] for x in range(i, i + self.batch_size)] for i in range(0, len(order), self.batch_size)]
+
+
+#-----------------------------------------------new CSV----------------------------------------------------
+
+class ImageLoader(Dataset):
+    """CSV dataset."""
+
+    def __init__(self, img_path, transform=None):
+
+        self.transform = transform
+
+        # parse the provided class file
+        self.classes = self.load_classes()
+
+        self.labels = {}
+        for key, value in self.classes.items():
+            self.labels[value] = key
+
+        # csv with img_path, x1, y1, x2, y2, class_name
+        self.image_data = {img_path: []}
+
+        self.image_names = list(self.image_data.keys())
+
+    def _parse(self, value, function, fmt):
+        """
+        Parse a string into a value, and format a nice ValueError if it fails.
+        Returns `function(value)`.
+        Any `ValueError` raised is catched and a new `ValueError` is raised
+        with message `fmt.format(e)`, where `e` is the caught `ValueError`.
+        """
+        try:
+            return function(value)
+        except ValueError as e:
+            raise ValueError(fmt.format(e))
+
+    def _open_for_csv(self, path):
+        """
+        Open a file with flags suitable for csv.reader.
+        This is different for python2 it means with mode 'rb',
+        for python3 this means 'r' with "universal newlines".
+        """
+        if sys.version_info[0] < 3:
+            return open(path, 'rb')
+        else:
+            return open(path, 'r', newline='')
+
+    def load_classes(self):
+        result = {
+            'button':0,
+            'label': 1,
+            'radio_button': 2,
+            'textbox': 3,
+            'checkbox': 4,
+            'combobox': 5,
+            'spinbox': 6,
+            'menu': 7,
+            'submenu': 8,
+            'scrollbar': 9,
+            'progressbar': 10,
+            'dial': 11,
+            'tab': 12,
+            'tab_bar': 13,
+            'table': 14,
+            'slider': 15,
+            'calendar': 16,
+            'link': 17,
+            'switch': 18,
+            'icon_button': 19,
+            'dialogbox': 20,
+            'textarea': 21,
+            'close': 22,
+            'save': 23,
+            'load': 24,
+            'redo': 25,
+            'undo': 26,
+            'export': 27,
+            'new': 28,
+            'info': 29,
+            'search': 30,
+            'settings': 31,
+            'max_min': 32,
+            'dropdown':33,
+            'text_combobox':34,
+            'button_combobox':35,
+        }
+
+        return result
+
+    def __len__(self):
+        return len(self.image_names)
+
+    def __getitem__(self, idx):
+
+        img = self.load_image(idx)
+
+        annot = self.load_annotations(idx)
+        sample = {'img': img, 'annot': annot}
+        if self.transform:
+            sample = self.transform(sample)
+
+        return sample
+
+    def load_image(self, image_index):
+        img = skimage.io.imread(self.image_names[image_index])
+
+        print("Image size before training: ", img.shape)
+
+        if (img.shape[2] > 3):
+            img = img[:, :, :3]
+            # print("innnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn: ",img.shape)
+
+        '''print('****************************************')
+        print(self.image_names[image_index])
+        print(img.shape)'''
+
+        if len(img.shape) == 2:
+            img = skimage.color.gray2rgb(img)
+
+        return img.astype(np.float32) / 255.0
+
+    def load_annotations(self, image_index):
+        # get ground truth annotations
+        annotation_list = self.image_data[self.image_names[image_index]]
+        annotations = np.zeros((0, 5))
+
+        # some images appear to miss annotations (like image with id 257034)
+        if len(annotation_list) == 0:
+            return annotations
+
+        # parse annotations
+        for idx, a in enumerate(annotation_list):
+            # some annotations have basically no width / height, skip them
+            x1 = a['x1']
+            x2 = a['x2']
+            y1 = a['y1']
+            y2 = a['y2']
+
+            if (x2 - x1) < 1 or (y2 - y1) < 1:
+                continue
+
+            annotation = np.zeros((1, 5))
+
+            annotation[0, 0] = x1
+            annotation[0, 1] = y1
+            annotation[0, 2] = x2
+            annotation[0, 3] = y2
+
+            annotation[0, 4] = self.name_to_label(a['class'])
+            annotations = np.append(annotations, annotation, axis=0)
+
+        return annotations
+
+
+    def name_to_label(self, name):
+        return self.classes[name]
+
+    def label_to_name(self, label):
+        return self.labels[label]
+
+    def num_classes(self):
+        return max(self.classes.values()) + 1
+
+    def image_aspect_ratio(self, image_index):
+        image = Image.open(self.image_names[image_index])
+        return float(image.width) / float(image.height)
