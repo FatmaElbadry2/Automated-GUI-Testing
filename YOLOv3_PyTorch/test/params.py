@@ -1,4 +1,4 @@
-from imports import MY_DIRNAME
+from global_imports import MY_DIRNAME
 TRAINING_PARAMS = \
 {
     "model_params": {

@@ -1,50 +1,73 @@
-from imports import *
+from global_imports import *
 from agent import *
 from actionHandler import *
+from Utils import *
 
-actionSpace = ActionSpace()
-optimizer = tf.keras.Adam(learning_rate = 0.01)
-agent = Agent(actionSpace, optimizer)
-# state= menYOLO
-state = None
-batch_size = 32
-num_of_episodes = 100
-timesteps_per_episode = 1000
-agent.q_network.summary()
-for e in range(0, num_of_episodes):
-    state = np.reshape(state, [1, 1])
+if __name__ == "__main__":
 
-    # Initialize variables
-    reward = 0
-    terminated = False
+    #actionSpace = ActionSpace()
+    action_size = 2901
+    state_size = 250
+    optimizer = tf.keras.optimizers.Adam(learning_rate = 0.01)
+    agent = Agent(state_size, action_size, optimizer)
 
-    bar = progressbar.ProgressBar(maxval=timesteps_per_episode / 10,
-                                  widgets=[progressbar.Bar('=', '[', ']'), ' ', progressbar.Percentage()])
-    bar.start()
+    OpenApp("C:\\Program Files\\Elmer 8.4-Release\\bin", "ElmerGUI.exe")
+    state, path = GetState(0)
 
-    for timestep in range(timesteps_per_episode):
-        # Run Action
-        action = agent.act(state)
+    batch_size = 32
+    num_of_episodes = 100
+    timesteps_per_episode = 1000
+    agent.q_network.summary()
 
-        # Take action
-        # next_state, reward, terminated, info = enviroment.step(action)
-        next_state = np.reshape(next_state, [1, 1])
-        agent.store(state, action, reward, next_state, terminated)
-        state = next_state
+    for e in range(0, num_of_episodes):
+        state = np.reshape(state, [1, state_size])
 
-        if terminated:
-            agent.align_target_model()
-            break
+        # Initialize variables
+        reward = 0
+        terminated = False
 
-        if len(agent.history) > batch_size:
-            agent.retrain(batch_size)
+        bar = progressbar.ProgressBar(maxval=timesteps_per_episode / 10,
+                                      widgets=[progressbar.Bar('=', '[', ']'), ' ', progressbar.Percentage()])
+        bar.start()
 
-        if timestep % 10 == 0:
-            bar.update(timestep / 10 + 1)
+        for timestep in range(timesteps_per_episode):
+            # Run Action
+            action = agent.act(state)
+            action = action[0]
+            action = int(action)
+            idx_element = action_space[action]
+            print(idx_element)
+            # Take action
+            action_to_do = ActionDecoder(action)
+            print("---------------------" + str(action) + "----------------------")
+            if action != 0 and int(idx_element) != -1 :
+                x, y = ElementMapper(idx_element)
+                ActionExecuter(action_to_do, x, y)
+            # next_state, reward, terminated, info = enviroment.step(action)
+                next_state, path = GetState(e+1)
+                new_actions = GetNewActions(state, next_state)
+            else:
+                next_state=state
+                new_actions = 0
+            SetReward(state, action, path, new_actions)
 
-    bar.finish()
-    if (e + 1) % 10 == 0:
-        print("**********************************")
-        print("Episode: {}".format(e + 1))
+            next_state = np.reshape(next_state, [1, state_size])
+            agent.store(state, action, reward, next_state, terminated)
+            state = next_state
 
-        print("**********************************")
+            if terminated:
+                agent.align_target_model()
+                break
+
+            if len(agent.history) > batch_size:
+                agent.retrain(batch_size)
+
+            if timestep % 10 == 0:
+                bar.update(timestep / 10 + 1)
+
+        bar.finish()
+        if (e + 1) % 10 == 0:
+            print("**********************************")
+            print("Episode: {}".format(e + 1))
+
+            print("**********************************")

@@ -5,7 +5,7 @@ import numpy as np
 import importlib
 import cv2
 import random
-from imports import MY_DIRNAME
+from global_imports import MY_DIRNAME
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt

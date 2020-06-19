@@ -1,4 +1,4 @@
-from imports import *
+from global_imports import *
 BUFFER_SIZE = int(1e5)  # replay buffer size
 BATCH_SIZE = 64         # minibatch size
 GAMMA = 0.99            # discount factor

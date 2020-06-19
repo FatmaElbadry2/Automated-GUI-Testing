@@ -1,110 +1,73 @@
-
-def ActionEncoder(label, ID):
-    actions = []
-    if(label=="button" or label=="icon-button" or label=="radio-button" or label=="combobox-opened" or label=="combobox-closed" or label=="menu" or label=="checkbox"):
-        action = "0000" + ID
-        actions.append(action)
-    elif(label=="scrollbar" or label=="slider"):
-        action = "0100" + ID
-        actions.append(action)
-    elif label=="link":
-        action = "0010" + ID
-        actions.append(action)
-    elif label=="textbox":
-        action = "0111" + ID
-        actions.append(action)
-        action = "1001" + ID
-        actions.append(action)
-        action = "1011" + ID
-        actions.append(action)
-        action = "1101" + ID
-        actions.append(action)
-        action = "1111" + ID
-        actions.append(action)
-    return actions
+from InrefaceAgent import mouse, keyboard as k, Element_to_Action as eta, shortcuts as sh
+from RL.tree import *
 
 def DecimalToBinary(n):
     return bin(n).replace("0b", "")
 
-def ActionDecoder(action_code):
-    action_type = action_code[0:4]
-    ID = action_code[4:]
-    action= ""
-    if action_type=="0000":
-        action = "click"
-    elif action_type=="0100":
-        action = "slide"
-    elif action_type=="0010":
-        action = "double-click"
-    elif action_type=="0111":
-         action = "alphabet"
-    elif action_type=="1001":
-         action = "alphanumeric"
-    elif action_type=="1011":
-         action = "numbers"
-    elif action_type=="1101":
-         action = "long"
-    elif action_type=="1111":
-         action = "empty"
-    return
+def ActionDecoder(action):  # it should return the ranges of Ids for each element in the action space
+    action_type = eta.Actions
+    if action in range(1, 801):
+        return action_type.left_click
+    elif action in range(801, 1601):
+        return action_type.double_left_click
+    elif action in range(1601, 1801):
+        return action_type.write_letters
+    elif action in range(1801, 2001):
+        return action_type.write_numbers
+    elif action in range(2001, 2201) :
+        return action_type.write_short
+    elif action in range (2201, 2401):
+        return action_type.write_long
+    elif action in range (2401, 2601):
+        return action_type.write_alphanumeric
+    elif action in range(2601, 2801):
+        return action_type.delete
+    elif action in range(2801, 2826):
+        return action_type.drag_up
+    elif action in range(2826, 2851):
+        return action_type.drag_down
+    elif action in range(2851, 2876):
+        return action_type.drag_right
+    elif action in range(2876, 2901):
+        return action_type.drag_left
+    else:
+        return action_type.undefined
+
+def ActionExecuter(action_type, x, y):
+    action_type_enum = eta.Actions
+    if action_type == action_type_enum.left_click:
+        mouse.LeftClick(x, y)
+    elif action_type == action_type_enum.double_left_click:
+        mouse.DoubleLeftClick(x, y)
+    elif action_type == action_type_enum.write_letters:
+        mouse.LeftClick(x,y)
+        k.Write('saloumi')
+    elif action_type == action_type_enum.write_numbers:
+        mouse.LeftClick(x, y)
+        k.write('123456789')
+    elif action_type == action_type_enum.write_short:
+        mouse.LeftClick(x,y)
+        k.Write('F')
+    elif action_type == action_type_enum.write_long:
+        mouse.LeftClick(x,y)
+        k.Write('super cali fragilistic expialidocious, even though the sound of it is something quite atrocious')
+    elif action_type == action_type_enum.write_alphanumeric:
+        mouse.LeftClick(x,y)
+        k.Write('%of\nk*?##@ghk123')
+    elif action_type == action_type_enum.delete:
+        mouse.LeftClick(x,y)
+        sh.MarkAll()
+        sh.Delete()
+    elif action_type == action_type_enum.drag_up:
+        mouse.RelativeDrag(0, -10)
+    elif action_type == action_type_enum.drag_down:
+        mouse.RelativeDrag(0, 10)
+    elif action_type == action_type_enum.drag_left:
+        mouse.RelativeDrag(-10, 0)
+    elif action_type == action_type_enum.drag_right:
+        mouse.RelativeDrag(10, 0)
 
 
-def ActionSpace():
-    action_space = []
-    for i in range(1,801):
-        binary_id = DecimalToBinary(i)
-        difference = 11 - len(binary_id)
-        for j in range(difference):
-            binary_id = "0" + binary_id
-        action = "0000" + binary_id
-        action_space.append(action)
-    for i in range(801,901):
-        binary_id = DecimalToBinary(i)
-        difference = 11 - len(binary_id)
-        for j in range(difference):
-            binary_id = "0" + binary_id
-        action = "0010" + binary_id
-        action_space.append(action)
-    for i in range(901,1001):
-        binary_id = DecimalToBinary(i)
-        difference = 11 - len(binary_id)
-        for j in range(difference):
-            binary_id = "0" + binary_id
-        action = "0100" + binary_id
-        action_space.append(action)
-    for i in range(1001,1201):
-        binary_id = DecimalToBinary(i)
-        difference = 11 - len(binary_id)
-        for j in range(difference):
-            binary_id = "0" + binary_id
-        action = "0111" + binary_id
-        action_space.append(action)
-    for i in range(1201,1401):
-        binary_id = DecimalToBinary(i)
-        difference = 11 - len(binary_id)
-        for j in range(difference):
-            binary_id = "0" + binary_id
-        action = "1001" + binary_id
-        action_space.append(action)
-    for i in range(1401,1601):
-        binary_id = DecimalToBinary(i)
-        difference = 11 - len(binary_id)
-        for j in range(difference):
-            binary_id = "0" + binary_id
-        action = "1011" + binary_id
-        action_space.append(action)
-    for i in range(1601,1801):
-        binary_id = DecimalToBinary(i)
-        difference = 11 - len(binary_id)
-        for j in range(difference):
-            binary_id = "0" + binary_id
-        action = "1101" + binary_id
-        action_space.append(action)
-    for i in range(1801,2001):
-        binary_id = DecimalToBinary(i)
-        difference = 11 - len(binary_id)
-        for j in range(difference):
-            binary_id = "0" + binary_id
-        action = "1111" + binary_id
-        action_space.append(action)
-    return action_space
+
+
+

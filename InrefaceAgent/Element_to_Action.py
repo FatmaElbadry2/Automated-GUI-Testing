@@ -16,6 +16,7 @@ class Actions(Enum):
     write_long = 10
     write_short = 11
     delete = 12
+    undefined = 13
 
 
 click = ["button", "radio_button", "textbox", "checkbox", "combobox", "spinbox", "menu", "submenu", "tab", "link",
@@ -29,7 +30,7 @@ drag_vertical = ["vertical_scrollbar"]
 
 def element_action_mapper(type):
     if type in click:
-        return Actions.double_left_click, Actions.left_click,
+        return Actions.double_left_click, Actions.left_click
     elif type in write:
         return Actions.write_letters, Actions.write_numbers, Actions.write_alphanumeric, Actions.write_short,\
                Actions.write_long, Actions.delete

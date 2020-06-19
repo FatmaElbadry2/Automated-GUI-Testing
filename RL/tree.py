@@ -1,15 +1,17 @@
-from imports import *
+from global_imports import *
 from InrefaceAgent import Element_to_Action as eta
 
 
-taken = np.zeros(2901)
+action_space = np.empty(2901)
+action_space.fill(-1)
 tree = []
+img_states = {}
 states = {}
 
 
-def state_exists(elements, image):
-    for state in states:
-        if elements == states[state]:
+def img_exists(elements, image):
+    for state in img_states:
+        if elements == img_states[state]:
             stored_image = cv2.imread(state)
             if image.tolist() == stored_image.tolist():
                 return True
@@ -50,22 +52,26 @@ def addElement(element, Id):  # element is a vector contains element information
     e_type = eta.element_action_mapper(element.type)
     if e_type is not None:
         for i in range(len(e_type)):
-            start, end = actionSpaceMapper(e_type)
-            while start <= end and taken[start] == 1:
+            start, end = actionSpaceMapper(e_type[i])
+            while start <= end and action_space[start] != -1:
                 start += 1
-            taken[start] = Id  # the number of slots an single element can occupy should be added
+            action_space[start] = Id  # the number of slots an single element can occupy should be added
         return True
     else:
         return False
 
 
 def buildTree(elements):
+    IDs = []
     for element in elements:
         index = np.where(np.array(tree) == element)[0]
         if len(index) == 0:
             if addElement(element, len(tree)):
                 tree.append(element)
+                IDs.append(len(tree)-1)
+                print(len(tree)-1)
                 print(element)
         else:
+            IDs.append(index[0])
             print("element already exists")
-    return tree
+    return tree, IDs

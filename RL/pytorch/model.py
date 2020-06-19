@@ -1,4 +1,4 @@
-from imports import *
+from global_imports import *
 
 
 class QNetwork(nn.Module):

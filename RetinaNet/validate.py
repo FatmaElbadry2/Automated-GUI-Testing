@@ -14,7 +14,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 from torchvision import datasets, models, transforms
 
-from imports import MY_DIRNAME
+from global_imports import MY_DIRNAME
 
 from retinanet.dataloader import ImageLoader, CSVDataset, collater, Resizer, AspectRatioBasedSampler, Augmenter, \
 	UnNormalizer, Normalizer

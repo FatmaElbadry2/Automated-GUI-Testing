@@ -1,9 +1,7 @@
 from InrefaceAgent.imports import *
 
-
 def OpenDir(PATH):
     webbrowser.open(PATH)
-
 
 def open_app_foreground(path, name):
     c = wmi.WMI()
@@ -123,5 +121,6 @@ def Highlight(x1,y1,x,y):
     print(pyperclip.paste())
 
 
-
+def Delete():
+    pyautogui.press('backspace')
 

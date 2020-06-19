@@ -1,7 +1,7 @@
 import rpa as r
 import cv2
 from dataclasses import dataclass
-from imports import MY_DIRNAME
+from global_imports import MY_DIRNAME
 from InrefaceAgent import shortcuts as sh
 from RetinaNet.validate import *
 
