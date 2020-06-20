@@ -58,7 +58,7 @@ verbs = {
 objects =\
     [
         "cursor",
-        "home",
+        "mouse",
         "option",
         "object",
         "target",
@@ -71,7 +71,6 @@ objects =\
         "program",
         "application",
         "app",
-        "mouse",
         "keyboard",
         "file",
         "directory",

@@ -14,3 +14,4 @@ rpa_python.raw.tmp
 rpa_python.js
 rpa_python.log
 rpa_python.raw
+*.pt

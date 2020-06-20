@@ -81,8 +81,6 @@ order of preprocessing:
 1- replace text, left and next to.
 2- split conjunctions.
 replace ordinal number by ordinal word
-inject by before any quantity
-one sentence can't have more than 2 quantities
 3- return it to string text.
 4- split conditions (if , then , until, (before, after)---> followed by a verb).
 5- resolve pronouns.
@@ -91,7 +89,7 @@ one sentence can't have more than 2 quantities
 
 
 to do:
-1- give flexibility in elements and their spelling.
+1- give flexibility in elements and their spelling. (spelling is done).
 2- add the colors with their hex values.
 3- a function to process the built in objects.
 4- some pre_processing

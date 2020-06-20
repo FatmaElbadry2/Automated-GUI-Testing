@@ -1,7 +1,11 @@
 import rpa as r
 from dataclasses import dataclass
+print("initializing....")
+r.init(visual_automation=True, chrome_browser=False)
+print("starting.....")
+print(r.mouse_xy())
 
-# r.init(visual_automation=True, chrome_browser=False)
+
 # gui_elements = [[0, 80, 70, 10, 10, "save", "red", 0x123456], [1, 120, 40, 20, 20, "submit", "blue", 0x123456],
 #             [0, 60, 30, 10, 10, "save", "red", 0x123456]]
 

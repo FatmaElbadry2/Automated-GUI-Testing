@@ -17,7 +17,7 @@ def objectSplitter(text):  # it takes one sentence and split it into mini senten
     while i < len(text):
         new_sent = False
         sent = []
-        if text[i].dep_ == "dobj":
+        if text[i].dep_ == "dobj" or text[i].dep_ == "nsubj":
             [sent.append(l) for l in text[i].lefts if l.pos_ != "DET"]
             sent.append(text[i])
             new_sent = True
@@ -275,12 +275,12 @@ e9 = [e1, e2, e3, e4, e5, e6, e7, e8]
 # nlp = spacy.load('en_core_web_sm', parse=True, tag=True, entity=True)
 # text = "click on the button on the left of the {cancel} button"
 # text = "click on the button on the top right of the {ok} button inside the dialogbox"
-text = "click on the third button from the right"
+text = "scroll up until the left button is visible"
 
 ordinal_dict = createOrdinalDict()
 # text, dict1, dict2 = textReplacer(text)
-# sentence_nlp = nlp(text)
-# print(objectSplitter(sentence_nlp))
+sentence_nlp = nlp(text)
+print(objectSplitter(sentence_nlp))
 # try:
 #     prev_object, x_range, y_range, t_input, direction, return_type = objectFinder(sentence_nlp, e9, dict1, dict2)
 #     print(prev_object)

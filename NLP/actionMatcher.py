@@ -62,14 +62,12 @@ def getActionType(sentence, elements):
             actions.append(word)
             rights = list(word.rights)
         elif word.tag_ == "CD":
-            quantity = [word]
+            # quantity = [word]
             parent = list(word.ancestors)
             if len(parent) > 0:
-                grandparent = list(parent[0].ancestors)
-                if parent[0].dep_ == "pobj" and len(grandparent) > 0:
-                    [quantity.append(l) for l in text[grandparent[0].i:parent[0].i + 1]]
-                else:
-                    [quantity.append(l) for l in text[word.i:parent[0].i + 1]]
+                x = [anc for anc in parent if anc.dep_ == "prep" and str(anc) in ["by", "with", "for"]]
+                if len(x) > 0:
+                    quantity = [word]
     return action_type, actions, rights, quantity
 
 
@@ -226,10 +224,6 @@ def getSentenceStructure(sentence, elements):
     pos.action = actions
     if quantity is not None:
         pos.quantity = quantity[0]
-        quantity_st = quantity[0]
-        quantity_nd = quantity[-1]
-        if len(quantity) > 1:
-            quantity_st = quantity[1]
 
     simple_actions = [Actions.click, Actions.write, Actions.hover, Actions.delete, Actions.key, Actions.other]
     if action_type in simple_actions:
@@ -254,7 +248,7 @@ def getSentenceStructure(sentence, elements):
 
 
 from objectMatcher import objectSplitter
-text = nlp("drag the the {ok} button inside the dialog box to the left of the {file} menu")
+text = nlp("drag the the {ok} button inside the dialog box to the left of the {file} menu by 5 pixels")
 print(getSentenceStructure(text, e9))
 print(objectSplitter(text))
 # print(cardinalRemover(text))
