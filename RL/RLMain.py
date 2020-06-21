@@ -1,6 +1,7 @@
 #from imports import MY_DIRNAME
 
 from tree import *
+import tree as t
 from RNInterface import *
 
 from Utils import *
@@ -13,16 +14,17 @@ from win32api import GetSystemMetrics
 if __name__ == "__main__":
 
     print("starting")
-    sh.open_app_foreground("C:\\Program Files (x86)\\texstudio", "texstudio.exe")
+    pid = sh.open_app_foreground("C:\\Program Files (x86)\\texstudio", "texstudio.exe")
     #sh.OpenApp("C:\\Program Files (x86)\\FreeMat\\bin", "FreeMat.exe")
     time.sleep(2)
     sh.max()
     time.sleep(1)
 
+    Width = GetSystemMetrics(0)
+    Height = GetSystemMetrics(1)
 
     for i in range(3):
-        Width = GetSystemMetrics(0)
-        Height = GetSystemMetrics(1)
+
         '''image, path = save_image(i)
 
         elements = buildElements(path,i,[Width,Height])
@@ -40,6 +42,8 @@ if __name__ == "__main__":
         time.sleep(1)'''
 
         state, path = GetState(i)
+
+
 
 
 

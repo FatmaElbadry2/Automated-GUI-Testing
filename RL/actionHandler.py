@@ -34,6 +34,7 @@ def ActionDecoder(action):  # it should return the ranges of Ids for each elemen
         return action_type.undefined
 
 def ActionExecuter(action_type, x, y):
+    y = y + 7
     action_type_enum = eta.Actions
     if action_type == action_type_enum.left_click:
         mouse.LeftClick(x, y)
