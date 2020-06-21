@@ -1,4 +1,5 @@
 from InrefaceAgent.imports import *
+import psutil
 
 def OpenDir(PATH):
     webbrowser.open(PATH)
@@ -26,6 +27,7 @@ def open_app_foreground(path, name):
         current_pid = pid.value
     print(current_pid)
     print("window is now in the foreground")
+    return current_pid
 
 
 def OpenApp(PATH,APPNAME): #APPName with extention
@@ -33,7 +35,10 @@ def OpenApp(PATH,APPNAME): #APPName with extention
     raw_string = r"{}".format(x)
     subprocess.Popen(raw_string)
 
-
+def IsTerminated(pid):
+    if psutil.pid_exists(pid):
+        return False
+    return True
 
 
 
@@ -61,7 +66,7 @@ def OpenApp(PATH,APPNAME): #APPName with extention
 #             return True
 #     return False
 #
-#
+
 # def IsOpen2(PATH, APPNAME): #APPNAME=APPNAME.exe
 #     OpenApp(PATH,APPNAME)
 #     x=IsRunning2(APPNAME)

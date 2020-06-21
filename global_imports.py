@@ -21,3 +21,9 @@ import torch.nn as nn
 import os
 MY_DIRNAME = os.path.dirname(os.path.abspath(__file__))
 
+from win32api import GetSystemMetrics
+Width = GetSystemMetrics(0)
+Height = GetSystemMetrics(1)
+print("width: ",Width)
+print("Height: ", Height)
+print("window ratio: ", Height/Width)

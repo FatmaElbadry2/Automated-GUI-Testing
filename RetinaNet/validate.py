@@ -78,6 +78,24 @@ def detect(img_path, i):
 			img = cv2.cvtColor(img.astype(np.uint8), cv2.COLOR_BGR2RGB)
 
 			print("Image size after training: ", img.shape)
+			print("ratio: ",  img.shape[0]/img.shape[1])
+
+			#cv2.imwrite(MY_DIRNAME + "\\RL\\output\\image_" + str(-1) + ".png", img)
+			#-----------------------------TRY-------------------------------
+			R = img[:, :, 0]
+			G = img[:, :, 1]
+			B = img[:, :, 2]
+
+			r = img.shape[0] - 1
+			c = img.shape[1] - 1
+			print(R[r][c])
+			print(G[r][c])
+			print(B[r][c])
+			while r >= 0 and c >= 0 and R[r][c] == 103 and G[r][c] == 116 and B[r][c] == 123:
+				r -= 1
+				c -= 1
+			img = img[0:r, 0:c, :]
+			print(img.shape)
 
 			for j in range(idxs[0].shape[0]):
 				bbox = transformed_anchors[idxs[0][j], :]
@@ -102,7 +120,7 @@ def detect(img_path, i):
 
 	return elements, img.shape
 
-'''
+
 if __name__ == '__main__':
-	elements = detect("Elmer6.jpg",1)
-	print(elements)'''
+	elements = detect("Elmer6.jpg",0)
+	print(elements)

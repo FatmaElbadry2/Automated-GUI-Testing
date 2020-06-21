@@ -11,15 +11,26 @@ if __name__ == "__main__":
     optimizer = tf.keras.optimizers.Adam(learning_rate = 0.01)
     agent = Agent(state_size, action_size, optimizer)
 
-    OpenApp("C:\\Program Files\\Elmer 8.4-Release\\bin", "ElmerGUI.exe")
+    app_path = "C:\\Program Files\\Elmer 8.4-Release\\bin"
+    app_name = "ElmerGUI.exe"
+    app_pid = OpenApp(app_path, app_name)
     state, path = GetState(0)
 
+    img_counter = 1
     batch_size = 32
     num_of_episodes = 100
     timesteps_per_episode = 1000
     agent.q_network.summary()
 
+    #agent.load("./save/dexter-dqn.h5")
+
     for e in range(0, num_of_episodes):
+        if e>0:
+            print("---------------------RESET--------------------")
+            app_pid = reset(app_pid, app_path, app_name, "\\RL\\images", "\\RL\\output")
+            state, path = GetState(img_counter)
+            img_counter += 1
+
         state = np.reshape(state, [1, state_size])
 
         # Initialize variables
@@ -36,22 +47,28 @@ if __name__ == "__main__":
             action = action[0]
             action = int(action)
             idx_element = action_space[action]
-            print(idx_element)
+            #print(idx_element)
             # Take action
             action_to_do = ActionDecoder(action)
             print("---------------------" + str(action) + "----------------------")
             if action != 0 and int(idx_element) != -1 :
                 x, y = ElementMapper(idx_element)
                 ActionExecuter(action_to_do, x, y)
+                action_count[action]+=1
             # next_state, reward, terminated, info = enviroment.step(action)
-                next_state, path = GetState(e+1)
+
+                next_state, path = GetState(img_counter)
+                img_counter+=1
                 new_actions = GetNewActions(state, next_state)
             else:
                 next_state=state
                 new_actions = 0
+                break
             SetReward(state, action, path, new_actions)
 
             next_state = np.reshape(next_state, [1, state_size])
+            terminated = CheckTerminated()
+
             agent.store(state, action, reward, next_state, terminated)
             state = next_state
 
@@ -69,5 +86,6 @@ if __name__ == "__main__":
         if (e + 1) % 10 == 0:
             print("**********************************")
             print("Episode: {}".format(e + 1))
+            #agent.save("./save/dexter-dqn.h5")
 
             print("**********************************")

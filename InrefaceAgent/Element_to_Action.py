@@ -19,7 +19,7 @@ class Actions(Enum):
     undefined = 13
 
 
-click = ["button", "radio_button", "textbox", "checkbox", "combobox", "spinbox", "menu", "submenu", "tab", "link",
+click = ["button", "radio_button", "textbox", "checkbox", "combobox", "spinbox", "submenu", "tab",
          "switch", "icon_button",  "close", "save", "load", "redo", "undo", "export", "new", "info", "settings",
          "max_min", "dropdown", "button_combobox"]
 

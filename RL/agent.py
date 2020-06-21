@@ -42,14 +42,15 @@ class Agent:
         if np.random.rand() <= self.epsilon:
             #return random.sample(available_actions, 1)
             #return random.sample(range(0, self._action_size), 1)
+            print("STATE BEFORE ", state)
             available_actions = state[state!=0]
-            print(available_actions)
+            print("Available Actions: ", available_actions)
             if len(available_actions) == 0:
                 return [0]
             return random.sample(list(available_actions), 1)
         q_values = self.q_network.predict(state)
-        q_values=np.array([q_values[0][int(x)] for x in state])
-        print(q_values)
+        q_values=np.array([q_values[0][int(x)] for x in state[0]])
+        #print(q_values)
         return [np.argmax(q_values)]
 
     def retrain(self, batch_size):
@@ -67,3 +68,9 @@ class Agent:
                 target[0][action] = reward + self.gamma * np.amax(t)
 
             self.q_network.fit(state, target, epochs=1, verbose=0)
+
+    def load(self, name):
+        self.q_network.load_weights(name)
+
+    def save(self, name):
+        self.q_network.save_weights(name)

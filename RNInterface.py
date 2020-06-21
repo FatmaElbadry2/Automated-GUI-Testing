@@ -1,11 +1,11 @@
-import rpa as r
+#import rpa as r
 import cv2
 from dataclasses import dataclass
 from global_imports import MY_DIRNAME
 from InrefaceAgent import shortcuts as sh
 from RetinaNet.validate import *
 
-#r.init(visual_automation=True, chrome_browser=False)
+
 # gui_elements = [[0, 80, 70, 10, 10, "save", "red", 0x123456], [1, 120, 40, 20, 20, "submit", "blue", 0x123456],
 #             [0, 60, 30, 10, 10, "save", "red", 0x123456]]
 
@@ -113,7 +113,8 @@ def elementStruct(element):
 
 def buildElements(image_path,i, w_shape):
     elements,img_shape = detect(image_path,i)
-    print(i," :",len(elements))
+    #elements = FilterElements(elements)
+    #print(i," :",len(elements))
     all_elements = []
     for element in elements:
         # getElementText(element)
@@ -132,3 +133,7 @@ def save_image(i):
     return image, MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png"
 
 
+#def FilterElements(elements):
+'''if __name__ == "__main__":
+    r.init(visual_automation=True, chrome_browser=False)
+    print(r.mouse_xy())'''
