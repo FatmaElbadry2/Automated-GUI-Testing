@@ -2,6 +2,12 @@ from global_imports import *
 from agent import *
 from actionHandler import *
 from Utils import *
+action_space = np.empty(2901)
+action_space.fill(-1)
+action_count=np.zeros(2901)
+tree = []
+img_states = {}
+states = {}
 
 if __name__ == "__main__":
 
@@ -14,7 +20,7 @@ if __name__ == "__main__":
     app_path = "C:\\Program Files\\Elmer 8.4-Release\\bin"
     app_name = "ElmerGUI.exe"
     app_pid = OpenApp(app_path, app_name)
-    state, path = GetState(0)
+    state, path = GetState(0,img_states,states,tree,action_space)
 
     img_counter = 1
     batch_size = 32
@@ -27,8 +33,8 @@ if __name__ == "__main__":
     for e in range(0, num_of_episodes):
         if e>0:
             print("---------------------RESET--------------------")
-            app_pid = reset(app_pid, app_path, app_name, "\\RL\\images", "\\RL\\output")
-            state, path = GetState(img_counter)
+            app_pid,action_count,img_states,states = reset(app_pid, app_path, app_name, "\\RL\\images", "\\RL\\output")
+            state, path = GetState(img_counter,img_states,states,tree,action_space)
             img_counter += 1
 
         state = np.reshape(state, [1, state_size])
@@ -52,22 +58,22 @@ if __name__ == "__main__":
             action_to_do = ActionDecoder(action)
             print("---------------------" + str(action) + "----------------------")
             if action != 0 and int(idx_element) != -1 :
-                x, y = ElementMapper(idx_element)
+                x, y = ElementMapper(idx_element,tree)
                 ActionExecuter(action_to_do, x, y)
                 action_count[action]+=1
             # next_state, reward, terminated, info = enviroment.step(action)
 
-                next_state, path = GetState(img_counter)
+                next_state, path = GetState(img_counter,img_states,states,tree,action_space)
                 img_counter+=1
-                new_actions = GetNewActions(state, next_state)
+                new_actions = GetNewActions(state, next_state,action_count)
             else:
                 next_state=state
                 new_actions = 0
                 break
-            SetReward(state, action, path, new_actions)
+            SetReward(state, action, path, new_actions,img_states)
 
             next_state = np.reshape(next_state, [1, state_size])
-            terminated = CheckTerminated()
+            terminated = CheckTerminated(action_count,action_space)
 
             agent.store(state, action, reward, next_state, terminated)
             state = next_state

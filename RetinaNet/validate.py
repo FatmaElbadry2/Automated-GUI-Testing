@@ -34,8 +34,13 @@ def detect(img_path, i):
 	dataloader_val = DataLoader(dataset_val, num_workers=1, collate_fn=collater, batch_sampler=sampler_val)
 
 	model_path = MY_DIRNAME + "\\RetinaNet\\model_final.pt"
+	if not torch.cuda.is_available():
+		retinanet = torch.load(model_path,map_location='cpu')
+		retinanet.src_device_obj = 'cpu'
+		retinanet.device_ids = []
+	else:
+		retinanet = torch.load(model_path)
 
-	retinanet = torch.load(model_path)
 	use_gpu = True
 
 	if use_gpu:
@@ -91,8 +96,9 @@ def detect(img_path, i):
 			print(R[r][c])
 			print(G[r][c])
 			print(B[r][c])
-			while r >= 0 and c >= 0 and R[r][c] == 103 and G[r][c] == 116 and B[r][c] == 123:
+			while r >= 0 and R[r][0] == 103 and G[r][0] == 116 and B[r][0] == 123:
 				r -= 1
+			while c >= 0 and R[0][c] == 103 and G[0][c] == 116 and B[0][c] == 123:
 				c -= 1
 			img = img[0:r, 0:c, :]
 			print(img.shape)
@@ -107,7 +113,7 @@ def detect(img_path, i):
 				draw_caption(img, (x1, y1, x2, y2), label_name)
 
 				elements.append([label_name, x1, x2, y1, y2])
-				if label_name=='button':
+				if label_name == 'button':
 					cv2.rectangle(img, (x1, y1), (x2, y2), color=(0, 0, 255), thickness=2)
 				else:
 					cv2.rectangle(img, (x1, y1), (x2, y2), color=(0, 255, 0), thickness=2)
@@ -122,5 +128,5 @@ def detect(img_path, i):
 
 
 if __name__ == '__main__':
-	elements = detect("Elmer6.jpg",0)
+	elements = detect("elmerf.PNG",1)
 	print(elements)

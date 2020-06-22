@@ -2,15 +2,15 @@ from global_imports import *
 from InrefaceAgent import Element_to_Action as eta
 
 
-action_space = np.empty(2901)
-action_space.fill(-1)
-action_count=np.zeros(2901)
-tree = []
-img_states = {}
-states = {}
+# action_space = np.empty(2901)
+# action_space.fill(-1)
+# action_count=np.zeros(2901)
+# tree = []
+# img_states = {}
+# states = {}
 
 
-def img_exists(elements):
+def img_exists(elements,img_states):
     for state in img_states:
         if elements == img_states[state]:
             # stored_image = cv2.imread(state)
@@ -49,7 +49,7 @@ def actionSpaceMapper(action):  # it should return the ranges of Ids for each el
         return [0, 0]
 
 
-def addElement(element, Id):  # element is a vector contains element information
+def addElement(element, Id,action_space):  # element is a vector contains element information
     e_type = eta.element_action_mapper(element.type)
     if e_type is not None:
         for i in range(len(e_type)):
@@ -62,13 +62,13 @@ def addElement(element, Id):  # element is a vector contains element information
         return False
 
 
-def buildTree(elements):
+def buildTree(elements,tree,action_space):
     IDs = []
-    global tree
+    #global tree
     for element in elements:
         index = np.where(np.array(tree) == element)[0]
         if len(index) == 0:
-            if addElement(element, len(tree)):
+            if addElement(element, len(tree),action_space):
                 tree.append(element)
                 IDs.append(len(tree)-1)
                 #print(len(tree)-1)

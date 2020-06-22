@@ -15,16 +15,16 @@ def OpenApp(app_path, app_name):
     time.sleep(1)
     return pid
 
-def GetState(i):
+def GetState(i,img_states,states,tree,action_space):
     state = np.zeros(250)
-    print("ACTION COUNT: ", action_count)
+    #print("ACTION COUNT: ", action_count)
     print("STATES: ", states)
     print("IMG STATES: ", states)
     #state = []
     time.sleep(1)
     image, path = save_image(i)
     elements = buildElements(path, i, [Width, Height])
-    exists,old_state=img_exists(elements)
+    exists,old_state=img_exists(elements,img_states)
     if exists:
         print("state already exists")
         img_states[old_state][0] += 1
@@ -33,7 +33,7 @@ def GetState(i):
     else:
         img_states[path] = [1, elements]
         states[path]=[]
-        IDs = buildTree(elements)
+        IDs = buildTree(elements,tree,action_space)
 
         for id in IDs:
             available_actions = np.where(np.array(action_space) == id)[0]
@@ -45,7 +45,7 @@ def GetState(i):
     print(len(state))
     return state, path
 
-def SetReward(state, action, path, new_actions):
+def SetReward(state, action, path, new_actions,img_states):
     if action in state and action != 0:
         state_occurences = img_states[path][0]
         reward = (1/state_occurences) * new_actions
@@ -53,20 +53,20 @@ def SetReward(state, action, path, new_actions):
         reward = -100
     return reward
 
-def GetNewActions(state, next_state):
+def GetNewActions(state, next_state,action_count):
     #print("STATE: ", state)
     #print("NEXT STATE: ", next_state)
     new_actions = list(set(next_state) - set(state[0]))
     new_actions = [x for x in new_actions if action_count[int(x)] == 0]
     return len(new_actions)
 
-def ElementMapper(idx_element):
+def ElementMapper(idx_element,tree):
     #print("Element ID INT: ",int(idx_element))
     #print(tree)
     element = tree[int(idx_element)]
     return element.x_center, element.y_center
 
-def CheckTerminated():
+def CheckTerminated(action_count,action_space):
     available_actions = action_count[action_space != -1]
     executed_actions = available_actions[available_actions > 0]
     if len(available_actions) == len(executed_actions):
@@ -103,13 +103,13 @@ def reset(pid, path, name, imgs_folder, output_folder):
     terminated = sh.IsTerminated(pid)
     if not terminated:
         os.kill(pid, 9)
-    global action_count
+    # global action_count
     action_count = np.zeros(2901)
-    global img_states
+    #global img_states
     img_states = {}
-    global states
+    #global states
     states = {}
     pid = OpenApp(path, name)
     EmptyDirectory(imgs_folder)
     EmptyDirectory(output_folder)
-    return pid
+    return pid,action_count,img_states,states
