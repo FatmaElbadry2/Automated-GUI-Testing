@@ -82,8 +82,7 @@ def detect(img_path, i):
 
 			img = cv2.cvtColor(img.astype(np.uint8), cv2.COLOR_BGR2RGB)
 
-			print("Image size after training: ", img.shape)
-			print("ratio: ",  img.shape[0]/img.shape[1])
+
 
 			#cv2.imwrite(MY_DIRNAME + "\\RL\\output\\image_" + str(-1) + ".png", img)
 			#-----------------------------TRY-------------------------------
@@ -93,15 +92,13 @@ def detect(img_path, i):
 
 			r = img.shape[0] - 1
 			c = img.shape[1] - 1
-			print(R[r][c])
-			print(G[r][c])
-			print(B[r][c])
+
 			while r >= 0 and R[r][0] == 103 and G[r][0] == 116 and B[r][0] == 123:
 				r -= 1
 			while c >= 0 and R[0][c] == 103 and G[0][c] == 116 and B[0][c] == 123:
 				c -= 1
 			img = img[0:r, 0:c, :]
-			print(img.shape)
+
 
 			for j in range(idxs[0].shape[0]):
 				bbox = transformed_anchors[idxs[0][j], :]

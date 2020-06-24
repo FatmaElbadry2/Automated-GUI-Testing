@@ -5,18 +5,18 @@ def OpenDir(PATH):
     webbrowser.open(PATH)
 
 def open_app_foreground(path, name):
-    c = wmi.WMI()
-    process_watcher = c.Win32_Process.watch_for()
-    OpenApp(path, name)
+    # c = wmi.WMI()
+    #process_watcher = c.Win32_Process.watch_for()
+    PID = OpenApp(path, name)
     caption = ""
     executable = ""
-    PID = -1
+    # PID = -1
     user32 = ctypes.windll.user32
-    while str(executable) != path+"\\"+name:
-        new_process = process_watcher()
-        PID = new_process.ProcessId
-        executable = new_process.ExecutablePath
-        caption = new_process.Caption
+    # while str(executable) != path+"\\"+name:
+    #     new_process = process_watcher()
+    #     PID = new_process.ProcessId
+    #     executable = new_process.ExecutablePath
+    #     caption = new_process.Caption
     print("opened")
     print(PID)
     current_pid = -1
@@ -33,7 +33,8 @@ def open_app_foreground(path, name):
 def OpenApp(PATH,APPNAME): #APPName with extention
     x = (PATH + "\\" + APPNAME)
     raw_string = r"{}".format(x)
-    subprocess.Popen(raw_string)
+    process = subprocess.Popen(raw_string)
+    return process.pid
 
 def IsTerminated(pid):
     if psutil.pid_exists(pid):

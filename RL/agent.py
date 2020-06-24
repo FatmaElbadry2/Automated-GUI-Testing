@@ -42,16 +42,23 @@ class Agent:
         if np.random.rand() <= self.epsilon:
             #return random.sample(available_actions, 1)
             #return random.sample(range(0, self._action_size), 1)
-            print("STATE BEFORE ", state)
-            available_actions = state[state!=0]
-            print("Available Actions: ", available_actions)
+            #print("STATE BEFORE ", state)
+            available_actions = state[state!=0.0]
+            print(available_actions)
+            #print("Available Actions: ", available_actions)
             if len(available_actions) == 0:
                 return [0]
             return random.sample(list(available_actions), 1)
         q_values = self.q_network.predict(state)
-        q_values=np.array([q_values[0][int(x)] for x in state[0]])
+        print("length of q values before:", len(q_values))
+        print("q values before:", q_values)
+        q_values=np.array([q_values[0][int(x)] for x in state[0] if x !=0 ])
+        print("length of q values after:",len(q_values))
+        print("q values after:", q_values)
         #print(q_values)
-        return [np.argmax(q_values)]
+        id_max = np.argmax(q_values)
+        action_max = state[0][id_max]
+        return [action_max]
 
     def retrain(self, batch_size):
         minibatch = random.sample(self.history, batch_size)

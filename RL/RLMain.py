@@ -10,11 +10,16 @@ from InrefaceAgent import keyboard as k, mouse, shortcuts as sh
 
 from win32api import GetSystemMetrics
 
-
+action_space = np.empty(2901)
+action_space.fill(-1)
+action_count=np.zeros(2901)
+tree = []
+img_states = {}
+states = {}
 if __name__ == "__main__":
 
     print("starting")
-    pid = sh.open_app_foreground("C:\\Program Files (x86)\\texstudio", "texstudio.exe")
+    pid = sh.open_app_foreground("C:\\Program Files\\Elmer 8.4-Release\\bin", "ElmerGUI.exe")
     #sh.OpenApp("C:\\Program Files (x86)\\FreeMat\\bin", "FreeMat.exe")
     time.sleep(2)
     sh.max()
@@ -23,7 +28,7 @@ if __name__ == "__main__":
     Width = GetSystemMetrics(0)
     Height = GetSystemMetrics(1)
 
-    for i in range(3):
+    for i in range(4):
 
         '''image, path = save_image(i)
 
@@ -41,7 +46,11 @@ if __name__ == "__main__":
         print("length of tree: ",len(tree))
         time.sleep(1)'''
 
-        state, path = GetState(i)
+        state, path = GetState(i,img_states,states,tree,action_space)
+        print(tree)
+        print(img_states)
+        print(states)
+        print(action_space[action_space != -1])
 
 
 

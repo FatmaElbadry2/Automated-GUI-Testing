@@ -1,14 +1,17 @@
+import _thread
 from InrefaceAgent import mouse, keyboard as k, Element_to_Action as eta, shortcuts as sh
 from global_imports import *
 from RL.imports import *
 from tree import *
 from RNInterface import *
 import shutil
+import operator
 
 
 def OpenApp(app_path, app_name):
     print("starting")
     pid = sh.open_app_foreground(app_path, app_name)
+    print(pid)
     # sh.OpenApp("C:\\Program Files (x86)\\FreeMat\\bin", "FreeMat.exe")
     time.sleep(2)
     sh.max()
@@ -18,12 +21,14 @@ def OpenApp(app_path, app_name):
 def GetState(i,img_states,states,tree,action_space):
     state = np.zeros(250)
     #print("ACTION COUNT: ", action_count)
-    print("STATES: ", states)
-    print("IMG STATES: ", states)
+    #print("STATES: ", states)
+    #print("IMG STATES: ", states)
     #state = []
     time.sleep(1)
     image, path = save_image(i)
     elements = buildElements(path, i, [Width, Height])
+    elements.sort(key=operator.attrgetter('x_center'))
+    elements.sort(key=operator.attrgetter('y_center'))
     exists,old_state=img_exists(elements,img_states)
     if exists:
         print("state already exists")
@@ -41,8 +46,8 @@ def GetState(i,img_states,states,tree,action_space):
                 [states[path].append(action_id) for action_id in available_actions]
         state[0:min(len(state), len(states[path]))] = states[path][0:min(len(state), len(states[path]))]
     #state = states[path]
-    print(state)
-    print(len(state))
+    #print(state)
+    #print(len(state))
     return state, path
 
 def SetReward(state, action, path, new_actions,img_states):
@@ -73,19 +78,31 @@ def CheckTerminated(action_count,action_space):
         return True
     return False
 
-def isrespondingPID(PID):
-    x = os.system('tasklist /FI "PID eq %d" /FI "STATUS eq running" > tmp.txt' % PID)
-    tmp = open('tmp.txt', 'r')
-    a = tmp.readlines()
-    #print(a)
-    tmp.close()
-    try:
-        if int(a[-1].split()[1]) == PID:
-                return True
-        else:
-            return False
-    except:
-        return False
+#In the else of the try, this means that the app is not responding so we push 0 to the queue, otherwise we push 1 if the app was terminated
+def ErrorHandler(q_pid, q_error_check, q_check_responding):
+    while True:
+        PID = q_pid.queue[-1]
+        os.system('tasklist /FI "PID eq %d" /FI "STATUS eq running" > tmp.txt' % PID)
+        tmp = open('tmp.txt', 'r')
+        a = tmp.readlines()
+        tmp.close()
+        os.remove("tmp.txt")
+        try:
+            if int(a[-1].split()[1]) == PID:
+                    pass
+            else:
+                q_check_responding.put(0)
+                _thread.interrupt_main()
+                while(PID==q_pid.queue[-1]):
+                    pass
+        except:
+            error_check = q_error_check.queue[-1]
+            if error_check == 1:
+                q_check_responding.put(1)
+                _thread.interrupt_main()
+                while (PID == q_pid.queue[-1]):
+                    pass
+
 
 def EmptyDirectory(imgs_folder):
     folder = MY_DIRNAME + imgs_folder

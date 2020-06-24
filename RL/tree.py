@@ -12,10 +12,11 @@ from InrefaceAgent import Element_to_Action as eta
 
 def img_exists(elements,img_states):
     for state in img_states:
-        if elements == img_states[state]:
+        if elements == img_states[state][1]:
             # stored_image = cv2.imread(state)
             # if image.tolist() == stored_image.tolist():
             return True,state
+
     return False,None
 
 
