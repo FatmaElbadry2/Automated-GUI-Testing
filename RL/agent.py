@@ -39,25 +39,27 @@ class Agent:
     def act(self, state):
         self.epsilon *= self.epsilon_decay
         self.epsilon = max(self.epsilon, self.epsilon_min)
+        available_actions = np.where(state[0] == 1)[0]
+        if len(available_actions) == 0:
+            return [0]
         if np.random.rand() <= self.epsilon:
             #return random.sample(available_actions, 1)
             #return random.sample(range(0, self._action_size), 1)
             #print("STATE BEFORE ", state)
-            available_actions = state[state!=0.0]
+            #available_actions = state[0][state[0]!=0.0]
+            #available_actions=np.where(state[0]==1)[0]
             print(available_actions)
             #print("Available Actions: ", available_actions)
-            if len(available_actions) == 0:
-                return [0]
             return random.sample(list(available_actions), 1)
         q_values = self.q_network.predict(state)
         print("length of q values before:", len(q_values))
         print("q values before:", q_values)
-        q_values=np.array([q_values[0][int(x)] for x in state[0] if x !=0 ])
+        q_values=np.array([q_values[0][int(x)] for x in available_actions ])
         print("length of q values after:",len(q_values))
         print("q values after:", q_values)
         #print(q_values)
         id_max = np.argmax(q_values)
-        action_max = state[0][id_max]
+        action_max = available_actions[id_max]
         return [action_max]
 
     def retrain(self, batch_size):

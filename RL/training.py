@@ -2,18 +2,19 @@ from global_imports import *
 from agent import *
 from actionHandler import *
 from Utils import *
-action_space = np.empty(2901)
+action_space = np.empty(2501)
 action_space.fill(-1)
-action_count=np.zeros(2901)
+action_count=np.zeros(2501)
 tree = []
 img_states = {}
 states = {}
+unique_states = {}
 
 if __name__ == "__main__":
 
     #actionSpace = ActionSpace()
-    action_size = 2901
-    state_size = 250
+    action_size = 2501
+    state_size = 2502
     optimizer = tf.keras.optimizers.Adam(learning_rate = 0.01)
     agent = Agent(state_size, action_size, optimizer)
 
@@ -21,7 +22,7 @@ if __name__ == "__main__":
     app_name = "ElmerGUI.exe"
     app_pid = OpenApp(app_path, app_name)
 
-    state, path = GetState(0,img_states,states,tree,action_space)
+    state, path = GetState(0,img_states,states,tree,action_space,action_count,unique_states)
 
     img_counter = 1
     batch_size = 32
@@ -43,16 +44,15 @@ if __name__ == "__main__":
     for e in range(0, num_of_episodes):
         try:
             if e>0 and not app_close_bug:
-
                 # old_pid = q_pid.get()
                 print("---------------------RESET--------------------")
                 q_error_check.put(0)
-                app_pid,action_count,img_states,states = reset(app_pid, app_path, app_name, "\\RL\\images", "\\RL\\output")
+                app_pid,action_count,img_states,states,unique_states = reset(app_pid, app_path, app_name, "\\RL\\images", "\\RL\\output")
                 q_pid.put(app_pid)
-                state, path = GetState(img_counter,img_states,states,tree,action_space)
+                state, path = GetState(img_counter,img_states,states,tree,action_space,action_count,unique_states)
                 img_counter += 1
             app_close_bug = False
-            state = np.reshape(state, [1, state_size])
+            state = np.reshape(state, [2, state_size])
 
             # Initialize variables
             reward = 0
@@ -78,19 +78,32 @@ if __name__ == "__main__":
                     x, y = ElementMapper(idx_element,tree)
                     ActionExecuter(action_to_do, x, y)
                     action_count[action]+=1
-                # next_state, reward, terminated, info = enviroment.step(action)
+                    # next_state, reward, terminated, info = enviroment.step(action)
+                    if e == 0:
+                        states[path][1][states[path][0]==action]+=1
+                    next_state, path = GetState(img_counter, img_states, states, tree, action_space, action_count,unique_states)
+                    img_counter += 1
+                    new_actions = 0
+                    if state[0].tolist() != next_state[0].tolist():
+                        if action not in unique_states :
+                            unique_states[action]=[[],[]]
 
-                    next_state, path = GetState(img_counter,img_states,states,tree,action_space)
-                    img_counter+=1
-                    new_actions = GetNewActions(state, next_state,action_count)
+                        path_index = np.where(np.array(unique_states[action][0])==path)[0]
+
+                        if len(path_index) ==0 :
+                            unique_states[action][0].append(path)
+                            unique_states[action][1].append(1)
+                        else:
+                            unique_states[action][1][path_index[0]] += 1
+                        new_actions = GetNewActions(state, next_state,action_count)
                 else:
                     next_state=state
                     new_actions = 0
                     break
-                SetReward(state, action, path, new_actions,img_states)
+                reward = SetReward(state, action, action_to_do, path, new_actions, img_states, next_state, action_count)
 
-                next_state = np.reshape(next_state, [1, state_size])
-                terminated = CheckTerminated(action_count,action_space)
+                next_state = np.reshape(next_state, [2, state_size])
+                terminated = CheckTerminated(e, states, unique_states)
 
                 agent.store(state, action, reward, next_state, terminated)
                 state = next_state
@@ -121,7 +134,7 @@ if __name__ == "__main__":
             q_pid.put(app_pid)
             print("2nd in main", q_pid.queue[-1])
             app_close_bug = True
-            state, path = GetState(img_counter, img_states, states, tree, action_space)
+            state, path = GetState(img_counter, img_states, states, tree, action_space,action_count, unique_states)
             img_counter += 1
             print("exception caught")
             continue

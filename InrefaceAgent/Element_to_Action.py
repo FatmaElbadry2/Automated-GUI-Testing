@@ -17,26 +17,33 @@ class Actions(Enum):
     write_short = 11
     delete = 12
     undefined = 13
+    click_no_change = 14
 
 
-click = ["button", "radio_button", "textbox", "checkbox", "combobox", "spinbox", "submenu", "tab",
-         "switch", "icon_button",  "close", "save", "load", "redo", "undo", "export", "new", "info", "settings",
-         "max_min", "dropdown", "button_combobox"]
+click = ["button", "tab"]
 
-write = ["textbox", "textarea", "search", "text_combobox"]
+one_click = ["combobox", "submenu",  "icon_button", "close", "save", "load", "redo", "undo", "export", "new", "info", "settings", "max_min", "dropdown", "button_combobox"]
+
+click_no_change = ["radio_button", "checkbox", "switch"]
+
+write = ["textbox", "textarea", "search", "text_combobox", "spinbox"]
 drag_horizontal = ["horizontal_scrollbar"]
 drag_vertical = ["vertical_scrollbar"]
 
 
 def element_action_mapper(type):
     if type in click:
-        return Actions.double_left_click, Actions.left_click
+        return [Actions.double_left_click, Actions.left_click]
+    elif type in one_click:
+        return [Actions.left_click]
+    elif type in click_no_change:
+        return [Actions.click_no_change]
     elif type in write:
-        return Actions.write_letters, Actions.write_numbers, Actions.write_alphanumeric, Actions.write_short,\
-               Actions.write_long, Actions.delete
+        return [Actions.write_letters, Actions.write_numbers, Actions.write_alphanumeric, Actions.write_short,\
+               Actions.write_long, Actions.delete]
     elif type in drag_horizontal:
-        return Actions.drag_left, Actions.drag_right
+        return [Actions.drag_left, Actions.drag_right]
     elif type in drag_vertical:
-        return Actions.drag_up, Actions.drag_down
+        return [Actions.drag_up, Actions.drag_down]
 
     return None
