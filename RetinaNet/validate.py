@@ -24,7 +24,7 @@ assert torch.__version__.split('.')[0] == '1'
 
 print('CUDA available: {}'.format(torch.cuda.is_available()))
 
-def detect(img_path, i):
+def detect(img_path, i, Folder):
 
 	elements=[]
 
@@ -114,7 +114,7 @@ def detect(img_path, i):
 					cv2.rectangle(img, (x1, y1), (x2, y2), color=(0, 0, 255), thickness=2)
 				else:
 					cv2.rectangle(img, (x1, y1), (x2, y2), color=(0, 255, 0), thickness=2)
-				cv2.imwrite(MY_DIRNAME + "\\RL\\output\\image_" + str(i) + ".png", img)
+				cv2.imwrite(MY_DIRNAME + "\\RL\\" + Folder +"\\output\\image_" + str(i) + ".png", img)
 				#print(label_name)
 
 			#cv2.imshow('img', img)

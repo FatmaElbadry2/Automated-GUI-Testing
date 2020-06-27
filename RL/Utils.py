@@ -19,25 +19,20 @@ def OpenApp(app_path, app_name):
     time.sleep(1)
     return pid
 
-def GetState(i, img_states, states, tree, action_space, action_count, unique_states):
+def GetState(i, img_states, states, tree, action_space, action_count, unique_states, Folder):
     state = np.zeros((2,2502))
-    #print("ACTION COUNT: ", action_count)
-    #print("STATES: ", states)
-    #print("IMG STATES: ", states)
-    #state = []
     time.sleep(1)
-    image, path = save_image(i)
-    elements = buildElements(path, i, [Width, Height])
+    image, path = save_image(i, Folder)
+    elements = buildElements(path, i, [Width, Height], Folder)
     elements.sort(key=operator.attrgetter('x_center'))
     elements.sort(key=operator.attrgetter('y_center'))
     exists, old_state, diff = img_exists(elements, img_states, image)
+
     if exists:
         print("state already exists")
         img_states[old_state][0] += 1
-        #state[0:min(len(state), len(states[old_state]))] = states[old_state][0:min(len(state), len(states[old_state]))]
         state[0][states[old_state][0]] = 1
         state[1] = GetPotentialActions(action_count,unique_states)
-        # state[1][states[old_state]]=action_count[states[old_state]]
         path = old_state
     else:
         img_states[path] = [1, elements]
@@ -51,13 +46,9 @@ def GetState(i, img_states, states, tree, action_space, action_count, unique_sta
                 [states[path][0].append(action_id) for action_id in available_actions]
         states[path][1] = (np.zeros(len(states[path][0]))).astype(int)
         states[path][0] = np.array(states[path][0]).astype(int)
-        #state[0:min(len(state), len(states[path]))] = states[path][0:min(len(state), len(states[path]))]
         state[0][states[path][0]] = 1
-        #state[1][states[old_state]] = action_count[states[old_state]]
         state[1] = GetPotentialActions(action_count,unique_states)
-    #state = states[path]
-    #print(state)
-    #print(len(state))
+
     state[0][2501] = diff/100
     return state, path
 
@@ -68,10 +59,10 @@ def GetPotentialActions(action_count,unique_states):
             state[i]=1
     return state
 
-
 def SetReward(state, action, action_type, path, new_actions, img_states, next_state, action_count):
     action_type_enum = eta.Actions
-    actions = [action_type_enum.click_no_change, action_type_enum.write_letters, action_type_enum.write_numbers, action_type_enum.write_short, action_type_enum.write_long, action_type_enum.write_alphanumeric, action_type_enum.delete]
+    actions = [action_type_enum.click_no_change, action_type_enum.write_letters, action_type_enum.write_numbers, action_type_enum.write_short,
+               action_type_enum.write_long, action_type_enum.write_alphanumeric, action_type_enum.delete]
     if state[0].tolist()==next_state[0].tolist():
         reward=-1
     elif (action_type in actions):
@@ -84,16 +75,11 @@ def SetReward(state, action, action_type, path, new_actions, img_states, next_st
     return reward
 
 def GetNewActions(state, next_state, unique_states):
-    #print("STATE: ", state)
-    #print("NEXT STATE: ", next_state)
     new_actions = list(set(next_state[0]) - set(state[0]))
     new_actions = [unique_states[int(x)][1] for x in new_actions if (np.array(unique_states[int(x)][1])==0).any()]
-    # new_actions = [x for x in new_actions if action_count[int(x)] == 0]
     return len(new_actions)
 
 def ElementMapper(idx_element,tree):
-    #print("Element ID INT: ",int(idx_element))
-    #print(tree)
     element = tree[int(idx_element)]
     return element.x_center, element.y_center
 
@@ -194,7 +180,7 @@ def SaveTree(tree, csv_file_path):
 
 def LoadTree(csv_file_path):
     tree = []
-    with open('tree.csv') as csv_file:
+    with open(csv_file_path) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
@@ -216,7 +202,7 @@ def SaveUniqueStates(unique_states, txt_file):
     val_list = list(unique_states.values())
     file = open(txt_file,"w")
     for i in range(len(key_list)):
-        print(key_list[i], val_list[i][1][0])
+        #print(key_list[i], val_list[i][1][0])
         file.writelines(str(key_list[i]))
         file.writelines(",")
         file.writelines(str(val_list[i][1][0]))
@@ -242,5 +228,10 @@ def LoadUniqueStates(txt_file):
                     unique_states[array[0]] = array [1]
     return unique_states
 
-
+def AdjustUniqueStates(unique_states):
+    for state in unique_states:
+        #print(unique_states[state])
+        zeros = np.zeros(unique_states[state]).astype(int).tolist()
+        unique_states[state] = [[],zeros]
+    return unique_states
 

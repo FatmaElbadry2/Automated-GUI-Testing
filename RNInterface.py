@@ -111,8 +111,8 @@ def elementStruct(element):
     return e
 
 
-def buildElements(image_path,i, w_shape):
-    elements,img_shape = detect(image_path,i)
+def buildElements(image_path,i, w_shape, Folder):
+    elements,img_shape = detect(image_path,i, Folder)
     #elements = FilterElements(elements)
     #print(i," :",len(elements))
     all_elements = []
@@ -125,12 +125,12 @@ def buildElements(image_path,i, w_shape):
     return all_elements
 
 
-def save_image(i):
+def save_image(i, Folder):
     image = sh.ScreenShot()
     #print("screen-shot taken")
-    image.save(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png")
-    image = cv2.imread(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png", cv2.IMREAD_COLOR)
-    return image, MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png"
+    image.save(MY_DIRNAME + "\\RL\\" + Folder + "\\images\\image_" + str(i) + ".png")
+    image = cv2.imread(MY_DIRNAME + "\\RL\\" + Folder + "\\images\\image_" + str(i) + ".png", cv2.IMREAD_COLOR)
+    return image, MY_DIRNAME + "\\RL\\" + Folder + "\\images\\image_" + str(i) + ".png"
 
 
 #def FilterElements(elements):
