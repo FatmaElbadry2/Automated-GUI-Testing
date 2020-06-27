@@ -2,7 +2,7 @@ from NLP.imports import *
 from spacy.tokens import Span
 from dictionary import *
 from preProcessing import *
-from agent import keyBoard as k, mouse, shortcuts as sh
+from InrefaceAgent import keyboard as k, mouse, shortcuts as sh
 import rpa as r
 from utils import matchText
 from yoloInterface import Element
