@@ -22,6 +22,7 @@ def textReplacer(text):
     i = 0
     txtSize = len(text)
     for match in re.finditer(elementText, text):
+
         start, end = match.span()
         start = start - (txtSize - len(text))
         end = end - (txtSize - len(text))

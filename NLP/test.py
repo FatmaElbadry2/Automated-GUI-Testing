@@ -1,14 +1,14 @@
-import spacy
-import re
-from spacy.lang.en import English
-from spacy.matcher import Matcher
-from spacy.tokens import Span
-# from yoloInterface import *
-from preProcessing import *
-import numpy as np
-import math as m
-# from objectMatcher import *
-from dataclasses import dataclass
+# import spacy
+# import re
+# from spacy.lang.en import English
+# from spacy.matcher import Matcher
+# from spacy.tokens import Span
+# # from yoloInterface import *
+# from preProcessing import *
+# import numpy as np
+# import math as m
+# # from objectMatcher import *
+# from dataclasses import dataclass
 
 
 # text_dict = {
@@ -33,7 +33,6 @@ from dataclasses import dataclass
 # print(Type)
 # print(error)
 
-
-x,y=1,2
-print(x)
-print(y)
+import numpy as np
+x=np.array([0,0,0])
+print((x==2).any())

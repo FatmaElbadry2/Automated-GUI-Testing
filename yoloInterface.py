@@ -1,7 +1,7 @@
 import rpa as r
 from dataclasses import dataclass
 print("initializing....")
-r.init(visual_automation=True, chrome_browser=False)
+#r.init(visual_automation=True, chrome_browser=False)
 print("starting.....")
 print(r.mouse_xy())
 
@@ -102,5 +102,4 @@ def buildElements(elements):
         eStruct = elementStruct(element)
         all_elements.append(eStruct)
     return all_elements
-
 
