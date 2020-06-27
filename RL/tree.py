@@ -20,26 +20,28 @@ def IsDifferent(img_1,img_2):
     diff = img_3[img_3 == 0].shape[0]
     similar = img_3[img_3 == 1].shape[0]
     per_diff =  100 * diff / (diff + similar)
-    print("difference: ", diff)
-    print("similar: ", similar)
-    print("ratio_similar: ", 100 * similar / (diff + similar))
-    print("ratio_diff: ", 100 * diff / (diff + similar))
-    print("diff to similar: ", 100 * diff / (similar))
     if per_diff > 10:
         return True,per_diff
     return False,0
 
 
-
 def img_exists(elements,img_states,image):
     diff = 0
     for state in img_states:
-        if elements == img_states[state][1]:
+        if len(elements) == len(img_states[state][1]):
+            for i in range(len(elements)):
+                if elements[i].type == img_states[state][1][i].type and img_states[state][1][i].x_center +2 >=elements[i].x_center >= img_states[state][1][i].x_center -2 and img_states[state][1][i].y_center +2 >=elements[i].y_center >= img_states[state][1][i].y_center -2 \
+                    / img_states[state][1][i].width +2 >=elements[i].width >= img_states[state][1][i].width -2 and img_states[state][1][i].height +2 >=elements[i].height >= img_states[state][1][i].height -2:
+                    stored_image = cv2.imread(state)
+                    is_diff, diff = IsDifferent(image, stored_image)
+                    if not is_diff:
+                        return True, state, diff
+        '''if elements == img_states[state][1]:
             stored_image = cv2.imread(state)
             is_diff,diff = IsDifferent(image, stored_image)
             if not is_diff :
             # if image.tolist() == stored_image.tolist():
-                return True,state,diff
+                return True,state,diff'''
 
     return False,None,diff
 
@@ -93,7 +95,10 @@ def buildTree(elements,tree,action_space):
     IDs = []
     #global tree
     for element in elements:
-        index = np.where(np.array(tree) == element)[0]
+        index=[i for i in range(len(tree)) if (tree[i].type == element.type and element.x_center +2 >=tree[i].x_center
+                                               >= element.x_center-2 and element.y_center +2 >=tree[i].y_center >=
+                                               element.y_center -2 and element.width +2 >=tree[i].width >= element.width -2
+                                               and element.height +2 >=tree[i].height >= element.height -2)]
         if len(index) == 0:
             if addElement(element, len(tree),action_space):
                 tree.append(element)

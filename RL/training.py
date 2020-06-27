@@ -47,7 +47,7 @@ if __name__ == "__main__":
                 # old_pid = q_pid.get()
                 print("---------------------RESET--------------------")
                 q_error_check.put(0)
-                app_pid,action_count,img_states,states,unique_states = reset(app_pid, app_path, app_name, "\\RL\\images", "\\RL\\output")
+                app_pid,action_count,img_states,states,unique_states = reset(app_pid, app_path, app_name, "\\RL\\images", "\\RL\\output", unique_states)
                 q_pid.put(app_pid)
                 state, path = GetState(img_counter,img_states,states,tree,action_space,action_count,unique_states)
                 img_counter += 1
@@ -101,9 +101,12 @@ if __name__ == "__main__":
                     new_actions = 0
                     break
                 reward = SetReward(state, action, action_to_do, path, new_actions, img_states, next_state, action_count)
+                '''print(tree)
+                print(action_space)
+                print(unique_states)'''
 
                 next_state = np.reshape(next_state, [2, state_size])
-                terminated = CheckTerminated(e, states, unique_states)
+                terminated = CheckTerminated(e, states, unique_states, action_space, action_count)
 
                 agent.store(state, action, reward, next_state, terminated)
                 state = next_state
@@ -122,7 +125,12 @@ if __name__ == "__main__":
             if (e + 1) % 10 == 0:
                 print("**********************************")
                 print("Episode: {}".format(e + 1))
+
                 agent.save(MY_DIRNAME + "\\RL\\Weights\\dexter-dqn.h5")
+                #----save tree and action space----
+                SaveActionSpace(action_space, "action_space.txt")
+                SaveTree(tree, "tree.csv")
+                SaveUniqueStates(unique_states, "unique_states.txt")
 
                 print("**********************************")
         except KeyboardInterrupt:
@@ -130,9 +138,9 @@ if __name__ == "__main__":
             if responding == 0: # not responding
                 os.kill(app_pid, 9)
             app_pid = OpenApp(app_path, app_name)
-            print("1st in main", app_pid)
+            #print("1st in main", app_pid)
             q_pid.put(app_pid)
-            print("2nd in main", q_pid.queue[-1])
+            #print("2nd in main", q_pid.queue[-1])
             app_close_bug = True
             state, path = GetState(img_counter, img_states, states, tree, action_space,action_count, unique_states)
             img_counter += 1

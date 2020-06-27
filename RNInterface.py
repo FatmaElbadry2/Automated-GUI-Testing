@@ -91,10 +91,10 @@ def convert_element(element, w_shape, img_shape):
     x_center = x1 + (width / 2)
     y_center = y1 + (height / 2)
 
-    element[1] = x_center
-    element[2] = y_center
-    element[3] = width
-    element[4] = height
+    element[1] = int(x_center)
+    element[2] = int(y_center)
+    element[3] = int(width)
+    element[4] = int(height)
     return element
 
 
@@ -127,7 +127,7 @@ def buildElements(image_path,i, w_shape):
 
 def save_image(i):
     image = sh.ScreenShot()
-    print("screen-shot taken")
+    #print("screen-shot taken")
     image.save(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png")
     image = cv2.imread(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png", cv2.IMREAD_COLOR)
     return image, MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png"

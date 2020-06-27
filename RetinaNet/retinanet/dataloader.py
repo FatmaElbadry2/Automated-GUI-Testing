@@ -574,7 +574,7 @@ class ImageLoader(Dataset):
     def load_image(self, image_index):
         img = skimage.io.imread(self.image_names[image_index])
 
-        print("Image size before training: ", img.shape)
+        #print("Image size before training: ", img.shape)
 
         if (img.shape[2] > 3):
             img = img[:, :, :3]

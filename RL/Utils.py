@@ -6,6 +6,7 @@ from tree import *
 from RNInterface import *
 import shutil
 import operator
+import csv
 
 
 def OpenApp(app_path, app_name):
@@ -18,7 +19,7 @@ def OpenApp(app_path, app_name):
     time.sleep(1)
     return pid
 
-def GetState(i, img_states, states, tree, action_space, action_count,unique_states):
+def GetState(i, img_states, states, tree, action_space, action_count, unique_states):
     state = np.zeros((2,2502))
     #print("ACTION COUNT: ", action_count)
     #print("STATES: ", states)
@@ -96,12 +97,17 @@ def ElementMapper(idx_element,tree):
     element = tree[int(idx_element)]
     return element.x_center, element.y_center
 
-def CheckTerminated(episode, states, unique_states):
+def CheckTerminated(episode, states, unique_states, action_space, action_count):
     if episode == 0:
-        for state in states:
-            if (states[state][1] == 0).any():
-                return False
-        return True
+        '''for state in states:
+            if (states[state][1] == 0).any():'''
+
+        print(action_space[1:][action_space[(action_space[1:]).astype(int)]!=-1])
+        print(action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1])
+
+        if (action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1]>0).all():
+            return True
+        return False
     for state in unique_states:
         if (np.array(unique_states[state][1]) == 0).any():
             return False
@@ -138,7 +144,6 @@ def ErrorHandler(q_pid, q_error_check, q_check_responding):
                 while (PID == q_pid.queue[-1]):
                     pass
 
-
 def EmptyDirectory(imgs_folder):
     folder = MY_DIRNAME + imgs_folder
     for filename in os.listdir(folder):
@@ -167,6 +172,75 @@ def reset(pid, path, name, imgs_folder, output_folder, unique_states):
     EmptyDirectory(imgs_folder)
     EmptyDirectory(output_folder)
     return pid,action_count,img_states,states,unique_states
+
+def SaveActionSpace(action_space, txt_file):
+    action_space = action_space.tolist()
+    file = open(txt_file,"w")
+    file.writelines(str(action_space)[1:len(str(action_space))-1])
+    file.close() #to change file access modes
+
+def LoadActionSpace(txt_file):
+    file = open(txt_file,"r+")
+    file_lines = file.read()
+    array = file_lines.split(",")
+    array = np.array(array)
+    return array.astype(int)
+
+def SaveTree(tree, csv_file_path):
+    with open(csv_file_path, 'w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        for element in tree:
+            csv_writer.writerow([element.type, element.x_center, element.y_center, element.width, element.height, element.text, element.color, element.hex])
+
+def LoadTree(csv_file_path):
+    tree = []
+    with open('tree.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0
+        for row in csv_reader:
+            e = Element()
+            e.type = row[0]
+            e.x_center = row[1]
+            e.y_center = row[2]
+            e.width = row[3]
+            e.height = row[4]
+            e.text = row[5]
+            e.color = row[6]
+            e.hex = row[7]
+            tree.append(e)
+            line_count += 1
+    return tree
+
+def SaveUniqueStates(unique_states, txt_file):
+    key_list = list(unique_states.keys())
+    val_list = list(unique_states.values())
+    file = open(txt_file,"w")
+    for i in range(len(key_list)):
+        print(key_list[i], val_list[i][1][0])
+        file.writelines(str(key_list[i]))
+        file.writelines(",")
+        file.writelines(str(val_list[i][1][0]))
+        file.writelines("\n")
+    file.close()
+
+def LoadUniqueStates(txt_file):
+    unique_states = {}
+    file = open(txt_file,"r+")
+    file_lines = file.read()
+    line_count = 0
+    array = []
+    for i in range(len(file_lines)):
+        if i%2==0:
+            line = int(file_lines[i])
+            if len(array) == 2:
+                unique_states[array[0]] = array [1]
+                array = []
+                array.append(line)
+            else:
+                array.append(line)
+                if i == len(file_lines)-2:
+                    unique_states[array[0]] = array [1]
+    return unique_states
 
 
 

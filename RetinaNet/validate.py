@@ -70,7 +70,7 @@ def detect(img_path, i):
 				scores, classification, transformed_anchors = retinanet(data['img'].cuda().float())
 			else:
 				scores, classification, transformed_anchors = retinanet(data['img'].float())
-			print('Elapsed time: {}'.format(time.time()-st))
+			#print('Elapsed time: {}'.format(time.time()-st))
 			idxs = np.where(scores.cpu()>0.5)
 
 			img = np.array(255 * unnormalize(data['img'][0, :, :, :])).copy()
@@ -124,6 +124,6 @@ def detect(img_path, i):
 	return elements, img.shape
 
 
-if __name__ == '__main__':
-	elements = detect("elmerf.PNG",1)
-	print(elements)
+# if __name__ == '__main__':
+# 	elements = detect("elmerf.PNG",1)
+# 	print(elements)
