@@ -1,11 +1,11 @@
 import rpa as r
+import cv2
 from dataclasses import dataclass
-print("initializing....")
+from global_imports import MY_DIRNAME
+from InrefaceAgent import shortcuts as sh
+from YOLOv3_PyTorch.test import detect as d
+
 #r.init(visual_automation=True, chrome_browser=False)
-print("starting.....")
-print(r.mouse_xy())
-
-
 # gui_elements = [[0, 80, 70, 10, 10, "save", "red", 0x123456], [1, 120, 40, 20, 20, "submit", "blue", 0x123456],
 #             [0, 60, 30, 10, 10, "save", "red", 0x123456]]
 
@@ -57,6 +57,7 @@ elementsMatcher = [
 
 @dataclass
 class Element:
+    ID: int = None
     type: str = ""
     x_center: int = -1
     y_center: int = -1
@@ -82,24 +83,34 @@ def getElementColor(elements):
 
 def elementStruct(element):
     e = Element()
-    e.type = elementsMatcher[element[0]]
+    e.type = elementsMatcher[int(element[0])]
     e.x_center = element[1]
     e.y_center = element[2]
     e.width = element[3]
     e.height = element[4]
-    e.text = element[5]
-    e.color = element[6]
-    e.hex = element[7]
+    # e.text = element[5]
+    # e.color = element[6]
+    # e.hex = element[7]
     return e
 
 
-def buildElements(elements):
-    # get elements from YOLO
+def buildElements(image,i):
+    elements = d.detect(image, "image_" + str(i) + ".png")
+    print(i," :",len(elements))
     all_elements = []
     for element in elements:
-        getElementText(element)
-        getElementColor(element)
+        # getElementText(element)
+        # getElementColor(element)
         eStruct = elementStruct(element)
         all_elements.append(eStruct)
     return all_elements
+
+
+def save_image(i):
+    image = sh.ScreenShot()
+    print("screen-shot taken")
+    image.save(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png")
+    image = cv2.imread(MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png", cv2.IMREAD_COLOR)
+    return image, MY_DIRNAME + "\\RL\\images\\image_" + str(i) + ".png"
+
 
