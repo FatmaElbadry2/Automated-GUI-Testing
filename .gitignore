@@ -15,3 +15,5 @@ rpa_python.js
 rpa_python.log
 rpa_python.raw
 *.pt
+dataset
+images
