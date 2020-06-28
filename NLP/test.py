@@ -32,7 +32,11 @@
 # print(obj)
 # print(Type)
 # print(error)
+from fuzzywuzzy import fuzz
+def matchText(eText, uText,thresh):
+    levRatio = fuzz.partial_ratio(eText.lower(), uText.lower())
+    if levRatio >= thresh:
+        return True, levRatio
+    return False, levRatio
 
-import numpy as np
-x=np.array([0,0,0])
-print((x==2).any())
+print(matchText("textbox", "combobox",90))

@@ -1,16 +1,16 @@
 # from imports import *
 from dictionary import *
 from preProcessing import *
-from yoloInterface import *
 from colors import *
 from utils import *
+from RNInterface import *
 
 
 def colorMatcher(color, elements):
     pass
 
 
-def objectSplitter(text):  # it takes one sentence and split it into mini sentences according to the objects
+def objectSplitter(text,start):  # it takes one sentence and split it into mini sentences according to the objects
     i = 0
     sub_sentences = []
     prep_next = []
@@ -24,9 +24,9 @@ def objectSplitter(text):  # it takes one sentence and split it into mini senten
         elif text[i].dep_ == "prep":
             index = [obj.i for obj in text[i].rights]
             if len(index) == 0:
-                index = [i]
-            [sent.append(text[j]) for j in range(i, index[0]+1) if text[j].pos_ != "DET"]
-            i = index[0]
+                index = [i-start]
+            [sent.append(text[j]) for j in range(i, index[0]+1-start) if text[j].pos_ != "DET"]
+            i = index[0]-start
             new_sent = True
         if new_sent:
             if i < len(text)-1 and text[i+1].dep_ == "prep" and str(text[i+1]) in ["to", "of"]:
@@ -127,7 +127,7 @@ def objectTypeMapper(obj, prep_next, text_dict, input_dict, elements, x_range, y
         return None, ObjType.unknown, Errors.no_error
 
 
-def sentenceInterpreter(sentence, x_range, y_range, elements, text_dict, input_dict, obj_count, return_type, prep_next,
+def sentenceInterpreter(sentence, x_range, y_range, elements, text_dict, input_dict, obj_count, return_type, prep_next,ordinal_dict,
                         prev_obj=None, direction=None):
     filteredObj = elements
     Obj_changed = False
@@ -236,9 +236,11 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, text_dict, input_d
     return t_input, x_range, y_range, direction, prev_obj, return_type, obj_count
 
 
-def objectFinder(sentence, elements, textdict, inputdict):
-    mini_sent, prep_next = objectSplitter(sentence)
+def objectFinder(sentence, elements, textdict, inputdict,ordinal_dict,start):
+    print(sentence)
+    mini_sent, prep_next = objectSplitter(sentence,start)
     print(mini_sent)
+    print(prep_next)
     direction = None
     prev_obj = None
     t_input = None
@@ -253,7 +255,7 @@ def objectFinder(sentence, elements, textdict, inputdict):
                                                                                                      textdict, inputdict
                                                                                                      , obj_count,
                                                                                                      return_type,
-                                                                                                     prep_next[i],
+                                                                                                     prep_next[i],ordinal_dict,
                                                                                                      prev_obj,
                                                                                                      direction)
 
@@ -261,7 +263,7 @@ def objectFinder(sentence, elements, textdict, inputdict):
 
     return prev_obj, x_range, y_range, t_input, direction, return_type
 
-
+'''
 e1 = elementStruct(gui_elements[0])
 e2 = elementStruct(gui_elements[1])
 e3 = elementStruct(gui_elements[2])
@@ -286,11 +288,10 @@ print(objectSplitter(sentence_nlp))
 #     print(prev_object)
 # except ValueError as e:
 #     print(str(e))
-
-
-
-
-
-
-
-
+'''
+# text="click on the first icon_button from the east"
+# sentence_nlp=nlp(text)
+# print(sentence_nlp[5].dep_)
+# x=sentence_nlp[1:]
+# print(x[4].dep_)
+# print(objectSplitter(x,1))

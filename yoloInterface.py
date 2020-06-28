@@ -3,7 +3,7 @@ import cv2
 from dataclasses import dataclass
 from global_imports import MY_DIRNAME
 from InrefaceAgent import shortcuts as sh
-from YOLOv3_PyTorch.test import detect as d
+#from YOLOv3_PyTorch.test import detect as d
 
 #r.init(visual_automation=True, chrome_browser=False)
 # gui_elements = [[0, 80, 70, 10, 10, "save", "red", 0x123456], [1, 120, 40, 20, 20, "submit", "blue", 0x123456],

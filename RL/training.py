@@ -22,7 +22,7 @@ if __name__ == "__main__":
     app_name = "ElmerGUI.exe"
     app_pid = OpenApp(app_path, app_name)
 
-    state, path = GetState(0,img_states,states,tree,action_space,action_count,unique_states, "Training")
+    state, path = GetState(0,img_states,states,tree,action_space,action_count,unique_states, "RL\\Training")
 
     img_counter = 1
     batch_size = 32
@@ -47,7 +47,7 @@ if __name__ == "__main__":
                 q_error_check.put(0)
                 app_pid,action_count,img_states,states,unique_states = reset(app_pid, app_path, app_name, "\\RL\\Training\\images", "\\RL\\Training\\output", unique_states)
                 q_pid.put(app_pid)
-                state, path = GetState(img_counter,img_states,states,tree,action_space,action_count,unique_states, "Training")
+                state, path = GetState(img_counter,img_states,states,tree,action_space,action_count,unique_states, "RL\\Training")
                 img_counter += 1
             app_close_bug = False
             state = np.reshape(state, [2, state_size])
@@ -79,7 +79,7 @@ if __name__ == "__main__":
                     # next_state, reward, terminated, info = enviroment.step(action)
                     if e == 0:
                         states[path][1][states[path][0]==action]+=1
-                    next_state, path = GetState(img_counter, img_states, states, tree, action_space, action_count,unique_states, "Training")
+                    next_state, path = GetState(img_counter, img_states, states, tree, action_space, action_count,unique_states, "RL\\Training")
                     img_counter += 1
                     new_actions = 0
                     if state[0].tolist() != next_state[0].tolist():
@@ -140,7 +140,7 @@ if __name__ == "__main__":
             q_pid.put(app_pid)
             #print("2nd in main", q_pid.queue[-1])
             app_close_bug = True
-            state, path = GetState(img_counter, img_states, states, tree, action_space,action_count, unique_states, "Training")
+            state, path = GetState(img_counter, img_states, states, tree, action_space,action_count, unique_states, "RL\\Training")
             img_counter += 1
             print("exception caught")
             continue

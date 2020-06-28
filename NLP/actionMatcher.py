@@ -5,9 +5,10 @@ from preProcessing import *
 from InrefaceAgent import keyboard as k, mouse, shortcuts as sh
 import rpa as r
 from utils import matchText
-from yoloInterface import Element
-from objectMatcher import objectTypeMapper, Errors, e9
+from objectMatcher import objectTypeMapper, Errors
 from dataclasses import dataclass
+from RNInterface import *
+
 
 
 def getScrollType(elements):
@@ -128,11 +129,11 @@ def getRelativeDrag(directions, quantity):
 
 def actionMapper(elements, action, action_type, center_1, center_2=None, t_input=None, quantity=None, direction=None):
     if action_type == Actions.click:
-        if "east" in action and "double" in action:
+        if "east" in str(action) and "double" in str(action):
             mouse.DoubleLeftClick(center_1[0], center_1[1])
-        elif "right" in action and "double" in action:
+        elif "right" in str(action) and "double" in str(action):
             mouse.DoubleRightClick(center_1[0], center_1[1])
-        elif "right" in action:
+        elif "right" in str(action):
             mouse.Rightclick(center_1[0], center_1[1])
         else:
             mouse.LeftClick(center_1[0], center_1[1])
@@ -188,7 +189,9 @@ def actionMapper(elements, action, action_type, center_1, center_2=None, t_input
 class CustomPOS:
     action: list = None
     target_element: spacy.tokens.doc.Doc = None
+    target_index=0
     source_element: spacy.tokens.doc.Doc = None
+    source_index=0
     direction: spacy.tokens.doc.Doc = None
     quantity: int = None
     input: str = ""
@@ -230,25 +233,30 @@ def getSentenceStructure(sentence, elements):
         # pos.direction = None
         # empty_range = getBoundaries(pos.direction, actions[-1], quantity_st, quantity_nd, len(sentence))
         pos.target_element = sentence[actions[-1].i+1:]
+        pos.target_index=actions[-1].i+1
 
     elif action_type == Actions.scroll:
         if to_index is not None:
             pos.target_element = sentence[to_index+1:]
+            pos.target_index = to_index+1
 
     elif action_type == Actions.drag:
         if to_index is not None:
             pos.target_element = sentence[to_index + 1:]
+            pos.target_index = to_index + 1
             pos.source_element = sentence[actions[-1].i+1:to_index]
+            pos.source_index = actions[-1].i+1
         else:
             pos.source_element = sentence[actions[-1].i+1:]
+            pos.source_index = actions[-1].i + 1
 
     elif action_type == Actions.undefined:
         raise ValueError(action_type)
     return pos, action_type
 
 
-from objectMatcher import objectSplitter
+'''from objectMatcher import objectSplitter
 text = nlp("drag the the {ok} button inside the dialog box to the left of the {file} menu by 5 pixels")
 print(getSentenceStructure(text, e9))
 print(objectSplitter(text))
-# print(cardinalRemover(text))
+# print(cardinalRemover(text))'''

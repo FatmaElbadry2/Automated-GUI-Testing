@@ -71,16 +71,32 @@ def replaceDirections(text):
 
 
 def replaceElements(text):
-    expressions = [r"radio[\s|-]*?button", r"text[\s|_|-]+?box", r"check[\s|_|-]+?box", r"combo[\s|_|-]+?box",
+    expressions = [r"radio[\s|_|-]*?button", r"text[\s|_|-]+?box", r"check[\s|_|-]+?box", r"combo[\s|_|-]+?box",
                    r"spin[\s|_|-]+?box", "arrow", r"sub[\s|_|-]+?menu", r"scroll[\s|_|-]+?bar", r"progress[\s|_|-]+?bar",
-                   r"tab[\s|-]*?bar", r"icon[\s|-]*?button",  r"\bbar\b", r"\bicon\b", r"dialog[\s|_|-]+?box",
+                   r"tab[\s|-]*?bar", r"icon[\s|_|-]*?button",  r"\bbar\b", r"\bicon\b", r"dialog[\s|_|-]+?box",
                    r"text[\s|_|-]+?area", r"drop[\s|_|-]*?down(([\s|_|-]*?menu)|([\s|_|-]*?list))?"]
-    replacements = ["radio_button", "textbox", "checkbox", "combobox", "spinbox", "button", "submenu", "scrollbar",
-                    "progressbar", "tab_bar", "icon_button", "scrollbar", "icon_button", "dialogbox", "textarea",
+    replacements = ["radio", "textbox", "checkbox", "combobox", "spinbox", "button", "submenu", "scrollbar",
+                    "progressbar", "tab_bar", "icon", "scrollbar", "icon", "dialogbox", "textarea",
                     "dropdown"]
     for i in range(len(expressions)):
         text = replaceWord(text, expressions[i], replacements[i])
+    return text
 
+def replaceOrdinalNumbers(text):
+    p = inflect.engine()
+    expression= r"\b[0-9][\s|_|-]*?((st)|(nd)|(th)|(rd))\b"
+    txtSize = len(text)
+    for match in re.finditer(expression, text):
+        start, end = match.span()
+        start = start - (txtSize - len(text))
+        end = end - (txtSize - len(text))
+        number=text[start:end-2]
+        number = number.replace("-", "")
+        number = number.replace("_", "")
+        word_form = p.number_to_words(int(number))
+        replacement= p.ordinal(word_form)
+        text = text.replace(text[start:end], replacement)
+    return text
 
 def resolvePronouns():
     pass
@@ -91,13 +107,14 @@ def removeDET():  # which is , that is , etc...,
 
 
 
-x = "click on the {file} menu"
-replaceElements(x)
+'''x = "click on the text box"
+print(type(textReplacer(x)))'''
 
 
 def preProcess(text):
+    ordinal_dict = createOrdinalDict()
     text = replaceDirections(text)
-    text, text_dict, input_dict = textReplacer(text)
-
-    text = expandContractions(text)
-    return text
+    text = replaceElements(text)
+    text = replaceOrdinalNumbers(text)
+    text, screen_dict, input_dict = textReplacer(text)
+    return text, ordinal_dict, screen_dict, input_dict

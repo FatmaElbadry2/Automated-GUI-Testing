@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     for i in range(500):
         try:
-            state, path = GetState(img_counter, img_states, states, tree, action_space, action_count, unique_states, "Testing")
+            state, path = GetState(img_counter, img_states, states, tree, action_space, action_count, unique_states, "RL\\Testing")
             state = np.reshape(state, [2, state_size])
             img_counter += 1
 
@@ -77,7 +77,7 @@ if __name__ == "__main__":
             app_pid = OpenApp(app_path, app_name)
             q_pid.put(app_pid)
             crash_count+=1
-            state, path = GetState(img_counter, img_states, states, tree, action_space, action_count, unique_states, "Training")
+            state, path = GetState(img_counter, img_states, states, tree, action_space, action_count, unique_states, "RL\\Training")
             img_counter += 1
             print("exception caught")
             continue

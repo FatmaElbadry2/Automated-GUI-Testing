@@ -18,7 +18,7 @@ gui_elements = [[20, 300, 170, 100, 70, "are you sure you wanna do this", "white
 elementsMatcher = [
     "button",
     "label",
-    "radio_button",
+    "radio",
     "textbox",
     "checkbox",
     "combobox",
@@ -35,7 +35,7 @@ elementsMatcher = [
     "calendar",
     "link",
     "switch",
-    "icon_button",
+    "icon",
     "dialogbox",
     "textarea",
     "close",
@@ -100,6 +100,10 @@ def convert_element(element, w_shape, img_shape):
 
 def elementStruct(element):
     e = Element()
+    if element[0]=="icon_button":
+        element[0]="icon"
+    elif element[0]=="radio_button":
+        element[0]="radio"
     e.type = element[0]
     e.x_center = element[1]
     e.y_center = element[2]
@@ -128,9 +132,9 @@ def buildElements(image_path,i, w_shape, Folder):
 def save_image(i, Folder):
     image = sh.ScreenShot()
     #print("screen-shot taken")
-    image.save(MY_DIRNAME + "\\RL\\" + Folder + "\\images\\image_" + str(i) + ".png")
-    image = cv2.imread(MY_DIRNAME + "\\RL\\" + Folder + "\\images\\image_" + str(i) + ".png", cv2.IMREAD_COLOR)
-    return image, MY_DIRNAME + "\\RL\\" + Folder + "\\images\\image_" + str(i) + ".png"
+    image.save(MY_DIRNAME + "\\" + Folder + "\\images\\image_" + str(i) + ".png")
+    image = cv2.imread(MY_DIRNAME + "\\" + Folder + "\\images\\image_" + str(i) + ".png", cv2.IMREAD_COLOR)
+    return image, MY_DIRNAME + "\\" + Folder + "\\images\\image_" + str(i) + ".png"
 
 
 #def FilterElements(elements):
