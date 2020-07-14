@@ -48,10 +48,9 @@ class YOLOLoss(nn.Module):
             mask, noobj_mask, tx, ty, tw, th, tconf, tcls = self.get_target(targets, scaled_anchors,
                                                                            in_w, in_h,
                                                                            self.ignore_threshold)
-            if input.is_cuda:
-                mask, noobj_mask = mask.cuda(), noobj_mask.cuda()
-                tx, ty, tw, th = tx.cuda(), ty.cuda(), tw.cuda(), th.cuda()
-                tconf, tcls = tconf.cuda(), tcls.cuda()
+            # mask, noobj_mask = mask.cuda(), noobj_mask.cuda()
+            # tx, ty, tw, th = tx.cuda(), ty.cuda(), tw.cuda(), th.cuda()
+            # tconf, tcls = tconf.cuda(), tcls.cuda()
             #  losses.
             loss_x = self.bce_loss(x * mask, tx * mask)
             loss_y = self.bce_loss(y * mask, ty * mask)

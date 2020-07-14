@@ -8,7 +8,7 @@ TRAINING_PARAMS = \
         "anchors": [[[116, 90], [156, 198], [373, 326]],
                     [[30, 61], [62, 45], [59, 119]],
                     [[10, 13], [16, 30], [33, 23]]],
-        "classes": 36,
+        "classes": 80,
     },
     "lr": {
         "backbone_lr": 0.001,
@@ -21,7 +21,7 @@ TRAINING_PARAMS = \
         "type": "sgd",
         "weight_decay": 4e-05,
     },
-    "batch_size": 1,
+    "batch_size": 16,
     "train_path": "../data/train.txt",
     "epochs": 160,
     "img_h": 416,

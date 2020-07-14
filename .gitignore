@@ -12,3 +12,6 @@ rpa_python.raw
 *.jpg
 *.png
 *.txt
+*.weights
+*.74
+*.xml

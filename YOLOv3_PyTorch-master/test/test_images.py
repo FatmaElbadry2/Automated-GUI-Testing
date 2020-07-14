@@ -139,11 +139,10 @@ def main():
     logging.basicConfig(level=logging.DEBUG,
                         format="[%(asctime)s %(filename)s] %(message)s")
 
-    # if len(sys.argv) != 2:
-    #     logging.error("Usage: python test_images.py params.py")
-    #     sys.exit()
-    # params_path = sys.argv[1]
-    params_path = "params.py"
+    if len(sys.argv) != 2:
+        logging.error("Usage: python test_images.py params.py")
+        sys.exit()
+    params_path = sys.argv[1]
     if not os.path.isfile(params_path):
         logging.error("no params file found! path: {}".format(params_path))
         sys.exit()

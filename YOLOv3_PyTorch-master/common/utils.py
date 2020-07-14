@@ -5,7 +5,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
-import cv2
 import numpy as np
 
 
@@ -97,25 +96,3 @@ def non_max_suppression(prediction, num_classes, conf_thres=0.5, nms_thres=0.4):
             output[image_i] = max_detections if output[image_i] is None else torch.cat((output[image_i], max_detections))
 
     return output
-
-def resize_image(image, input_size):
-    orig_h, orig_w = image.shape[0], image.shape[1]
-    h = w = input_size
-    # print(orig_h, orig_w, h, w)
-    new_h = round(orig_h * min(h / orig_h, w / orig_w))
-    new_w = round(orig_w * min(h / orig_h, w / orig_w))
-    resized_image = cv2.resize(image, (new_w, new_h), interpolation=cv2.INTER_CUBIC)
-    canvas = np.full((h, w, 3), 128)
-    canvas[(h-new_h) // 2:(h-new_h) // 2 + new_h, (w-new_w) // 2:(w-new_w) // 2 + new_w, :] = resized_image
-
-    return canvas
-
-
-def image_preprocessing(image, input_size):
-    image = (resize_image(image, input_size))
-    image = image[:, :, ::-1].transpose((2, 0, 1)).copy()
-    image = torch.from_numpy(image).float().div(255.0)
-    # image = image.unsqueeze(0)
-    # image = image.cuda()
-
-    return image
