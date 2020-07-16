@@ -98,7 +98,7 @@ class CUSTOMDetection(data.Dataset):
             (default: 'VOC2007')
     """
 
-    def __init__(self, root,
+    def __init__(self, root, imagepath,
                  image_sets=[('train')],
                  transform=None, target_transform=CUSTOMAnnotationTransform(),
                  dataset_name='CUSTOM'):
@@ -108,12 +108,12 @@ class CUSTOMDetection(data.Dataset):
         self.target_transform = target_transform
         self.name = dataset_name
         self._annopath = osp.join('%s', 'Annotations', '%s.xml')
-        self._imgpath = osp.join('%s', 'JPEGImages', '%s.jpg')
+        self._imgpath = imagepath
         self.ids = list()
-        for (name) in image_sets:
-            rootpath = self.root
-            for line in open(osp.join(rootpath, 'ImageSets', 'Main', name + '.txt')):
-                self.ids.append((rootpath, line.strip()))
+        for name in range (len(imagepath)):
+            # rootpath = self.root
+            # for line in open(osp.join(rootpath, 'ImageSets', 'Main', name + '.txt')):
+                self.ids.append(name)
 
     def __getitem__(self, index):
         im, gt, h, w = self.pull_item(index)
@@ -127,7 +127,7 @@ class CUSTOMDetection(data.Dataset):
         img_id = self.ids[index]
 
         target = ET.parse(self._annopath % img_id).getroot()
-        img = cv2.imread(self._imgpath % img_id)
+        img = cv2.imread(self._imgpath[img_id])
         # print(img)
         height, width, channels = img.shape
 
@@ -156,7 +156,7 @@ class CUSTOMDetection(data.Dataset):
             PIL img
         '''
         img_id = self.ids[index]
-        return cv2.imread(self._imgpath % img_id, cv2.IMREAD_COLOR)
+        return cv2.imread(self._imgpath[img_id], cv2.IMREAD_COLOR)
 
     def pull_anno(self, index):
         '''Returns the original annotation of image at index

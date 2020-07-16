@@ -2,7 +2,7 @@
 import os.path
 
 # gets home dir cross platform
-HOME = r'C:\Users\Hagar\Desktop\ssd.pytorch-master'
+HOME = r'C:\Users\ssalma\Documents\Github\Automated-GUI-Testing\ssd.pytorch-master'
 
 # for making bounding boxes pretty
 COLORS = ((255, 0, 0, 128), (0, 255, 0, 128), (0, 0, 255, 128),
