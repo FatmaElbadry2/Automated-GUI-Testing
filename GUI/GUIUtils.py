@@ -345,6 +345,12 @@ def CreateLogHBar(widget):
                     border: none;
                 }
                 """
+    voice_record_btn = QPushButton(widget)
+    voice_record_btn.setStyleSheet(qss)
+    icon = QIcon("imgs/microphone.png")
+    voice_record_btn.setIcon(icon)
+    voice_record_btn.setIconSize(QSize(15, 15))
+    voice_record_btn.setToolTip("Voice Commands")
 
     record_btn = QPushButton(widget)
     record_btn.setStyleSheet(qss)
@@ -369,6 +375,9 @@ def CreateLogHBar(widget):
     layout.addWidget(session_name)
     hSpacer = QtWidgets.QSpacerItem(2000, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
     layout.addSpacerItem(hSpacer)
+    layout.addWidget(voice_record_btn)
+    hSpacer = QtWidgets.QSpacerItem(9, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+    layout.addSpacerItem(hSpacer)
     layout.addWidget(record_btn)
     hSpacer = QtWidgets.QSpacerItem(10, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
     layout.addSpacerItem(hSpacer)
@@ -378,7 +387,7 @@ def CreateLogHBar(widget):
     log_bar.setLayout(layout)
     log_bar.setStyleSheet("QWidget{background: #efefef; border: 1px solid; border-color: rgba(0,0,0,0);}")
 
-    return log_bar, record_btn, settings_btn
+    return log_bar, record_btn, settings_btn, voice_record_btn
 
 def CreateLogVBar(widget):
     qss = """

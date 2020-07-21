@@ -384,7 +384,7 @@ class Window(QMainWindow):
         return file_lines
 
     def CreateLog(self):
-        self.log_h_bar, self.record_btn, self.config_btn = utils.CreateLogHBar(self.lower_frame)
+        self.log_h_bar, self.record_btn, self.config_btn, self.voice_record_btn = utils.CreateLogHBar(self.lower_frame)
         self.log_h_bar.setFixedWidth(1540)
         self.log_h_bar.setFixedHeight(35)
         self.log_h_bar.move(0, 3)
