@@ -330,7 +330,7 @@ def CreateLogHBar(widget):
     label.setStyleSheet(qss)
 
     session_name = QPushButton(widget)
-    session_name.setText("  Session Name")
+    session_name.setText("  No active session")
     session_name.setStyleSheet("QPushButton {background-color: none; color: #444444; border: 5px rgba(0,0,0,0) rgba(0,0,0,0) #cbcbcb rgba(0,0,0,0);}")
     #session_name.setStyleSheet("QPushButton {background-color: none; border: none;}")
     icon = QIcon("imgs/interfaces.png")
@@ -387,7 +387,7 @@ def CreateLogHBar(widget):
     log_bar.setLayout(layout)
     log_bar.setStyleSheet("QWidget{background: #efefef; border: 1px solid; border-color: rgba(0,0,0,0);}")
 
-    return log_bar, record_btn, settings_btn, voice_record_btn
+    return log_bar, record_btn, settings_btn, voice_record_btn, session_name
 
 def CreateLogVBar(widget):
     qss = """

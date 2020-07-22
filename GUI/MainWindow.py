@@ -28,7 +28,7 @@ class Window(QMainWindow):
         self.project_created = False
         self.project_opened = False
         self.checkMaximized = False
-        self.autocomplete_array = ["Apple", "Alps", "Berry", "Cherry", "Saloumi", "Fatooma"]
+        self.autocomplete_array = ["menu", "click", "button", "icon", "iconbutton", "textbox", "combobox", "label", "window", "screen", "file", "open", "save"]
         self.current_steps_file = ""
         #self.current_steps_file = "Files\\steps.txt"
         #self.steps_prev_text = self.GetFileText(self.current_steps_file)
@@ -384,7 +384,7 @@ class Window(QMainWindow):
         return file_lines
 
     def CreateLog(self):
-        self.log_h_bar, self.record_btn, self.config_btn, self.voice_record_btn = utils.CreateLogHBar(self.lower_frame)
+        self.log_h_bar, self.record_btn, self.config_btn, self.voice_record_btn, self.session_name_label = utils.CreateLogHBar(self.lower_frame)
         self.log_h_bar.setFixedWidth(1540)
         self.log_h_bar.setFixedHeight(35)
         self.log_h_bar.move(0, 3)
@@ -738,6 +738,15 @@ class Window(QMainWindow):
             self.current_steps_file = ""
             self.current_check_file = ""
             self.tree_project_name.setText(0, "Project")
+
+            self.close_action.setDisabled(True)
+            self.export_action.setDisabled(True)
+            self.new_session.setDisabled(True)
+            self.save.setDisabled(True)
+            self.new_session_btn.setDisabled(True)
+            self.open_session_btn.setDisabled(True)
+            self.config_btn.setDisabled(True)
+            self.run.setDisabled(True)
 
             count = self.tree_test_steps.childCount()
             if count !=0:
@@ -1227,6 +1236,7 @@ class Window(QMainWindow):
         self.current_app_path = app_path
         self.current_session_type = type
         self.loaded_model_path = model_path
+        self.session_name_label.setText("  "+name)
         self.WriteToLog("Active session: " + name + " of type: " + type)
         self.WriteToLog("App path: " + app_path)
         if type=="testing":
@@ -1264,6 +1274,10 @@ class Window(QMainWindow):
         else:
             parent = self.current_tree_child.parent()
             parent.removeChild(self.current_tree_child)
+            if parent.text(0) == "Test Steps":
+                self.steps_text_editor.setPlainText("")
+            else:
+                self.check_text_editor.setPlainText("")
             os.remove(self.clicked_file)
             with open(self.cfg_file, 'r+') as f:
                 file_lines = f.readlines()
@@ -1535,14 +1549,13 @@ class Window(QMainWindow):
         t1_child = QTreeWidgetItem([session_name + ".ssf"])
         t1_child.setIcon(0, QIcon('imgs/session.png'))
         t1_child.setSelected(True)
-        self.self.tree_sessions.addChild(t1_child)
+        self.tree_sessions.addChild(t1_child)
         self.tree_widget.expandToDepth(2)
 
     @QtCore.pyqtSlot(str, str, str, str)
     def ConfigureRunSignalReceived(self, type, path_1, path_2, test_app_path):
         self.run_type = type
         self.WriteToLog("Run configured successfully.")
-        print("hiiiii")
         print(test_app_path)
         if type == "crash":
             self.run_session_file = path_1

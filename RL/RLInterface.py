@@ -155,7 +155,7 @@ if __name__ == "__main__":
     states = {}
     unique_states = {}
 
-    app_path = "C:\\Program Files\\Elmer 8.4-Release\\bin"
-    app_name = "ElmerGUI.exe"
+    app_path = "C:\\Program Files (x86)\\texstudio"
+    app_name = "texstudio.exe"
 
     Training(app_path, app_name, action_space, action_count, tree, img_states, states, unique_states)

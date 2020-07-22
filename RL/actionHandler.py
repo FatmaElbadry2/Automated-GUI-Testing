@@ -44,13 +44,13 @@ def ActionExecuter(action_type, x, y):
         mouse.DoubleLeftClick(x, y)
     elif action_type == action_type_enum.write_letters:
         mouse.LeftClick(x,y)
-        k.Write('saloumi')
+        k.Write('test sentence')
     elif action_type == action_type_enum.write_numbers:
         mouse.LeftClick(x, y)
-        k.write('123456789')
+        k.Write('123456789')
     elif action_type == action_type_enum.write_short:
         mouse.LeftClick(x,y)
-        k.Write('F')
+        k.Write('T')
     elif action_type == action_type_enum.write_long:
         mouse.LeftClick(x,y)
         k.Write('super cali fragilistic expialidocious, even though the sound of it is something quite atrocious')

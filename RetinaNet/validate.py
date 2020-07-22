@@ -117,13 +117,13 @@ def detect(img_path, i, Folder):
 				cv2.imwrite(MY_DIRNAME + "\\" + Folder +"\\output\\image_" + str(i) + ".png", img)
 				#print(label_name)
 
-			#cv2.imshow('img', img)
-			#cv2.waitKey(0)
+			# cv2.imshow('img', img)
+			# cv2.waitKey(0)
 			#return x1, y1, x2, y2
 
 	return elements, img.shape
 
 
 # if __name__ == '__main__':
-# 	elements = detect("elmerf.PNG",1)
-# 	print(elements)
+# 	elements = detect("tex6.jpg", 1,"RL\\Training")
+# 	#print(elements)

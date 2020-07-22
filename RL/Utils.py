@@ -76,7 +76,8 @@ def SetReward(state, action, action_type, path, new_actions, img_states, next_st
 
 def GetNewActions(state, next_state, unique_states):
     new_actions = list(set(next_state[0]) - set(state[0]))
-    new_actions = [unique_states[int(x)][1] for x in new_actions if (np.array(unique_states[int(x)][1])==0).any()]
+    if len(new_actions)>0:
+        new_actions = [unique_states[int(x)][1] for x in new_actions if (np.array(unique_states[int(x)][1])==0).any()]
     return len(new_actions)
 
 def ElementMapper(idx_element,tree):

@@ -1344,7 +1344,7 @@ class ConfigurationWidget(QWidget):
         self.session_app_textbox.setText(self.test_case_app_path)
         self.session_app_textbox.setFixedWidth(350)
         self.session_app_textbox.setMinimumHeight(25)
-        self.session_app_textbox.setPlaceholderText("Model Path")
+        self.session_app_textbox.setPlaceholderText("App Path")
         qss = """
                 QLineEdit {border: 2px solid; border-color: #cbcbcb; border-radius: 8px; padding: 0px 0px 0px 5px;
                 }"""
@@ -1380,7 +1380,7 @@ class ConfigurationWidget(QWidget):
         font = QFont()
         font.setPointSize(8)
         self.warning_label.setFont(font)
-        self.warning_label.setMinimumWidth(400)
+        self.warning_label.setMinimumWidth(500)
         self.warning_label.setAlignment(Qt.AlignLeft)
         self.warning_label.move(55, 276)
         self.warning_label.hide()
