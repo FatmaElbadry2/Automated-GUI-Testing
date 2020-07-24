@@ -125,5 +125,5 @@ def detect(img_path, i, Folder):
 
 
 if __name__ == '__main__':
-	elements = detect("pycharm.JPG", 1,"RL\\Training")
+	elements = detect("image_16.png", 1752222,"RL\\Training")
 	#print(elements)

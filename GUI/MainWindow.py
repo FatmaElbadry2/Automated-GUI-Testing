@@ -1311,6 +1311,7 @@ class Window(QMainWindow):
         img_states = {}
         states = {}
         unique_states = {}
+        element_ex_count = {}
 
         app_path = app_path.split("/")
         app_name = app_path[len(app_path)-1]
@@ -1321,7 +1322,7 @@ class Window(QMainWindow):
         new_app_path = new_app_path[:len(new_app_path)-1]
         print(new_app_path)
 
-        Training(new_app_path, app_name, action_space, action_count, tree, img_states, states, unique_states)
+        Training(new_app_path, app_name, action_space, action_count, tree, img_states, states, unique_states, element_ex_count)
 
 
     def InvokeTesting(self, app_path, model_path):

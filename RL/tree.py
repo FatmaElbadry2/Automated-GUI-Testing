@@ -78,7 +78,7 @@ def actionSpaceMapper(action):  # it should return the ranges of Ids for each el
         return [0, 0]
 
 
-def addElement(element, Id,action_space):  # element is a vector contains element information
+def addElement(element, Id,action_space,element_ex_count):  # element is a vector contains element information
     e_type = eta.element_action_mapper(element.type)
     if e_type is not None:
         for i in range(len(e_type)):
@@ -86,12 +86,13 @@ def addElement(element, Id,action_space):  # element is a vector contains elemen
             while start <= end and action_space[start] != -1:
                 start += 1
             action_space[start] = Id  # the number of slots an single element can occupy should be added
+        element_ex_count[Id]= 0
         return True
     else:
         return False
 
 
-def buildTree(elements,tree,action_space):
+def buildTree(elements,tree,action_space,element_ex_count):
     IDs = []
     #global tree
     for element in elements:
@@ -100,7 +101,7 @@ def buildTree(elements,tree,action_space):
                                                element.y_center -2 and element.width +2 >=tree[i].width >= element.width -2
                                                and element.height +2 >=tree[i].height >= element.height -2)]
         if len(index) == 0:
-            if addElement(element, len(tree),action_space):
+            if addElement(element, len(tree),action_space,element_ex_count):
                 tree.append(element)
                 IDs.append(len(tree)-1)
                 #print(len(tree)-1)

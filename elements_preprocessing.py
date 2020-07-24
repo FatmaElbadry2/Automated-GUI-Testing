@@ -8,8 +8,10 @@ text_right = ["radio"]
 
 
 def getTextAndColor(elements, image):
+
     img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     for element in elements:
+        colors=getDominantcolor(image[element.y_center-(element.height/2):element.y_center+(element.height/2),element.x_center-(element.width/2):element.x_center+(element.width/2),:])
         rgb = img[element.y_center, element.x_center, :]
         if element.type in inside_text:
             getInsideText(element)
@@ -20,6 +22,19 @@ def getTextAndColor(elements, image):
         _,color = get_colour_name(rgb)
         element.color = color
     return elements
+
+def getDominantcolor(img):
+    img=img.tolist()
+    dict=
+    for i in range(len(img)):
+        for j in range(len(img[0])):
+            if str(img[i][j]) in dict:
+                dict[str(img[i][j])]+=1
+            else:
+                dict[str(img[i][j])]=0
+    dict
+
+    return dict
 
 
 def getInsideText(element):
@@ -71,4 +86,32 @@ def get_colour_name(requested_colour):
         closest_name = closest_colour(requested_colour)
         actual_name = None
     return actual_name, closest_name
+
+
+
+# import numpy as np
+# from itertools import groupby
+# img1=cv2.imread("RetinaNet\\tex.JPG")
+# img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
+#
+# image=img1.tolist()
+# print(len(image[0][0]))
+# p=[[str(z) for z in x] for x in image]
+# print(p)
+# print(len(p))
+# print(len(p[0]))
+
+# print(len(img))
+# print()
+# y=[1,2,34,1,1,2,4,5]
+# x=[len(list(group)) for key,group in groupby(y)]
+# print(x)
+# print(len(x))
+
+# import collections as c
+# counter=c.Counter(p)
+# print(counter)
+# print(counter.values())
+
+
 

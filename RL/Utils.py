@@ -19,7 +19,7 @@ def OpenApp(app_path, app_name):
     time.sleep(1)
     return pid
 
-def GetState(i, img_states, states, tree, action_space, action_count, unique_states, Folder):
+def GetState(i, img_states, states, tree, action_space, action_count, unique_states, Folder,element_ex_count):
     state = np.zeros((2,2502))
     time.sleep(1)
     image, path = save_image(i, Folder)
@@ -41,7 +41,7 @@ def GetState(i, img_states, states, tree, action_space, action_count, unique_sta
         img_states[path] = [1, elements]
         states[path]=[[],[]]
 
-        IDs = buildTree(elements, tree, action_space)
+        IDs = buildTree(elements, tree, action_space,element_ex_count)
 
         for id in IDs:
             available_actions = np.where(np.array(action_space) == id)[0]
@@ -91,17 +91,21 @@ def ElementMapper(idx_element,tree):
     element = tree[int(idx_element)]
     return element.x_center, element.y_center
 
-def CheckTerminated(episode, states, unique_states, action_space, action_count, repeat):
-    if episode == 0 or repeat:
+def CheckTerminated(episode, states, unique_states, action_space, action_count, repeat,element_ex_count):
+    if episode == 0:
+            #or repeat:
         '''for state in states:
             if (states[state][1] == 0).any():'''
 
         #print(action_space[1:][action_space[(action_space[1:]).astype(int)]!=-1])
         #print(action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1])
-
-        if (action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1]>0).all():
-            return True
-        return False
+        for key in element_ex_count:
+            if element_ex_count[key]==0:
+                return False
+        return True
+        # if (action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1]>0).all():
+        #     return True
+        # return False
     for state in unique_states:
         if (np.array(unique_states[state][1]) == 0).any():
             return False
@@ -150,12 +154,14 @@ def EmptyDirectory(imgs_folder):
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-def reset(pid, path, name, imgs_folder, output_folder, unique_states):
+def reset(pid, path, name, imgs_folder, output_folder, unique_states,element_ex_count):
     terminated = sh.IsTerminated(pid)
     if not terminated:
         os.kill(pid, 9)
     # global action_count
     action_count = np.zeros(2501)
+    for key in element_ex_count:
+        element_ex_count[key]=0
     #global img_states
     img_states = {}
     #global states
@@ -165,7 +171,7 @@ def reset(pid, path, name, imgs_folder, output_folder, unique_states):
     pid = OpenApp(path, name)
     EmptyDirectory(imgs_folder)
     EmptyDirectory(output_folder)
-    return pid,action_count,img_states,states,unique_states
+    return pid,action_count,img_states,states,unique_states,element_ex_count
 
 def SaveActionSpace(action_space, txt_file):
     action_space = action_space.tolist()

@@ -4,7 +4,7 @@ from actionHandler import *
 from RL.Utils import *
 
 
-def Training(app_path, app_name, action_space, action_count, tree, img_states, states, unique_states):
+def Training(app_path, app_name, action_space, action_count, tree, img_states, states, unique_states,element_ex_count):
     action_size = 2501
     state_size = 2502
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.01)
@@ -17,12 +17,12 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
 
     app_pid = OpenApp(app_path, app_name)
 
-    state, path = GetState(0, img_states, states, tree, action_space, action_count, unique_states, "RL\\Training")
+    state, path = GetState(0, img_states, states, tree, action_space, action_count, unique_states, "RL\\Training",element_ex_count)
 
     img_counter = 1
     batch_size = 32
     num_of_episodes = 10
-    timesteps_per_episode = 1000
+    timesteps_per_episode = 500
     agent.q_network.summary()
 
     # create
@@ -42,13 +42,13 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
                 # old_pid = q_pid.get()
                 print("---------------------RESET--------------------")
                 q_error_check.put(0)
-                app_pid, action_count, img_states, states, unique_states = reset(app_pid, app_path, app_name,
+                app_pid, action_count, img_states, states, unique_states,element_ex_count = reset(app_pid, app_path, app_name,
                                                                                  "\\RL\\Training\\images",
                                                                                  "\\RL\\Training\\output",
-                                                                                 unique_states)
+                                                                                 unique_states,element_ex_count)
                 q_pid.put(app_pid)
                 state, path = GetState(img_counter, img_states, states, tree, action_space, action_count, unique_states,
-                                       "RL\\Training")
+                                       "RL\\Training",element_ex_count)
                 img_counter += 1
             app_close_bug = False
             state = np.reshape(state, [2, state_size])
@@ -77,11 +77,13 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
                     x, y = ElementMapper(idx_element, tree)
                     ActionExecuter(action_to_do, x, y)
                     action_count[action] += 1
+                    element_ex_count[action_space[action]]+=1
+
                     # next_state, reward, terminated, info = enviroment.step(action)
                     if e == 0:
                         states[path][1][states[path][0] == action] += 1
                     next_state, path = GetState(img_counter, img_states, states, tree, action_space, action_count,
-                                                unique_states, "RL\\Training")
+                                                unique_states, "RL\\Training",element_ex_count)
                     img_counter += 1
                     new_actions = 0
                     if state[0].tolist() != next_state[0].tolist():
@@ -106,7 +108,7 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
                 print(unique_states)'''
 
                 next_state = np.reshape(next_state, [2, state_size])
-                terminated = CheckTerminated(e, states, unique_states, action_space, action_count, repeat)
+                terminated = CheckTerminated(e, states, unique_states, action_space, action_count, repeat,element_ex_count)
 
                 agent.store(state, action, reward, next_state, terminated)
                 state = next_state
@@ -117,7 +119,7 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
                     repeat = False
                     break
 
-                if timestep==999 and not goal_reached:
+                if timestep==499 and not goal_reached:
                     repeat=True
 
                 if len(agent.history) > batch_size:
@@ -148,7 +150,7 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
             # print("2nd in main", q_pid.queue[-1])
             app_close_bug = True
             state, path = GetState(img_counter, img_states, states, tree, action_space, action_count, unique_states,
-                                   "RL\\Training")
+                                   "RL\\Training",element_ex_count)
             img_counter += 1
             print("exception caught")
             continue
@@ -161,8 +163,9 @@ if __name__ == "__main__":
     img_states = {}
     states = {}
     unique_states = {}
+    element_ex_count = {}
 
     app_path = "C:\\Program Files (x86)\\texstudio"
     app_name = "texstudio.exe"
 
-    Training(app_path, app_name, action_space, action_count, tree, img_states, states, unique_states)
+    Training(app_path, app_name, action_space, action_count, tree, img_states, states, unique_states, element_ex_count)
