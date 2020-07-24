@@ -12,6 +12,9 @@ def colorMatcher(color, elements):
 
 def objectSplitter(text,start):  # it takes one sentence and split it into mini sentences according to the objects
     i = 0
+    # print(len(text))
+    # print(text[0].i)
+    # print(text)
     sub_sentences = []
     prep_next = []
     while i < len(text):
@@ -295,3 +298,14 @@ print(objectSplitter(sentence_nlp))
 # x=sentence_nlp[1:]
 # print(x[4].dep_)
 # print(objectSplitter(x,1))
+
+# text="click on the first icon button. click on the file menu"
+#
+# text=nlp(text)
+# sentences = text.sents
+# sentences = list(sentences)
+# print(sentences)
+#
+# for i in range(len(sentences)):
+#     x= sentences[i][1:]
+#     print(objectSplitter(x,x[0].i))

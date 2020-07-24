@@ -21,7 +21,7 @@ def NLP(app_path, app_name, text):
         print(elements)
 
         try:
-            execute(sentences[i], elements, ordinal_dict)
+            execute(sentences[i], elements, ordinal_dict,screen_dict,input_dict)
         except ValueError as e:
             print(e)
 

@@ -213,6 +213,7 @@ def getBoundaries(direction, action, quantity_st, quantity_nd, org_size):
 
 
 def getSentenceStructure(sentence, elements):
+    print(sentence)
     pos = CustomPOS()
     to_index = None
     quantity_st = None
@@ -232,26 +233,27 @@ def getSentenceStructure(sentence, elements):
     if action_type in simple_actions:
         # pos.direction = None
         # empty_range = getBoundaries(pos.direction, actions[-1], quantity_st, quantity_nd, len(sentence))
-        pos.target_element = sentence[actions[-1].i+1:]
+        pos.target_element = sentence[actions[-1].i-sentence[0].i+1:]
         pos.target_index=actions[-1].i+1
 
     elif action_type == Actions.scroll:
         if to_index is not None:
-            pos.target_element = sentence[to_index+1:]
+            pos.target_element = sentence[to_index-sentence[0].i+1:]
             pos.target_index = to_index+1
 
     elif action_type == Actions.drag:
         if to_index is not None:
-            pos.target_element = sentence[to_index + 1:]
+            pos.target_element = sentence[to_index-sentence[0].i + 1:]
             pos.target_index = to_index + 1
-            pos.source_element = sentence[actions[-1].i+1:to_index]
+            pos.source_element = sentence[actions[-1].i-sentence[0].i+1:to_index-sentence[0].i]
             pos.source_index = actions[-1].i+1
         else:
-            pos.source_element = sentence[actions[-1].i+1:]
+            pos.source_element = sentence[actions[-1].i-sentence[0].i+1:]
             pos.source_index = actions[-1].i + 1
 
     elif action_type == Actions.undefined:
         raise ValueError(action_type)
+    print(pos)
     return pos, action_type
 
 

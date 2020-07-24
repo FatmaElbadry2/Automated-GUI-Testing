@@ -2,13 +2,11 @@ from actionMatcher import *
 from objectMatcher import *
 
 
-text_dict = {}
-input_dict = {}
 
 # don't forget the keypress
 
 
-def execute(sentence, elements,ordinal_dict):
+def execute(sentence, elements,ordinal_dict,text_dict,input_dict):
     pos, action_type = getSentenceStructure(sentence, elements)
     x_center1, x_center2, y_center1, y_center2, target_obj, source_obj = None, None, None, None, None, None
     if pos.target_element is not None:

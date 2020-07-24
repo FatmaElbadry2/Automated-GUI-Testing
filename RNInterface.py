@@ -68,13 +68,7 @@ class Element:
     hex: hex = 0x00
 
 
-def getElementText(element):
-    xmin = element[1]-(element[3]/2)
-    xmax = element[1]+(element[3]/2)
-    ymin = element[2]-(element[4]/2)
-    ymax = element[2]+(element[4]/2)
-    text = r.read(xmin, ymin, xmax, ymax)
-    element.append(text)
+
 
 
 def getElementColor(elements):
