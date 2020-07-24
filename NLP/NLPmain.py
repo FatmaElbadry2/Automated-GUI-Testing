@@ -26,7 +26,7 @@ if __name__ == "__main__":
         image, path = save_image(i, "NLP")
 
         elements = buildElements(path, i, [Width, Height], "NLP")
-        elements = getText(elements)
+        elements = getTextAndColor(elements,image)
         print(elements)
 
         try:

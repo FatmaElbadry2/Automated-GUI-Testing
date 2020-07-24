@@ -19,7 +19,7 @@ def NLP(app_path, app_name, text):
         image, path = save_image(i, "NLP")
 
         elements = buildElements(path, i, [Width, Height], "NLP")
-        elements = getText(elements)
+        elements = getTextAndColor(elements, image)
         print(elements)
 
         try:
