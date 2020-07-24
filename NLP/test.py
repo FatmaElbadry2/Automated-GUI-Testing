@@ -32,11 +32,32 @@
 # print(obj)
 # print(Type)
 # print(error)
-from fuzzywuzzy import fuzz
-def matchText(eText, uText,thresh):
-    levRatio = fuzz.partial_ratio(eText.lower(), uText.lower())
-    if levRatio >= thresh:
-        return True, levRatio
-    return False, levRatio
-
-print(matchText("textbox", "combobox",90))
+# import time
+# import rpa as r
+# r.init(visual_automation=True, chrome_browser=False)
+# time.sleep(5)
+# print(r.mouse_xy())
+# import cv2
+# import numpy as np
+#
+# def IsDifferent(img_1,img_2):
+#     img_1 = cv2.cvtColor(img_1, cv2.COLOR_BGR2GRAY)
+#     img_2 = cv2.cvtColor(img_2, cv2.COLOR_BGR2GRAY)
+#     img_3 = np.zeros((img_1.shape[0], img_1.shape[1]))
+#     img_3[img_1 == img_2] = 1
+#     # cv.imshow('image',img_3)
+#     # cv.waitKey(0)
+#     diff = img_3[img_3 == 0].shape[0]
+#     similar = img_3[img_3 == 1].shape[0]
+#     per_diff =  100 * diff / (diff + similar)
+#     if per_diff > 10:
+#         return True,per_diff
+#     return False,0
+#
+#
+#
+#
+# img_1= cv2.imread("image_0.png")
+# img_2 = cv2.imread("image_1.png")
+#
+# print(IsDifferent(img_1,img_2))

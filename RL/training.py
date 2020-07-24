@@ -38,7 +38,8 @@ if __name__ == "__main__":
     q_error_check.put(0)
     q_check_responding = queue.Queue()
     threading.Thread(target=ErrorHandler, args=(q_pid, q_error_check, q_check_responding)).start()
-
+    goal_reached = False
+    repeat = False
     for e in range(0, num_of_episodes):
         try:
             if e>0 and not app_close_bug:
@@ -104,14 +105,20 @@ if __name__ == "__main__":
                 print(unique_states)'''
 
                 next_state = np.reshape(next_state, [2, state_size])
-                terminated = CheckTerminated(e, states, unique_states, action_space, action_count)
+                terminated = CheckTerminated(e, states, unique_states, action_space, action_count, repeat)
 
                 agent.store(state, action, reward, next_state, terminated)
                 state = next_state
 
                 if terminated:
                     agent.align_target_model()
+                    goal_reached = True
+                    repeat = False
                     break
+
+                if timestep==999 and not goal_reached:
+                    repeat=True
+
 
                 if len(agent.history) > batch_size:
                     agent.retrain(batch_size)

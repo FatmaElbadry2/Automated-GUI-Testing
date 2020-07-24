@@ -124,6 +124,6 @@ def detect(img_path, i, Folder):
 	return elements, img.shape
 
 
-# if __name__ == '__main__':
-# 	elements = detect("tex6.jpg", 1,"RL\\Training")
-# 	#print(elements)
+if __name__ == '__main__':
+	elements = detect("pycharm.JPG", 1,"RL\\Training")
+	#print(elements)

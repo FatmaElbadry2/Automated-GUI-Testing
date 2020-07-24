@@ -22,9 +22,9 @@ class Actions(Enum):
 
 click = ["button", "tab"]
 
-one_click = ["combobox", "submenu",  "icon_button", "close", "save", "load", "redo", "undo", "export", "new", "info", "settings", "max_min", "dropdown", "button_combobox"]
+one_click = ["combobox", "submenu",  "icon", "close", "save", "load", "redo", "undo", "export", "new", "info", "settings", "max_min", "dropdown", "button_combobox"]
 
-click_no_change = ["radio_button", "checkbox", "switch"]
+click_no_change = ["radio", "checkbox", "switch"]
 
 write = ["textbox", "textarea", "search", "text_combobox", "spinbox"]
 drag_horizontal = ["horizontal_scrollbar"]

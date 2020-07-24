@@ -20,9 +20,10 @@ def getInsideText(element):
     xmin = round(element.x_center-(element.width/2))
     xmax = round(element.x_center+(element.width/2))
     ymin = round(element.y_center-(element.height/2))
-    ymax = round(element.y_center-(element.height/2))
+    ymax = round(element.y_center+(element.height/2))
     text = r.read(xmin, ymin, xmax, ymax)
     element.text=text
+    print(text)
     return element
 
 
@@ -30,7 +31,7 @@ def getLeftText(element):
     xmax = round(element.x_center - (element.width / 2))
     xmin = xmax-element.width
     ymin = round(element.y_center - (element.height / 2))
-    ymax = round(element.y_center - (element.height / 2))
+    ymax = round(element.y_center + (element.height / 2))
     text = r.read(xmin, ymin, xmax, ymax)
     element.text = text
     return element
@@ -40,7 +41,7 @@ def getRightText(element):
     xmin = round(element.x_center + (element.width / 2))
     xmax = xmin + element.width
     ymin = round(element.y_center - (element.height / 2))
-    ymax = round(element.y_center - (element.height / 2))
+    ymax = round(element.y_center + (element.height / 2))
     text = r.read(xmin, ymin, xmax, ymax)
     element.text = text
     return element

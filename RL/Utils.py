@@ -24,6 +24,9 @@ def GetState(i, img_states, states, tree, action_space, action_count, unique_sta
     time.sleep(1)
     image, path = save_image(i, Folder)
     elements = buildElements(path, i, [Width, Height], Folder)
+    print("lenght of elemets before:  ", len(elements))
+    elements=[e for e in elements if not ((e.y_center >42 and e.y_center<72) and((e.x_center >35 and e.x_center<127)or (e.x_center>411 and e.x_center<440))) ]
+    print("lenght of elemets after:  ",len(elements))
     elements.sort(key=operator.attrgetter('x_center'))
     elements.sort(key=operator.attrgetter('y_center'))
     exists, old_state, diff = img_exists(elements, img_states, image)
@@ -63,10 +66,10 @@ def SetReward(state, action, action_type, path, new_actions, img_states, next_st
     action_type_enum = eta.Actions
     actions = [action_type_enum.click_no_change, action_type_enum.write_letters, action_type_enum.write_numbers, action_type_enum.write_short,
                action_type_enum.write_long, action_type_enum.write_alphanumeric, action_type_enum.delete]
-    if state[0].tolist()==next_state[0].tolist():
-        reward=-1
-    elif (action_type in actions):
+    if (action_type in actions):
         reward = 1/action_count[action]
+    elif state[0].tolist()==next_state[0].tolist():
+        reward=-1
     elif state[0][action]==1 and action != 0:
         state_occurences = img_states[path][0]
         reward = (1/state_occurences) * new_actions
@@ -75,7 +78,11 @@ def SetReward(state, action, action_type, path, new_actions, img_states, next_st
     return reward
 
 def GetNewActions(state, next_state, unique_states):
-    new_actions = list(set(next_state[0]) - set(state[0]))
+    next_actions= np.where(next_state[0] == 1)[0]
+    current_actions= np.where(state[0] == 1)[0]
+    new_actions = list(set(next_actions) - set(current_actions))
+    new_actions=[x for x in new_actions if x in unique_states]
+    print(current_actions)
     if len(new_actions)>0:
         new_actions = [unique_states[int(x)][1] for x in new_actions if (np.array(unique_states[int(x)][1])==0).any()]
     return len(new_actions)
@@ -84,13 +91,13 @@ def ElementMapper(idx_element,tree):
     element = tree[int(idx_element)]
     return element.x_center, element.y_center
 
-def CheckTerminated(episode, states, unique_states, action_space, action_count):
-    if episode == 0:
+def CheckTerminated(episode, states, unique_states, action_space, action_count, repeat):
+    if episode == 0 or repeat:
         '''for state in states:
             if (states[state][1] == 0).any():'''
 
-        print(action_space[1:][action_space[(action_space[1:]).astype(int)]!=-1])
-        print(action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1])
+        #print(action_space[1:][action_space[(action_space[1:]).astype(int)]!=-1])
+        #print(action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1])
 
         if (action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1]>0).all():
             return True
@@ -177,7 +184,11 @@ def SaveTree(tree, csv_file_path):
     with open(csv_file_path, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file)
         for element in tree:
-            csv_writer.writerow([element.type, element.x_center, element.y_center, element.width, element.height, element.text, element.color, element.hex])
+            x_center= element.x_center/Width
+            width=element.width/Width
+            y_center=element.y_center/Height
+            height=element.height/Height
+            csv_writer.writerow([element.type, x_center, y_center, width, height, element.text, element.color, element.hex])
 
 def LoadTree(csv_file_path):
     tree = []
@@ -187,10 +198,10 @@ def LoadTree(csv_file_path):
         for row in csv_reader:
             e = Element()
             e.type = row[0]
-            e.x_center = row[1]
-            e.y_center = row[2]
-            e.width = row[3]
-            e.height = row[4]
+            e.x_center = row[1] * Width
+            e.y_center = row[2] * Height
+            e.width = row[3] * Width
+            e.height = row[4] * Height
             e.text = row[5]
             e.color = row[6]
             e.hex = row[7]

@@ -9,7 +9,7 @@ class Agent:
         self.history = deque(maxlen=2000)
         self.gamma = 0.85
         self.epsilon = 1
-        self.epsilon_decay = 0.995
+        self.epsilon_decay = 0.998
         self.epsilon_min = 0.01
         self.q_network = self._build_network()
         self.target_network = self._build_network()
@@ -43,7 +43,9 @@ class Agent:
         if len(available_actions) == 0:
             return [0]
         if np.random.rand() <= self.epsilon:
+            print("RANDOM")
             return random.sample(list(available_actions), 1)
+        print("PREDICT")
         q_values = self.q_network.predict(state)
         q_values=np.array([q_values[0][int(x)] for x in available_actions ])
         id_max = np.argmax(q_values)

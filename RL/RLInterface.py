@@ -33,6 +33,8 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
     q_error_check.put(0)
     q_check_responding = queue.Queue()
     threading.Thread(target=ErrorHandler, args=(q_pid, q_error_check, q_check_responding)).start()
+    goal_reached = False
+    repeat = False
 
     for e in range(0, num_of_episodes):
         try:
@@ -93,7 +95,7 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
                             unique_states[action][1].append(1)
                         else:
                             unique_states[action][1][path_index[0]] += 1
-                        new_actions = GetNewActions(state, next_state, action_count)
+                        new_actions = GetNewActions(state, next_state, unique_states)
                 else:
                     next_state = state
                     new_actions = 0
@@ -104,14 +106,19 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
                 print(unique_states)'''
 
                 next_state = np.reshape(next_state, [2, state_size])
-                terminated = CheckTerminated(e, states, unique_states, action_space, action_count)
+                terminated = CheckTerminated(e, states, unique_states, action_space, action_count, repeat)
 
                 agent.store(state, action, reward, next_state, terminated)
                 state = next_state
 
                 if terminated:
                     agent.align_target_model()
+                    goal_reached = True
+                    repeat = False
                     break
+
+                if timestep==999 and not goal_reached:
+                    repeat=True
 
                 if len(agent.history) > batch_size:
                     agent.retrain(batch_size)
@@ -120,15 +127,15 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
                     bar.update(timestep / 10 + 1)
 
             bar.finish()
-            if (e + 1) % 10 == 0:
+            if (e + 1) % 3 == 0:
                 print("**********************************")
                 print("Episode: {}".format(e + 1))
 
-                agent.save(MY_DIRNAME + "\\RL\\Weights\\dexter-dqn.h5")
+                agent.save(MY_DIRNAME + "\\RL\\Weights\\dexter-dqn" + str(e) + ".h5")
                 # ----save tree and action space----
-                SaveActionSpace(action_space, "Files\\action_space.txt")
-                SaveTree(tree, "Files\\tree.csv")
-                SaveUniqueStates(unique_states, "Files\\unique_states.txt")
+                SaveActionSpace(action_space, "Files\\action_space" + str(e) +".txt")
+                SaveTree(tree, "Files\\tree" + str(e) + ".csv")
+                SaveUniqueStates(unique_states, "Files\\unique_states" + str(e) +".txt")
 
                 print("**********************************")
         except KeyboardInterrupt:

@@ -13,7 +13,7 @@ if __name__ == "__main__":
     app_name = "ElmerGUI.exe"
     app_pid = OpenApp(app_path, app_name)
 
-    text = "double click on the 5th icon button from the right. drag the dialogbox to the left of the {file} menu"
+    text = "click on {NLPmain.py} on the left"
     text, ordinal_dict, screen_dict, input_dict = preProcess(text)
     text = nlp(text)
     sentences = text.sents

@@ -108,5 +108,6 @@ def buildTree(elements,tree,action_space):
         else:
             IDs.append(index[0])
             #print("element already exists")
+    print(tree)
     return IDs
 
