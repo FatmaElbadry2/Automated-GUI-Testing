@@ -127,7 +127,7 @@ if __name__ == "__main__":
                     bar.update(timestep / 10 + 1)
 
             bar.finish()
-            if (e + 1) % 10 == 0:
+            if (e + 1) % 2 == 0:
                 print("**********************************")
                 print("Episode: {}".format(e + 1))
 

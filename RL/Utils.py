@@ -25,7 +25,7 @@ def GetState(i, img_states, states, tree, action_space, action_count, unique_sta
     image, path = save_image(i, Folder)
     elements = buildElements(path, i, [Width, Height], Folder)
     print("lenght of elemets before:  ", len(elements))
-    elements=[e for e in elements if not ((e.y_center >42 and e.y_center<72) and((e.x_center >35 and e.x_center<127)or (e.x_center>411 and e.x_center<440))) ]
+    elements=[e for e in elements if not ((e.y_center >42 and e.y_center<72) and((e.x_center >35 and e.x_center<127)or (e.x_center>381 and e.x_center<405))) ]
     print("lenght of elemets after:  ",len(elements))
     elements.sort(key=operator.attrgetter('x_center'))
     elements.sort(key=operator.attrgetter('y_center'))
