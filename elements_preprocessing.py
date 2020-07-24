@@ -8,34 +8,49 @@ text_right = ["radio"]
 
 
 def getTextAndColor(elements, image):
-
     img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     for element in elements:
-        colors=getDominantcolor(image[element.y_center-(element.height/2):element.y_center+(element.height/2),element.x_center-(element.width/2):element.x_center+(element.width/2),:])
-        rgb = img[element.y_center, element.x_center, :]
         if element.type in inside_text:
             getInsideText(element)
         elif element.type in text_left:
             getLeftText(element)
         elif element.type in text_right:
             getRightText(element)
-        _,color = get_colour_name(rgb)
+        color = getDominantcolor(
+            img[element.y_center - (element.height / 2):element.y_center + (element.height / 2),
+            element.x_center - (element.width / 2):element.x_center + (element.width / 2), :])
+        # rgb = img[element.y_center, element.x_center, :]
         element.color = color
     return elements
 
+
 def getDominantcolor(img):
-    img=img.tolist()
-    dict=
+    img = img.tolist()
+    dict = {}
     for i in range(len(img)):
         for j in range(len(img[0])):
             if str(img[i][j]) in dict:
-                dict[str(img[i][j])]+=1
+                dict[str(img[i][j])] += 1
             else:
-                dict[str(img[i][j])]=0
-    dict
-
-    return dict
-
+                dict[str(img[i][j])] = 0
+    dict = dict.items()
+    dict.sort(key=lambda tup: tup[1])
+    i = 1
+    c = list(dict[0][1:len(dict[0]-1)].split(","))
+    _, color = get_colour_name(c)
+    gray = False
+    while color == "white" or color == "gray" and i < len(dict):
+        if color=="gray":
+            gray=True
+        c = list(dict[i][1:len(dict[i] - 1)].split(","))
+        _, color = get_colour_name(c)
+        i+=1
+    if i==len(dict):
+        if gray:
+            return "gray"
+        else:
+            return "white"
+    return color
 
 def getInsideText(element):
     xmin = round(element.x_center-(element.width/2))
