@@ -83,4 +83,4 @@ cyan =\
 
     ]
 
-colors = ["red", "green", "blue", "purple", "violet", "cyan", "pink", "mint", "orange", "yellow", "black", "white", "grey"]
+colors = ["red","maroon", "green", "blue", "purple", "violet", "cyan", "pink", "mint", "orange", "yellow", "black", "white", "grey"]

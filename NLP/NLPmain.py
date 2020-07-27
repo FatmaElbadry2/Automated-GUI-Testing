@@ -13,7 +13,8 @@ if __name__ == "__main__":
     app_name = "ElmerGUI.exe"
     app_pid = OpenApp(app_path, app_name)
 
-    text = "click on {NLPmain.py} on the left"
+    text = "click on {material}. click on the icon on the left of the second green icon from the right. apply. click on the button on the left of {model}."
+
     text, ordinal_dict, screen_dict, input_dict = preProcess(text)
     text = nlp(text)
     sentences = text.sents
@@ -34,7 +35,10 @@ if __name__ == "__main__":
         except ValueError as e:
             print(e)
 
+    im=sh.ScreenShot()
+    cv2.imwrite("C:\\Users\\ssalma\\Documents\\Dexter Projects\\Test NLP\\test1.png",im)
     r.close()
+    os.kill(app_pid, 9)
 
 
 

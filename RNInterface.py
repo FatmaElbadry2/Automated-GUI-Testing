@@ -9,11 +9,11 @@ from RetinaNet.validate import *
 # gui_elements = [[0, 80, 70, 10, 10, "save", "red", 0x123456], [1, 120, 40, 20, 20, "submit", "blue", 0x123456],
 #             [0, 60, 30, 10, 10, "save", "red", 0x123456]]
 
-gui_elements = [[20, 300, 170, 100, 70, "are you sure you wanna do this", "white", 0x123456],
-                [0, 330, 190, 30, 20, "cancel", "red", 0x123456], [22, 340, 145, 10, 10, "x", "red", 0x123456],
-                [0, 315, 160, 10, 10, "flower", "pink", 0x123456], [0, 260, 145, 10, 10, "heart", "pink", 0x123456],
-                [0, 275, 160, 10, 10, "star", "yellow", 0x123456], [0, 360, 160, 10, 10, "ok", "green", 0x123456],
-                [0, 270, 190, 30, 20, "ok", "green", 0x123456]]
+gui_elements = [["dialogbox", 300, 170, 100, 70, "are you sure you wanna do this", "white", 0x123456],
+                ["button", 330, 190, 30, 20, "cancel", "red", 0x123456], ["icon", 340, 145, 10, 10, "x", "red", 0x123456],
+                ["button", 315, 160, 10, 10, "flower", "pink", 0x123456], ["button", 260, 145, 10, 10, "heart", "pink", 0x123456],
+                ["button", 275, 160, 10, 10, "star", "yellow", 0x123456], ["button", 360, 160, 10, 10, "ok", "green", 0x123456],
+                ["button", 270, 190, 30, 20, "ok", "green", 0x123456]]
 
 elementsMatcher = [
     "button",

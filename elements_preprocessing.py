@@ -16,38 +16,48 @@ def getTextAndColor(elements, image):
             getLeftText(element)
         elif element.type in text_right:
             getRightText(element)
-        color = getDominantcolor(
-            img[element.y_center - (element.height / 2):element.y_center + (element.height / 2),
-            element.x_center - (element.width / 2):element.x_center + (element.width / 2), :])
-        # rgb = img[element.y_center, element.x_center, :]
-        element.color = color
+        if element.type=="icon":
+            color = getDominantcolor(
+                img[element.y_center - round(element.height / 2):element.y_center +1+ round(element.height / 2),
+                element.x_center - round(element.width / 2):element.x_center + 1+round(element.width / 2), :])
+            # rgb = img[element.y_center, element.x_center, :]
+            if color == "maroon":
+                color = "red"
+            element.color = color
     return elements
 
 
 def getDominantcolor(img):
     img = img.tolist()
     dict = {}
+    # print(len(img))
+    # print(len(img[0]))
     for i in range(len(img)):
         for j in range(len(img[0])):
             if str(img[i][j]) in dict:
                 dict[str(img[i][j])] += 1
             else:
-                dict[str(img[i][j])] = 0
-    dict = dict.items()
-    dict.sort(key=lambda tup: tup[1])
+                dict[str(img[i][j])] = 1
+
+    dict = list(dict.items())
+    if len(dict)==0:
+        return "white"
+    dict.sort(key=lambda tup: tup[1],reverse=True)
     i = 1
-    c = list(dict[0][1:len(dict[0]-1)].split(","))
+    c = list(dict[0][0][1:len(dict[0][0])-1].split(","))
+    c=list(map(int,c))
     _, color = get_colour_name(c)
     gray = False
-    while color == "white" or color == "gray" and i < len(dict):
-        if color=="gray":
+    while color == "white" or color == "silver" and i < len(dict):
+        if color=="silver":
             gray=True
-        c = list(dict[i][1:len(dict[i] - 1)].split(","))
+        c = list(dict[i][0][1:len(dict[i][0])-1].split(","))
+        c = list(map(int, c))
         _, color = get_colour_name(c)
         i+=1
     if i==len(dict):
         if gray:
-            return "gray"
+            return "silver"
         else:
             return "white"
     return color
@@ -59,7 +69,6 @@ def getInsideText(element):
     ymax = round(element.y_center+(element.height/2))
     text = r.read(xmin, ymin, xmax, ymax)
     element.text=text
-    print(text)
     return element
 
 

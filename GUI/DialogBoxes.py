@@ -757,7 +757,7 @@ class NewSessionWidget(QWidget):
         self.project_path = ""
         self.app_path = ""
         self.session_name = ""
-        self.type = "testing"
+        self.type = "training"
         self.model_path = ""
         self.expand_check = False
 
@@ -849,7 +849,7 @@ class NewSessionWidget(QWidget):
         h_line.setMinimumWidth(420)
 
         self.testing_rbtn = QRadioButton("Testing", self)
-        self.testing_rbtn.setChecked(True)
+        self.testing_rbtn.setChecked(False)
         self.testing_rbtn.type = "testing"
         self.testing_rbtn.toggled.connect(self.OnRadioBtnClick)
         self.testing_rbtn.move(60, 185)
@@ -880,6 +880,7 @@ class NewSessionWidget(QWidget):
         self.open_model_button.hide()
 
         self.training_rbtn = QRadioButton("Training", self)
+        self.training_rbtn.setChecked(True)
         self.training_rbtn.type = "training"
         self.training_rbtn.toggled.connect(self.OnRadioBtnClick)
         self.training_rbtn.move(175, 185)

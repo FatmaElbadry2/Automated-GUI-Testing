@@ -73,14 +73,15 @@ def replaceDirections(text):
 def replaceElements(text):
     expressions = [r"radio[\s|_|-]*?button", r"text[\s|_|-]+?box", r"check[\s|_|-]+?box", r"combo[\s|_|-]+?box",
                    r"spin[\s|_|-]+?box", "arrow", r"sub[\s|_|-]+?menu", r"scroll[\s|_|-]+?bar", r"progress[\s|_|-]+?bar",
-                   r"tab[\s|-]*?bar", r"icon[\s|_|-]*?button",  r"\bbar\b", r"\bicon\b", r"dialog[\s|_|-]+?box",
+                   r"tab[\s|-]*?bar", r"icon[\s|_|-]*?button",  r"\bbar\b", r"\bicon\b",
                    r"text[\s|_|-]+?area", r"drop[\s|_|-]*?down(([\s|_|-]*?menu)|([\s|_|-]*?list))?"]
     replacements = ["radio", "textbox", "checkbox", "combobox", "spinbox", "button", "submenu", "scrollbar",
-                    "progressbar", "tab_bar", "icon", "scrollbar", "icon", "dialogbox", "textarea",
+                    "progressbar", "tab_bar", "icon", "scrollbar", "icon", "textarea",
                     "dropdown"]
     for i in range(len(expressions)):
         text = replaceWord(text, expressions[i], replacements[i])
     return text
+
 
 def replaceOrdinalNumbers(text):
     p = inflect.engine()

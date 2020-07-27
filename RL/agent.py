@@ -29,6 +29,7 @@ class Agent:
         model = tf.keras.Sequential()
         model.add(tf.keras.layers.Dense(50, input_dim=self._state_size, activation='relu'))
         model.add(tf.keras.layers.Dense(50, activation='relu'))
+        model.add(tf.keras.layers.Dense(50, activation='relu'))
         model.add(tf.keras.layers.Dense(self._action_size, activation='linear'))
         model.compile(loss='mse', optimizer=self._optimizer)
         return model
@@ -39,7 +40,7 @@ class Agent:
     def act(self, state):
         self.epsilon *= self.epsilon_decay
         self.epsilon = max(self.epsilon, self.epsilon_min)
-        available_actions = np.where(state[0] == 1)[0]
+        available_actions = np.where(state[0][0:2501] == 1)[0]
         if len(available_actions) == 0:
             return [0]
         if np.random.rand() <= self.epsilon:
@@ -47,13 +48,13 @@ class Agent:
             return random.sample(list(available_actions), 1)
         print("PREDICT")
         q_values = self.q_network.predict(state)
-        q_values=np.array([q_values[0][int(x)] for x in available_actions ])
+        q_values=np.array([q_values[0][int(x)] for x in available_actions])
         id_max = np.argmax(q_values)
         action_max = available_actions[id_max]
         return [action_max]
 
     def predict_action(self, state):
-        available_actions = np.where(state[0] == 1)[0]
+        available_actions = np.where(state[0][0:2501] == 1)[0]
         if len(available_actions) == 0:
             return [0]
         q_values = self.q_network.predict(state)

@@ -29,8 +29,15 @@ def RelativeDrag(x,y): # (x,y,button)  x+ ->right y+->down
     pyautogui.drag(x, y, button='left')
 
 
-def Drag(x,y):
-    pyautogui.dragTo(x,y, button='left')
+def Drag(x1,y1,x2,y2):
+    pyautogui.moveTo(x1, y1)
+    pyautogui.mouseDown(button='left')
+    pyautogui.moveTo(x2, y2)
+    pyautogui.mouseUp(button='left')
+
+'''def Drag(x,y):
+
+    pyautogui.dragTo(x,y, button='left')'''
 
 
 def clicks(x,y,numbersofclicks,button):

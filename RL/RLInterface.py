@@ -129,7 +129,7 @@ def Training(app_path, app_name, action_space, action_count, tree, img_states, s
                     bar.update(timestep / 10 + 1)
 
             bar.finish()
-            if (e + 1) % 2 == 0:
+            if (e + 1) % 1 == 0:
                 print("**********************************")
                 print("Episode: {}".format(e + 1))
 

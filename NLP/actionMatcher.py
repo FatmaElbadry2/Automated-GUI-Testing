@@ -56,7 +56,14 @@ def getActionType(sentence, elements):
         if word.dep_ == "ROOT":
             action_type = verbs.get(word.lemma_, -1)
             if action_type == -1:
-                return Actions.undefined, None, None
+                match, score = zip(*[matchText(e.text, str(word), 70) for e in elements])
+                maxRatio = max(score)
+                el = np.array(elements)
+                el = el[np.logical_and(np.array(score) == maxRatio, np.array(match))]
+                if len(el) > 0:
+                   return Actions.other,[word],None,None
+                else:
+                    return Actions.undefined, None, None,None
             if word.lemma_ == "scroll":
                 action_type = getScrollType(elements)
             actions = list(word.lefts)
@@ -124,6 +131,7 @@ def getRelativeDrag(directions, quantity):
             x = -quantity
         elif direction in ["right", "west"]:
             x = quantity
+    print(x,y)
     return x, y
 
 
@@ -152,13 +160,16 @@ def actionMapper(elements, action, action_type, center_1, center_2=None, t_input
 
     elif action_type == Actions.drag:
         if quantity is None:
-            quantity = 10
-        r.hover(center_2[0], center_2[1])
-        if center_1 is not None:   # it means that i have a target destination
-            mouse.Drag(center_1[0], center_1[1])
-        elif direction is not None:
-            x, y = getRelativeDrag(direction, quantity)
-            mouse.RelativeDrag(x, y)
+            quantity = 100
+        #mouse.LeftClick(center_2[0], center_2[1]-58)
+        if direction is not None:
+            print("insideeeee")
+            x, y = getRelativeDrag(str(direction), quantity)
+            #mouse.Drag(387,275-58, 387-100, 275-58+1)
+            #mouse.Drag(center_2[0]+x, center_2[1]-58+y)
+            mouse.Drag(center_2[0], center_2[1], center_2[0]+x, center_2[1]+y+1)
+        elif center_1 is not None:   # it means that i have a target destination
+            mouse.Drag(center_2[0], center_2[1], center_1[0], center_1[1])
         else:
             print("destination is not specified")
 
@@ -219,12 +230,13 @@ def getSentenceStructure(sentence, elements):
     quantity_st = None
     quantity_nd = None
     action_type, actions, rights, quantity = getActionType(sentence, elements)
-    for right in rights:
-        if str(right) in ["up", "upwards", "down", "downwards"]:
-            pos.direction = right
-            break
-        elif str(right) == "to":
-            to_index = right.i
+    if rights is not None:
+        for right in rights:
+            if str(right) in ["up", "upwards", "down", "downwards"]:
+                pos.direction = right
+                break
+            elif str(right) == "to":
+                to_index = right.i
     pos.action = actions
     if quantity is not None:
         pos.quantity = quantity[0]
@@ -243,8 +255,8 @@ def getSentenceStructure(sentence, elements):
 
     elif action_type == Actions.drag:
         if to_index is not None:
-            pos.target_element = sentence[to_index-sentence[0].i + 1:]
-            pos.target_index = to_index + 1
+            pos.target_element = sentence[to_index-sentence[0].i:]
+            pos.target_index = to_index
             pos.source_element = sentence[actions[-1].i-sentence[0].i+1:to_index-sentence[0].i]
             pos.source_index = actions[-1].i+1
         else:

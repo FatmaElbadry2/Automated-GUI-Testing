@@ -56,6 +56,7 @@ class ObjType(Enum):  # it represents all type of possible objects
     single_element = 9
     range = 10
     unknown = 11
+    corner = 12
 
 
 class ReturnTypes(Enum):  # return type of the sentence
@@ -167,6 +168,7 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, text_dict, input_d
                 else:
                     raise ValueError(Errors.empty_range)
 
+
             else:
                 _, filteredObj = ordinalSorter(1, filteredObj, str(obj))  # at the end we choose the first object
                 Obj_changed = True
@@ -213,6 +215,30 @@ def sentenceInterpreter(sentence, x_range, y_range, elements, text_dict, input_d
 
         elif objType == ObjType.built_in:
             pass
+           # corner1,corner2,corner3,corner4=BuiltInInterpreter("corner",x_range[0],y_range[0])
+           # corners=[[(corner1[0][0]+corner1[0][1])/2,],corner2,corner3,corner4]
+           # j=i
+           # if j>=0:
+           #      obj, objType, error = objectTypeMapper(sentence[j-1], prep_next, text_dict, input_dict, filteredObj, x_range,
+           #                                        y_range)
+           #      j-=1
+           #      while j>=0 and objType == ObjType.abs_position:
+           #          obj, objType, error = objectTypeMapper(sentence[j], prep_next, text_dict, input_dict,
+           #                                                 filteredObj, x_range,
+           #                                                 y_range)
+           #          j-=1
+           #          if str(obj) in ["left","east"]:
+           #              corners=[corner1,corner3,corner2,corner4]
+           #          elif str(obj) =="right":
+           #              corners = [corner2, corner4, corner1, corner3]
+           #          elif str(obj) =="top":
+           #              corners = [corner1, corner2, corner3, corner4]
+           #          elif str(obj) =="bottom":
+           #              corners = [corner3, corner4, corner1, corner2]
+
+
+
+
     if direction is not None:
         for dirc in reversed(direction):
             _, filteredObj = ordinalSorter(1, filteredObj, str(dirc))  # at the end we choose the first object
@@ -266,17 +292,17 @@ def objectFinder(sentence, elements, textdict, inputdict,ordinal_dict,start):
 
     return prev_obj, x_range, y_range, t_input, direction, return_type
 
-'''
-e1 = elementStruct(gui_elements[0])
-e2 = elementStruct(gui_elements[1])
-e3 = elementStruct(gui_elements[2])
-e4 = elementStruct(gui_elements[3])
-e5 = elementStruct(gui_elements[4])
-e6 = elementStruct(gui_elements[5])
-e7 = elementStruct(gui_elements[6])
-e8 = elementStruct(gui_elements[7])
-e9 = [e1, e2, e3, e4, e5, e6, e7, e8]
 
+# e1 = elementStruct(gui_elements[0])
+# e2 = elementStruct(gui_elements[1])
+# e3 = elementStruct(gui_elements[2])
+# e4 = elementStruct(gui_elements[3])
+# e5 = elementStruct(gui_elements[4])
+# e6 = elementStruct(gui_elements[5])
+# e7 = elementStruct(gui_elements[6])
+# e8 = elementStruct(gui_elements[7])
+# e9 = [e1, e2, e3, e4, e5, e6, e7, e8]
+'''
 # nlp = spacy.load('en_core_web_sm', parse=True, tag=True, entity=True)
 # text = "click on the button on the left of the {cancel} button"
 # text = "click on the button on the top right of the {ok} button inside the dialogbox"

@@ -14,7 +14,7 @@ def OpenApp(app_path, app_name):
     pid = sh.open_app_foreground(app_path, app_name)
     print(pid)
     # sh.OpenApp("C:\\Program Files (x86)\\FreeMat\\bin", "FreeMat.exe")
-    time.sleep(2)
+    time.sleep(5)
     sh.max()
     time.sleep(1)
     return pid
@@ -51,8 +51,8 @@ def GetState(i, img_states, states, tree, action_space, action_count, unique_sta
         states[path][0] = np.array(states[path][0]).astype(int)
         state[0][states[path][0]] = 1
         state[1] = GetPotentialActions(action_count,unique_states)
-
-    state[0][2501] = diff/100
+    if diff>0:
+        state[0][2501] = 1
     return state, path
 
 def GetPotentialActions(action_count,unique_states):
@@ -69,22 +69,22 @@ def SetReward(state, action, action_type, path, new_actions, img_states, next_st
     if (action_type in actions):
         reward = 1/action_count[action]
     elif state[0].tolist()==next_state[0].tolist():
-        reward=-1
+        reward = 0
     elif state[0][action]==1 and action != 0:
         state_occurences = img_states[path][0]
         reward = (1/state_occurences) * new_actions
     else:
-        reward = -1
+        reward = 0
     return reward
 
 def GetNewActions(state, next_state, unique_states):
-    next_actions= np.where(next_state[0] == 1)[0]
-    current_actions= np.where(state[0] == 1)[0]
+    next_actions = np.where(next_state[0][0:2501] == 1)[0]
+    current_actions = np.where(state[0][0:2501] == 1)[0]
     new_actions = list(set(next_actions) - set(current_actions))
-    new_actions=[x for x in new_actions if x in unique_states]
+    new_potential_actions = [x for x in new_actions if x in unique_states]
     print(current_actions)
-    if len(new_actions)>0:
-        new_actions = [unique_states[int(x)][1] for x in new_actions if (np.array(unique_states[int(x)][1])==0).any()]
+    if len(new_potential_actions)>0:
+        new_potential_actions = [unique_states[int(x)][1] for x in new_potential_actions if (np.array(unique_states[int(x)][1])==0).any()]
     return len(new_actions)
 
 def ElementMapper(idx_element,tree):
@@ -99,17 +99,26 @@ def CheckTerminated(episode, states, unique_states, action_space, action_count, 
 
         #print(action_space[1:][action_space[(action_space[1:]).astype(int)]!=-1])
         #print(action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1])
+        reached_elements=0
         for key in element_ex_count:
-            if element_ex_count[key]==0:
-                return False
-        return True
+            if element_ex_count[key]>0:
+                reached_elements+=1
+        if reached_elements/len(element_ex_count) >= 0.7:
+            return True
+        else:
+            return False
         # if (action_count[1:][action_space[(action_space[1:]).astype(int)]!=-1]>0).all():
         #     return True
         # return False
+    reached_elements=0
     for state in unique_states:
-        if (np.array(unique_states[state][1]) == 0).any():
-            return False
-    return True
+        if (np.array(unique_states[state][1]) > 0).any():
+            reached_elements  +=1
+
+    if reached_elements / len(unique_states) >= 0.7:
+        return True
+    else:
+        return False
 
     '''available_actions = action_count[action_space != -1]
     executed_actions = available_actions[available_actions > 0]
@@ -215,15 +224,15 @@ def LoadTree(csv_file_path):
             line_count += 1
     return tree
 
-def SaveUniqueStates(unique_states, txt_file):
+def SaveUniqueStates(unique_states, path):
     key_list = list(unique_states.keys())
     val_list = list(unique_states.values())
-    file = open(txt_file,"w")
+    file = open(path,"w")
     for i in range(len(key_list)):
-        #print(key_list[i], val_list[i][1][0])
+        print(key_list[i], len(val_list[i][1]))
         file.writelines(str(key_list[i]))
         file.writelines(",")
-        file.writelines(str(val_list[i][1][0]))
+        file.writelines(str(len(val_list[i][1])))
         file.writelines("\n")
     file.close()
 

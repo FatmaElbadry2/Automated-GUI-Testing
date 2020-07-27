@@ -3,6 +3,7 @@ from RotatedButton import *
 import GUIUtils as utils
 from CodeEditor import *
 from DialogBoxes import *
+from VoiceCommands import *
 from StatisticsWidget import *
 import _thread
 from RL.RLInterface import *
@@ -390,6 +391,8 @@ class Window(QMainWindow):
         self.log_h_bar.move(0, 3)
         self.config_btn.clicked.connect(self.ConfigureWidget)
         self.config_btn.setDisabled(True)
+        self.voice_record_btn.setDisabled(True)
+        self.voice_record_btn.clicked.connect(self.VoiceCommands)
 
         self.log_v_bar, self.run, self.stop, clear = utils.CreateLogVBar(self.lower_frame)
         self.log_v_bar.setFixedWidth(30)
@@ -507,6 +510,7 @@ class Window(QMainWindow):
             self.new_session_btn.setDisabled(False)
             self.open_session_btn.setDisabled(False)
             self.config_btn.setDisabled(False)
+            self.voice_record_btn.setDisabled(False)
             self.run.setDisabled(False)
             self.project_opened = True
             cfg_file = path + "/" + path_array[len(path_array)-1] +".cfg"
@@ -746,6 +750,7 @@ class Window(QMainWindow):
             self.new_session_btn.setDisabled(True)
             self.open_session_btn.setDisabled(True)
             self.config_btn.setDisabled(True)
+            self.voice_record_btn.setDisabled(True)
             self.run.setDisabled(True)
 
             count = self.tree_test_steps.childCount()
@@ -1237,7 +1242,7 @@ class Window(QMainWindow):
         self.current_session_type = type
         self.loaded_model_path = model_path
         self.session_name_label.setText("  "+name)
-        self.WriteToLog("Active session: " + name + " of type: " + type)
+        self.WriteToLog("Active session: " + name)
         self.WriteToLog("App path: " + app_path)
         if type=="testing":
             self.WriteToLog("Model path: " + model_path)
@@ -1297,8 +1302,6 @@ class Window(QMainWindow):
             f.close()
 
     def ConfigureWidget(self):
-        print(self.current_steps_file)
-        print(self.current_check_file)
         self.config_widget = ConfigurationWidget(self.current_session_path, self.current_steps_file, self.current_check_file, self)
         self.config_widget.run_signal.connect(self.ConfigureRunSignalReceived)
         self.config_widget.show()
@@ -1344,6 +1347,12 @@ class Window(QMainWindow):
 
         NLP(new_app_path, app_name, text)
 
+    def VoiceCommands(self):
+        print("innnn")
+        self.voice_widget = VoiceCommandsWidget(self)
+        self.voice_widget.recorded_text_signal.connect(self.RecordedTextReceived)
+        self.voice_widget.show()
+
     #---------------------------------Signal Handlers----------------------------------
     @QtCore.pyqtSlot()
     def CreateSignalReceived(self):
@@ -1358,6 +1367,7 @@ class Window(QMainWindow):
         self.new_session_btn.setDisabled(False)
         self.open_session_btn.setDisabled(False)
         self.config_btn.setDisabled(False)
+        self.voice_record_btn.setDisabled(False)
         self.run.setDisabled(False)
         project_path = self.project_path.split("\\")
         self.tree_project_name.setText(0, project_path[len(project_path)-1])
@@ -1568,4 +1578,21 @@ class Window(QMainWindow):
             self.run_steps_file = path_1
             self.run_check_file = path_2
             self.run_test_app_path = test_app_path
+
+    def convert_to_text(self):
+        r = sr.Recognizer()
+        with sr.AudioFile('output.wav') as source:
+            audio_data = r.record(source)
+            text = r.recognize_google(audio_data)
+            print(text)
+        return text
+
+    @QtCore.pyqtSlot()
+    def RecordedTextReceived(self):
+        print("Convertttt")
+        text = self.convert_to_text()
+        self.steps_text_editor.appendPlainText(text)
+        '''if self.steps_text_editor.hasFocus():
+        elif self.check_text_editor.hasFocus():
+            self.check_text_editor.setPlainText(text)'''
 

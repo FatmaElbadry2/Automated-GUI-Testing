@@ -26,5 +26,7 @@ def NLP(app_path, app_name, text):
             execute(sentences[i], elements, ordinal_dict,screen_dict,input_dict)
         except ValueError as e:
             print(e)
+            return e
     r.close()
+    os.kill(app_pid, 9)
     

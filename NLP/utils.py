@@ -7,6 +7,7 @@ def matchText(eText, uText,thresh):
     if levRatio >= thresh:
         return True, levRatio
     return False, levRatio
+#print(matchText("seadl Reï¬\x81lls","search resultts",10))
 
 
 def getObjectRange(x_center, y_center, width, height):
@@ -180,8 +181,18 @@ class Errors(Enum):  # type of errors
     no_error = 3
 
 
+def BuiltInInterpreter(token,x_range,y_range):
+    if token=="corner":
+        first_corner= [x_range[0],round((x_range[0]+x_range[1])/2)],[y_range[0],round((y_range[0]+y_range[1])/2)]
+        second_corner= [round((x_range[0]+x_range[1])/2),x_range[1]],[y_range[0],round((y_range[0]+y_range[1])/2)]
+        third_corner = [x_range[0], round((x_range[0] + x_range[1]) / 2)], [round((y_range[0] + y_range[1]) / 2),y_range[1]]
+        fourth_corner = [round((x_range[0] + x_range[1]) / 2), x_range[1]],[round((y_range[0] + y_range[1]) / 2),y_range[1]]
+        return first_corner,second_corner,third_corner,fourth_corner
+    elif token in ["screen","window","application","app"]:
+        return [(x_range[0]+x_range[1])/2],[(y_range[0]+y_range[1])/2]
 
 
 
+#print(BuiltInInterpreter("screen",[0,w_width],[0,w_height]))
 
 

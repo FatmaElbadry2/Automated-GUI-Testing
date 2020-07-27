@@ -125,5 +125,6 @@ def detect(img_path, i, Folder):
 
 
 if __name__ == '__main__':
-	elements = detect("image_16.png", 1752222,"RL\\Training")
+	#elements = detect("tex.jpg", 1752222,"RL\\Training")
+	elements = detect("elmer_new2.jpg", 0,"RL\\Training")
 	#print(elements)

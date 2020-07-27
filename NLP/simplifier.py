@@ -45,7 +45,7 @@ def splitConj(text):
 
 
 # sentence_nlp = nlp("drag the button to the right by 5 cm")
-sentence_nlp = nlp("click on the third button from the east")
+sentence_nlp = nlp("view")
 
 dependency_pattern = '{left}<---{word}[{w_type}]--->{right}\n--------'
 for token in sentence_nlp:
