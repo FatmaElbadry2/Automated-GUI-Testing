@@ -3,7 +3,6 @@ assets
 .idea
 __pycache__
 
-
 *.swp
 *.pyc
 RL/images
